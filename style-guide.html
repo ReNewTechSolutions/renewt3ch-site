@@ -36,18 +36,143 @@
 
   <link rel="stylesheet" href="/assets/css/main.css" />
   <script defer src="/assets/js/main.js"></script>
+
+  <!-- Style Guide-only polish (scoped) -->
+  <style>
+    body[data-page="style-guide"] main{ padding-bottom: 40px; }
+
+    body[data-page="style-guide"] .sg-wrap{ width:min(980px, 92%); margin-inline:auto; }
+    body[data-page="style-guide"] .sg-lede{ font-size: 1.05rem; color: var(--fg-muted); max-width: 72ch; }
+
+    body[data-page="style-guide"] .sg-kicker{
+      font-family: var(--font-alt);
+      letter-spacing: .10em;
+      text-transform: uppercase;
+      font-size: .78rem;
+      color: var(--fg-muted);
+    }
+
+    body[data-page="style-guide"] .sg-toc{
+      display:flex;
+      flex-wrap:wrap;
+      gap:.6rem;
+      margin-top: 14px;
+    }
+
+    body[data-page="style-guide"] .sg-block{ margin-top: 28px; }
+    body[data-page="style-guide"] .sg-block > h2{ margin-bottom: 6px; }
+
+    body[data-page="style-guide"] .sg-subtle{
+      padding: 14px 16px;
+      border-radius: 16px;
+      background: linear-gradient(135deg, rgba(142,220,255,.10), rgba(124,245,193,.08));
+      border: 1px solid rgba(255,255,255,.10);
+    }
+
+    body[data-page="style-guide"] .sg-kbd{
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      font-size: .9em;
+      padding: .15rem .35rem;
+      border-radius: 8px;
+      background: rgba(255,255,255,.06);
+      border: 1px solid rgba(255,255,255,.08);
+      color: var(--fg);
+    }
+
+    body[data-page="style-guide"] .sg-swatches{
+      display:grid;
+      gap: 12px;
+      grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+      margin-top: 12px;
+    }
+
+    body[data-page="style-guide"] .sg-swatch{
+      overflow:hidden;
+      border-radius: 16px;
+      border: 1px solid rgba(255,255,255,.08);
+      background: #0F1116;
+      box-shadow: 0 12px 26px rgba(0,0,0,.25);
+    }
+
+    body[data-page="style-guide"] .sg-swatch__chip{ height: 86px; }
+    body[data-page="style-guide"] .sg-swatch__meta{
+      padding: 12px 14px;
+      display:flex;
+      justify-content:space-between;
+      gap: 10px;
+      align-items: baseline;
+    }
+    body[data-page="style-guide"] .sg-swatch__name{ font-weight: 650; }
+    body[data-page="style-guide"] .sg-swatch__hex{
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      font-size: .88rem;
+      color: var(--fg-muted);
+    }
+
+    body[data-page="style-guide"] .sg-logos{
+      display:grid;
+      gap: 14px;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      margin-top: 12px;
+    }
+
+    body[data-page="style-guide"] .sg-logo{
+      background: #111111;
+      border: 1px solid rgba(255,255,255,.08);
+      border-radius: 16px;
+      padding: 18px;
+      min-height: 120px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      box-shadow: 0 14px 28px rgba(0,0,0,.28);
+    }
+
+    body[data-page="style-guide"] .sg-logo--light{
+      background: #F5F5F5;
+      border-color: rgba(0,0,0,.08);
+      box-shadow: 0 10px 18px rgba(0,0,0,.12);
+    }
+
+    body[data-page="style-guide"] .sg-logo img{
+      max-height: 56px;
+      width: auto;
+    }
+
+    body[data-page="style-guide"] .sg-row{ display:flex; flex-wrap:wrap; gap:.6rem; align-items:center; }
+    body[data-page="style-guide"] .sg-spacer{ margin-top: 14px; }
+    body[data-page="style-guide"] .sg-hr{ margin: 22px 0; border:0; height:1px; background: rgba(148,163,184,.18); }
+
+    /* Skip link */
+    .skip-link{
+      position:absolute;
+      left:-999px;
+      top:auto;
+      width:1px;
+      height:1px;
+      overflow:hidden;
+    }
+    .skip-link:focus{
+      left:16px;
+      top:16px;
+      width:auto;
+      height:auto;
+      padding:.6rem .8rem;
+      border-radius:12px;
+      background:#111;
+      border:1px solid rgba(255,255,255,.12);
+      z-index:999;
+    }
+  </style>
 </head>
 
+<body data-page="style-guide">
+<a class="skip-link" href="#main">Skip to content</a>
 
-
-
-
-
-<body>
 <header class="site-header">
   <div class="container">
     <nav class="nav" aria-label="Primary">
-      <a class="brand" href="index.html" aria-label="Renewt3ch home">
+      <a class="brand" href="/index.html" aria-label="Renewt3ch home">
         <img src="/assets/logos/r3-icon-gradient.svg" alt="Renewt3ch icon" />
         <span>renewt3ch</span>
       </a>
@@ -62,94 +187,101 @@
       >☰</button>
 
       <div class="nav-links" id="navLinks">
-        <a href="about.html">About</a>
-        <a href="features.html">Features</a>
-        <a href="pricing.html">Pricing</a>
-        <a href="contact.html">Contact</a>
-        <a href="style-guide.html">Style Guide</a>
+        <a href="/about.html">About</a>
+        <a href="/features.html">Features</a>
+        <a href="/pricing.html">Pricing</a>
+        <a href="/contact.html">Contact</a>
+        <a href="/style-guide.html" aria-current="page">Style Guide</a>
       </div>
     </nav>
   </div>
 </header>
 
-<main>
-  <section class="page-head container">
-    <div class="page-head__kicker">
+<main id="main" class="section">
+  <div class="sg-wrap">
+    <div class="sg-row">
       <span class="badge badge--accent">Style Guide</span>
-      <span class="sg-hint">Tokens • Components • Layout</span>
+      <span class="sg-kicker">Tokens • Components • Layout</span>
     </div>
-    <h1 class="page-head__title">Renewt3ch UI + Brand System</h1>
-    <p class="page-head__lede">
-      This page demonstrates the CSS tokens and UI components used across the Renewt3ch website.
-      It’s built to map cleanly into Webflow classes: buttons, cards, grids, forms, and typography.
+
+    <h1 style="margin-top:10px;">Renewt3ch UI + Brand System</h1>
+    <p class="sg-lede">
+      Reference for the Renewt3ch template: core tokens, typography, UI components, and layout patterns.
+      Designed to map cleanly into Webflow classes if you rebuild later.
     </p>
 
-    <div class="sg-nav">
+    <div class="sg-toc" aria-label="On this page">
       <a class="btn btn--ghost" href="#tokens">Tokens</a>
       <a class="btn btn--ghost" href="#typography">Typography</a>
       <a class="btn btn--ghost" href="#buttons">Buttons</a>
       <a class="btn btn--ghost" href="#cards">Cards</a>
       <a class="btn btn--ghost" href="#forms">Forms</a>
       <a class="btn btn--ghost" href="#layouts">Layouts</a>
+      <a class="btn btn--ghost" href="#logos">Logo previews</a>
     </div>
 
     <hr class="rule" />
-  </section>
 
-  <section class="page-body container">
     <!-- TOKENS -->
-    <section id="tokens" class="sg-block">
-      <h2>Tokens</h2>
+    <section id="tokens" class="sg-block" aria-labelledby="tokensTitle">
+      <h2 id="tokensTitle">Tokens</h2>
       <p class="muted">
-        Edit your global brand styling in <span class="sg-kbd">assets/css/main.css</span> under <span class="sg-kbd">:root</span>.
+        Edit global styling in <span class="sg-kbd">/assets/css/main.css</span> under <span class="sg-kbd">:root</span>.
       </p>
 
-      <div class="grid grid-3">
-        <div class="sg-swatch">
-          <div class="sg-swatch__chip" style="background: var(--bg)"></div>
+      <div class="sg-subtle">
+        <div class="muted">
+          Primary accents are muted for a premium feel:
+          <span class="sg-kbd">--accent</span> and <span class="sg-kbd">--accent-2</span>.
+        </div>
+      </div>
+
+      <div class="sg-swatches" role="list" aria-label="Color swatches">
+        <div class="sg-swatch" role="listitem">
+          <div class="sg-swatch__chip" style="background: var(--bg);"></div>
           <div class="sg-swatch__meta">
-            <div><strong>--bg</strong></div>
-            <div class="sg-code">#0D0D0D</div>
+            <span class="sg-swatch__name">--bg</span>
+            <span class="sg-swatch__hex">#0D0D0D</span>
           </div>
         </div>
 
-        <div class="sg-swatch">
-          <div class="sg-swatch__chip" style="background: var(--bg-elev)"></div>
+        <div class="sg-swatch" role="listitem">
+          <div class="sg-swatch__chip" style="background: var(--bg-elev);"></div>
           <div class="sg-swatch__meta">
-            <div><strong>--bg-elev</strong></div>
-            <div class="sg-code">#151515</div>
+            <span class="sg-swatch__name">--bg-elev</span>
+            <span class="sg-swatch__hex">#151515</span>
           </div>
         </div>
 
-        <div class="sg-swatch">
-          <div class="sg-swatch__chip" style="background: var(--slate)"></div>
+        <div class="sg-swatch" role="listitem">
+          <div class="sg-swatch__chip" style="background: var(--slate);"></div>
           <div class="sg-swatch__meta">
-            <div><strong>--slate</strong></div>
-            <div class="sg-code">#222222</div>
+            <span class="sg-swatch__name">--slate</span>
+            <span class="sg-swatch__hex">#222222</span>
           </div>
         </div>
 
-        <div class="sg-swatch">
-          <div class="sg-swatch__chip" style="background: var(--accent)"></div>
+        <div class="sg-swatch" role="listitem">
+          <div class="sg-swatch__chip" style="background: var(--accent);"></div>
           <div class="sg-swatch__meta">
-            <div><strong>--accent</strong></div>
-            <div class="sg-code">#00FFA3</div>
+            <span class="sg-swatch__name">--accent</span>
+            <span class="sg-swatch__hex">#7CF5C1</span>
           </div>
         </div>
 
-        <div class="sg-swatch">
-          <div class="sg-swatch__chip" style="background: var(--accent-2)"></div>
+        <div class="sg-swatch" role="listitem">
+          <div class="sg-swatch__chip" style="background: var(--accent-2);"></div>
           <div class="sg-swatch__meta">
-            <div><strong>--accent-2</strong></div>
-            <div class="sg-code">#03FF7D</div>
+            <span class="sg-swatch__name">--accent-2</span>
+            <span class="sg-swatch__hex">#4FE7B0</span>
           </div>
         </div>
 
-        <div class="sg-swatch">
-          <div class="sg-swatch__chip" style="background: var(--fg)"></div>
+        <div class="sg-swatch" role="listitem">
+          <div class="sg-swatch__chip" style="background: var(--fg);"></div>
           <div class="sg-swatch__meta">
-            <div><strong>--fg</strong></div>
-            <div class="sg-code">#FFFFFF</div>
+            <span class="sg-swatch__name">--fg</span>
+            <span class="sg-swatch__hex">#FFFFFF</span>
           </div>
         </div>
       </div>
@@ -158,30 +290,30 @@
     </section>
 
     <!-- TYPOGRAPHY -->
-    <section id="typography" class="sg-block">
-      <h2>Typography</h2>
+    <section id="typography" class="sg-block" aria-labelledby="typeTitle">
+      <h2 id="typeTitle">Typography</h2>
       <p class="muted">
-        Display font uses <strong>Poppins</strong>. Body uses <strong>Inter</strong>. Accent uses <strong>Space Grotesk</strong>.
+        Headings use <strong>Poppins</strong>. Body uses <strong>Inter</strong>. Kickers use <strong>Space Grotesk</strong>.
       </p>
 
-      <div class="grid grid-2">
+      <div class="grid grid-2 sg-spacer">
         <div class="card">
-          <div class="sg-hint" style="font-family: var(--font-alt); text-transform:uppercase; letter-spacing:.08em;">Heading Scale</div>
-          <h1 style="margin-top:.6rem">H1 Example Title</h1>
-          <h2 style="margin-top:1rem">H2 Section Title</h2>
-          <h3 style="margin-top:1rem">H3 Component Title</h3>
-          <p class="muted" style="margin-top:1rem">Muted text uses <span class="sg-kbd">.muted</span>.</p>
+          <div class="sg-kicker">Heading scale</div>
+          <h1 style="margin-top:.6rem;">H1 Example Title</h1>
+          <h2 style="margin-top:1rem;">H2 Section Title</h2>
+          <h3 style="margin-top:1rem;">H3 Component Title</h3>
+          <p class="muted" style="margin-top:1rem;">Muted copy uses <span class="sg-kbd">.muted</span>.</p>
         </div>
 
         <div class="card">
-          <div class="sg-hint" style="font-family: var(--font-alt); text-transform:uppercase; letter-spacing:.08em;">Body Copy</div>
-          <p style="margin-top:.6rem">
+          <div class="sg-kicker">Body copy</div>
+          <p style="margin-top:.6rem;">
             This is regular body text. Keep paragraphs within ~60–75 characters per line for readability.
           </p>
           <p class="muted">
-            This is muted copy for supporting content. Great for captions, subtext, or secondary labels.
+            This is muted copy for supporting content like captions, subtext, or secondary labels.
           </p>
-          <div class="sg-row" style="margin-top:12px">
+          <div class="sg-row sg-spacer">
             <span class="badge">Badge</span>
             <span class="badge badge--accent">Accent Badge</span>
           </div>
@@ -192,19 +324,19 @@
     </section>
 
     <!-- BUTTONS -->
-    <section id="buttons" class="sg-block">
-      <h2>Buttons</h2>
-      <p class="muted">Button styles are consistent across the site and map cleanly to Webflow classes.</p>
+    <section id="buttons" class="sg-block" aria-labelledby="buttonsTitle">
+      <h2 id="buttonsTitle">Buttons</h2>
+      <p class="muted">Use 1–2 primary CTAs per page. Avoid CTA overload.</p>
 
-      <div class="card">
-        <div class="sg-row">
+      <div class="card sg-spacer">
+        <div class="sg-row" aria-label="Button styles">
           <a class="btn" href="#">Primary</a>
           <a class="btn btn--alt" href="#">Alt</a>
           <a class="btn btn--grad" href="#">Gradient</a>
           <a class="btn btn--ghost" href="#">Ghost</a>
         </div>
-        <p class="muted" style="margin-top:12px">
-          Tip: keep 2 main CTAs per page (Primary + Ghost). Avoid CTA overload.
+        <p class="muted sg-spacer">
+          Tip: Use <span class="sg-kbd">.cta-row</span> for consistent spacing.
         </p>
       </div>
 
@@ -212,24 +344,24 @@
     </section>
 
     <!-- CARDS -->
-    <section id="cards" class="sg-block">
-      <h2>Cards</h2>
+    <section id="cards" class="sg-block" aria-labelledby="cardsTitle">
+      <h2 id="cardsTitle">Cards</h2>
       <p class="muted">Cards are the primary surface for features, pricing, and content blocks.</p>
 
-      <div class="grid grid-3">
+      <div class="grid grid-3 sg-spacer">
         <div class="card feature">
           <span class="dot" aria-hidden="true"></span>
           <div>
-            <h3>Feature Card</h3>
-            <p class="muted">Use this pattern for feature lists and value props.</p>
+            <h3>Feature card</h3>
+            <p class="muted">Use for feature lists and value props.</p>
           </div>
         </div>
 
         <div class="card">
           <span class="badge">Standard</span>
-          <h3 style="margin-top:.6rem">Content Card</h3>
-          <p class="muted">Great for blurbs, docs, or small blocks of info.</p>
-          <div class="cta-row">
+          <h3 style="margin-top:.6rem;">Content card</h3>
+          <p class="muted">Use for blurbs, docs, or small blocks of info.</p>
+          <div class="cta-row sg-spacer">
             <a class="btn btn--ghost" href="#">Secondary</a>
             <a class="btn" href="#">Primary</a>
           </div>
@@ -237,14 +369,14 @@
 
         <div class="card plan plan--popular plan--glow">
           <span class="badge badge--accent">Popular</span>
-          <h3 style="margin-top:.6rem">Pricing Card</h3>
+          <h3 style="margin-top:.6rem;">Pricing card</h3>
           <div class="price"><span class="currency">$</span>49</div>
           <ul class="feature-list">
             <li>All logos (SVG)</li>
             <li>CSS tokens</li>
             <li>Docs + handoff</li>
           </ul>
-          <a class="btn btn--alt" href="#">Choose Plan</a>
+          <a class="btn btn--alt" href="#">Choose plan</a>
         </div>
       </div>
 
@@ -252,37 +384,35 @@
     </section>
 
     <!-- FORMS -->
-    <section id="forms" class="sg-block">
-      <h2>Forms</h2>
-      <p class="muted">
-        Inputs use <span class="sg-kbd">.input</span> and are styled for dark UI. Works well for Webflow forms too.
-      </p>
+    <section id="forms" class="sg-block" aria-labelledby="formsTitle">
+      <h2 id="formsTitle">Forms</h2>
+      <p class="muted">Inputs use <span class="sg-kbd">.input</span> and are styled for dark UI.</p>
 
-      <div class="grid grid-2">
+      <div class="grid grid-2 sg-spacer">
         <form class="card" action="#" method="post">
-          <label class="muted" for="name">Name</label>
-          <input class="input" id="name" name="name" type="text" placeholder="Your name" />
+          <label class="muted" for="sgName">Name</label>
+          <input class="input" id="sgName" name="name" type="text" placeholder="Your name" />
 
-          <label class="muted" for="email" style="margin-top:10px">Email</label>
-          <input class="input" id="email" name="email" type="email" placeholder="you@company.com" />
+          <label class="muted" for="sgEmail" style="margin-top:10px;">Email</label>
+          <input class="input" id="sgEmail" name="email" type="email" placeholder="you@company.com" />
 
-          <label class="muted" for="message" style="margin-top:10px">Message</label>
-          <textarea class="input" id="message" name="message" placeholder="How can we help?"></textarea>
+          <label class="muted" for="sgMessage" style="margin-top:10px;">Message</label>
+          <textarea class="input" id="sgMessage" name="message" placeholder="How can we help?"></textarea>
 
-          <div class="cta-row" style="margin-top:14px">
+          <div class="cta-row sg-spacer">
             <button class="btn" type="submit">Send</button>
             <a class="btn btn--ghost" href="#">Cancel</a>
           </div>
-          <p class="muted" style="margin-top:10px">
-            Accessibility: menu supports keyboard; forms use visible focus rings.
+          <p class="muted" style="margin-top:10px;">
+            Note: Demo form has no backend. Replace the action with Webflow/Formspree/etc.
           </p>
         </form>
 
         <div class="card">
-          <h3>Preview Thumbs</h3>
-          <p class="muted">These are used in previews/brand docs as “no-image” fallback tiles.</p>
+          <h3>Preview thumbs</h3>
+          <p class="muted">Used as fallback tiles in previews/brand docs.</p>
 
-          <div class="grid grid-2" style="margin-top:10px">
+          <div class="grid grid-2 sg-spacer">
             <a class="thumb thumb--inter" href="#">
               <div class="thumb__title">Inter</div>
               <div class="thumb__caption">System-ready body font</div>
@@ -303,42 +433,65 @@
     </section>
 
     <!-- LAYOUTS -->
-    <section id="layouts" class="sg-block">
-      <h2>Layouts</h2>
+    <section id="layouts" class="sg-block" aria-labelledby="layoutsTitle">
+      <h2 id="layoutsTitle">Layouts</h2>
       <p class="muted">
-        The site uses <span class="sg-kbd">.container</span>, <span class="sg-kbd">.grid</span>, <span class="sg-kbd">.section</span>,
+        Use <span class="sg-kbd">.container</span>, <span class="sg-kbd">.grid</span>, <span class="sg-kbd">.section</span>,
         and <span class="sg-kbd">.section-tight</span> for consistent rhythm.
       </p>
 
-      <div class="grid grid-2">
+      <div class="grid grid-2 sg-spacer">
         <div class="card">
-          <h3>Grid 2</h3>
-          <p class="muted">Use for content + visual, forms + copy, or side-by-side sections.</p>
-          <div class="grid grid-2">
-            <div class="card" style="box-shadow:none; padding:14px; background:rgba(0,0,0,.15)">A</div>
-            <div class="card" style="box-shadow:none; padding:14px; background:rgba(0,0,0,.15)">B</div>
-          </div>
-        </div>
+         <!-- Grid 2 demo -->
+<div class="grid grid-2 sg-demo-grid">
+  <div class="sg-demo-box">A</div>
+  <div class="sg-demo-box">B</div>
+</div>
 
-        <div class="card">
-          <h3>Grid 3</h3>
-          <p class="muted">Use for features, pricing, and icon tiles. Collapses responsively.</p>
-          <div class="grid grid-3">
-            <div class="card" style="box-shadow:none; padding:14px; background:rgba(0,0,0,.15)">1</div>
-            <div class="card" style="box-shadow:none; padding:14px; background:rgba(0,0,0,.15)">2</div>
-            <div class="card" style="box-shadow:none; padding:14px; background:rgba(0,0,0,.15)">3</div>
-          </div>
-        </div>
-      </div>
+<!-- Grid 3 demo -->
+<div class="grid grid-3 sg-demo-grid">
+  <div class="sg-demo-box">1</div>
+  <div class="sg-demo-box">2</div>
+  <div class="sg-demo-box">3</div>
+</div>
 
-      <div class="card" style="margin-top:14px">
-        <h3>Keyboard Notes</h3>
+      <div class="card sg-spacer">
+        <h3>Keyboard notes</h3>
         <p class="muted">
-          Mobile menu: <span class="sg-kbd">ESC</span> closes, <span class="sg-kbd">Tab</span> cycles focus while open, click outside closes.
+          Mobile menu: <span class="sg-kbd">ESC</span> closes, <span class="sg-kbd">Tab</span> cycles focus. Click outside closes.
         </p>
       </div>
+
+      <hr class="sg-hr" />
     </section>
-  </section>
+
+    <!-- LOGOS -->
+    <section id="logos" class="sg-block" aria-labelledby="logosTitle">
+      <h2 id="logosTitle">Logo previews</h2>
+      <p class="muted">Use dark tiles for the default set. Use light tiles only for black marks.</p>
+
+      <div class="sg-logos" aria-label="Logo previews">
+        <div class="sg-logo">
+          <img src="/assets/logos/Logo-Renewt3ch.svg" alt="Renewt3ch gradient lockup" />
+        </div>
+        <div class="sg-logo">
+          <img src="/assets/logos/wordmark-pure-white.svg" alt="Wordmark white" />
+        </div>
+        <div class="sg-logo sg-logo--light">
+          <img src="/assets/logos/wordmark-black.svg" alt="Wordmark black" />
+        </div>
+        <div class="sg-logo">
+          <img src="/assets/logos/r3-icon-gradient.svg" alt="R³ icon gradient" />
+        </div>
+        <div class="sg-logo">
+          <img src="/assets/logos/r3-icon-white.svg" alt="R³ icon white" />
+        </div>
+        <div class="sg-logo sg-logo--light">
+          <img src="/assets/logos/r3-icon-black.svg" alt="R³ icon black" />
+        </div>
+      </div>
+    </section>
+  </div>
 </main>
 
 <footer class="site-footer">

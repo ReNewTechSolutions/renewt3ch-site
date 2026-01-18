@@ -536,3 +536,154 @@ textarea.input{
   .btn:hover{ transform:none !important; }
   .site-header{ transition:none !important; }
 }
+
+/* =========================================================
+   Style Guide premium visuals
+   Scope: body[data-page="style-guide"]
+   ========================================================= */
+
+   body[data-page="style-guide"] main{
+    padding-bottom: 32px;
+  }
+  
+  body[data-page="style-guide"] .sg-wrap{
+    max-width: 980px;
+    margin-inline: auto;
+  }
+  
+  body[data-page="style-guide"] .sg-lede{
+    font-size: 1.05rem;
+    color: var(--fg-muted);
+    max-width: 72ch;
+  }
+  
+  body[data-page="style-guide"] .sg-section{
+    margin-top: 28px;
+  }
+  
+  body[data-page="style-guide"] .sg-title{
+    display:flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+  
+  body[data-page="style-guide"] .sg-kicker{
+    font-family: var(--font-alt);
+    letter-spacing: .10em;
+    text-transform: uppercase;
+    font-size: .78rem;
+    color: var(--fg-muted);
+  }
+  
+  body[data-page="style-guide"] .sg-grid{
+    display:grid;
+    gap: 14px;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+  }
+  
+  @media (max-width: 900px){
+    body[data-page="style-guide"] .sg-grid{ grid-template-columns: 1fr; }
+  }
+  
+  body[data-page="style-guide"] .sg-card{
+    background: color-mix(in oklab, var(--slate), black 10%);
+    border: 1px solid rgba(255,255,255,.07);
+    border-radius: 16px;
+    box-shadow: 0 14px 34px rgba(0,0,0,.35);
+    padding: 18px;
+  }
+  
+  body[data-page="style-guide"] .sg-card h3{
+    margin: 0 0 8px;
+  }
+  
+  body[data-page="style-guide"] .sg-note{
+    color: var(--fg-muted);
+    margin: 6px 0 0;
+  }
+  
+  /* Palette swatches */
+  body[data-page="style-guide"] .sg-swatches{
+    display:grid;
+    gap: 12px;
+    grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+  }
+  
+  body[data-page="style-guide"] .sg-swatch{
+    border-radius: 16px;
+    overflow:hidden;
+    border: 1px solid rgba(255,255,255,.08);
+    background: #0F1116;
+    box-shadow: 0 12px 26px rgba(0,0,0,.25);
+  }
+  
+  body[data-page="style-guide"] .sg-swatch__chip{
+    height: 84px;
+  }
+  
+  body[data-page="style-guide"] .sg-swatch__meta{
+    padding: 12px 14px;
+    display:flex;
+    justify-content: space-between;
+    gap: 10px;
+    align-items: baseline;
+  }
+  
+  body[data-page="style-guide"] .sg-swatch__name{
+    font-weight: 650;
+  }
+  
+  body[data-page="style-guide"] .sg-swatch__hex{
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    font-size: .88rem;
+    color: var(--fg-muted);
+  }
+  
+  /* Logo previews */
+  body[data-page="style-guide"] .sg-logos{
+    display:grid;
+    gap: 14px;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  }
+  
+  body[data-page="style-guide"] .sg-logo{
+    background: #111111;
+    border: 1px solid rgba(255,255,255,.08);
+    border-radius: 16px;
+    padding: 18px;
+    min-height: 120px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    box-shadow: 0 14px 28px rgba(0,0,0,.28);
+  }
+  
+  body[data-page="style-guide"] .sg-logo img{
+    max-height: 56px;
+    width: auto;
+  }
+  
+  /* Optional: callout block */
+  body[data-page="style-guide"] .sg-callout{
+    border-radius: 16px;
+    padding: 16px 18px;
+    background: linear-gradient(135deg, rgba(142,220,255,.10), rgba(124,245,193,.08));
+    border: 1px solid rgba(255,255,255,.10);
+  }
+
+  /* =========================================================
+   Style Guide helpers (removes inline styles)
+   ========================================================= */
+.sg-demo-box{
+  box-shadow: none;
+  padding: 14px;
+  border-radius: 14px;
+  background: rgba(0,0,0,.15);
+  border: 1px solid rgba(255,255,255,.06);
+  color: var(--fg-muted);
+  font-weight: 600;
+  text-align: center;
+}
+.sg-demo-box--tight{ padding: 12px; }
+.sg-demo-grid{ margin-top: 12px; }

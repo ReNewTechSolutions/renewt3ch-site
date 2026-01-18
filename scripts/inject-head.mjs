@@ -99,3 +99,43 @@ main().catch((err) => {
   console.error(err);
   process.exit(1);
 });
+
+/**
+ * =========================================================
+ * FILE: scripts/inject-head.mjs (patch)
+ * - Consistent canonical + og:url generation for Vercel
+ * - Supports cleanUrls true/false from site-meta.json
+ * =========================================================
+ */
+
+function toRoutePath(filename, cleanUrls) {
+  if (filename === "index.html") return "/";
+  if (!cleanUrls) return `/${filename}`;
+  return `/${filename.replace(/\.html$/i, "")}`;
+}
+
+function joinUrl(baseUrl, path) {
+  const b = String(baseUrl || "").replace(/\/+$/, "");
+  const p = String(path || "").startsWith("/") ? path : `/${path}`;
+  return `${b}${p}`;
+}
+
+// ...after you load site-meta.json into `meta` (or similar):
+// const meta = JSON.parse(readFileSync("site-meta.json","utf8"));
+
+const { site, pages } = meta;
+
+// inside your per-file loop:
+const cleanUrls = Boolean(site.cleanUrls);
+const routePath = toRoutePath(filename, cleanUrls);
+
+// Use this for <link rel="canonical"> and og:url
+const canonicalUrl = joinUrl(site.baseUrl, routePath);
+
+// Use this for og:image/twitter:image
+const ogImageUrl = joinUrl(site.baseUrl, site.ogImagePath || "/assets/previews/og-cover.png");
+
+// Then in your head template replacement variables:
+// {{CANONICAL_URL}} -> canonicalUrl
+// {{OG_URL}}        -> canonicalUrl
+// {{OG_IMAGE}}      -> ogImageUrl
