@@ -1,8 +1,7 @@
 /* =========================================================
    FILE: assets/css/main.css
    renewt3ch · full clean stylesheet (premium + muted)
-   - Dark + Light themes (data-theme="light")
-   - Mobile menu theme toggle button (.theme-toggle--icon)
+   - Dark only (no theme toggle)
    - Responsive, accessible, lightweight
    ========================================================= */
 
@@ -29,7 +28,7 @@
   font-display:swap;
 }
 
-/* ---------- Tokens (dark default) ---------- */
+/* ---------- Tokens (dark) ---------- */
 :root{
   /* Fonts */
   --font-display:"Poppins","Inter",system-ui,-apple-system,"Segoe UI",Roboto,ui-sans-serif,sans-serif;
@@ -51,7 +50,7 @@
   --text-soft:#F3F4F6;
   --border:#1A1A1A;
 
-  /* Muted premium accents (less neon) */
+  /* Muted premium accents */
   --accent:#7CF5C1;
   --accent-2:#4FE7B0;
 
@@ -73,33 +72,15 @@
   --radius:14px;
   --shadow-1:0 10px 30px rgba(0,0,0,.35);
   --shadow-2:0 12px 34px rgba(0,0,0,.34);
-  --glass: rgba(21,21,21,.55);
   --glass-border: rgba(148,163,184,.14);
   --tile-bg: var(--slate);
-}
-
-/* ---------- Light theme override ---------- */
-:root[data-theme="light"]{
-  --bg:#FFFFFF;
-  --bg-elev:#F6F7F9;
-  --slate:#EEF1F5;
-  --fg:#0B0F1A;
-  --fg-muted:#475569;
-  --text-soft:#0B0F1A;
-  --border:#E6EAF0;
-
-  --bg-grad-1:#F7FAFF;
-  --bg-grad-2:#F3F6FB;
-  --bg-grad-3:#EEF2F7;
-
-  --bg-glow-a: rgba(124,245,193,.10);
-  --bg-glow-b: rgba(142,220,255,.10);
 }
 
 /* ---------- Reset / base ---------- */
 *{ box-sizing:border-box; }
 html,body{ height:100%; }
 html{ scroll-behavior:smooth; }
+
 body{
   margin:0;
   font-family:var(--font-sans);
@@ -114,13 +95,6 @@ body{
     radial-gradient(45% 45% at 92% 10%, var(--bg-glow-a) 0%, transparent 58%),
     radial-gradient(75% 75% at 10% 95%, rgba(255,255,255,.035) 0%, transparent 55%),
     linear-gradient(180deg, var(--bg-grad-1) 0%, var(--bg-grad-2) 48%, var(--bg-grad-3) 100%);
-}
-
-:root[data-theme="light"] body{
-  background:
-    radial-gradient(60% 60% at 10% 8%,  var(--bg-glow-b) 0%, transparent 62%),
-    radial-gradient(52% 52% at 92% 12%, var(--bg-glow-a) 0%, transparent 60%),
-    linear-gradient(180deg, var(--bg-grad-1) 0%, var(--bg-grad-2) 55%, var(--bg-grad-3) 100%);
 }
 
 img{ max-width:100%; height:auto; display:block; }
@@ -143,6 +117,7 @@ p{ margin:.5rem 0 1rem; color:var(--text-soft); }
 
 .section{ padding:64px 0; }
 .section-tight{ padding:40px 0; }
+
 .page-head{ max-width:900px; }
 .page-body{ margin-top:16px; }
 
@@ -181,10 +156,6 @@ h3{ font-size:var(--size-h3); }
   box-shadow: var(--shadow-1);
   padding: 20px;
 }
-:root[data-theme="light"] .card{
-  border-color: rgba(2,6,23,.06);
-  box-shadow: 0 14px 30px rgba(2,6,23,.07);
-}
 
 /* ---------- Buttons ---------- */
 .btn{
@@ -210,22 +181,15 @@ h3{ font-size:var(--size-h3); }
 }
 .btn:active{ transform:translateY(0); }
 
-:root[data-theme="light"] .btn{
-  box-shadow:0 10px 22px rgba(2,6,23,.08);
-}
-
 .btn--alt{
   background: var(--accent-2);
   border-color: color-mix(in oklab, var(--accent-2), black 18%);
 }
+
 .btn--ghost{
   color: var(--fg);
-  background: color-mix(in oklab, var(--bg-elev), transparent 10%);
+  background: rgba(255,255,255,.04);
   border:1px solid rgba(148,163,184,.22);
-}
-:root[data-theme="light"] .btn--ghost{
-  color: var(--fg);
-  background: rgba(255,255,255,.65);
 }
 
 .btn--grad{
@@ -248,6 +212,7 @@ h3{ font-size:var(--size-h3); }
   padding:12px 0;
   transition:all .2s ease;
 }
+
 .nav{
   display:flex;
   align-items:center;
@@ -264,15 +229,6 @@ h3{ font-size:var(--size-h3); }
   background: rgba(15,23,42,.45);
   border-color: rgba(148,163,184,.16);
   backdrop-filter: blur(10px);
-}
-
-:root[data-theme="light"] .site-header.scrolled .nav{
-  background: rgba(255,255,255,.72);
-  border-color: rgba(2,6,23,.08);
-  backdrop-filter: blur(10px);
-}
-:root[data-theme="light"] .site-header.scrolled{
-  box-shadow: 0 10px 28px rgba(2,6,23,.06);
 }
 
 .brand{
@@ -330,26 +286,9 @@ h3{ font-size:var(--size-h3); }
     backdrop-filter: blur(10px);
   }
 
-  :root[data-theme="light"] .nav-links.open{
-    background: rgba(255,255,255,.84);
-    border-color: rgba(2,6,23,.08);
-  }
-
   .nav-links a{
     padding:.6rem .75rem;
   }
-}
-
-/* Mobile menu theme toggle (icon only) */
-.nav-links .theme-toggle--icon{
-  margin-top:.6rem;
-  width:100%;
-  justify-content:center;
-  font-size:1.05rem;
-  padding:.55rem .75rem;
-}
-@media (min-width:861px){
-  .nav-links .theme-toggle--icon{ display:none; }
 }
 
 /* ---------- Hero ---------- */
@@ -387,40 +326,33 @@ h3{ font-size:var(--size-h3); }
   gap:14px;
   align-items:stretch;
 }
+
+/* Showcase tiles are ALWAYS dark (premium contrast) */
 .logo-tile{
-  background: var(--slate);
-  border: 1px solid rgba(255,255,255,.06);
+  background:#111111;
+  border: 1px solid rgba(255,255,255,.08);
   border-radius:14px;
   padding:18px 22px;
   min-height:110px;
   display:flex;
   align-items:center;
   justify-content:center;
-  box-shadow: 0 12px 24px rgba(0,0,0,.25);
+  box-shadow: 0 12px 26px rgba(0,0,0,.28);
 }
 .logo-tile img{
   max-width:100%;
   height:auto;
-  max-height:56px; /* critical: prevent massive logos */
+  max-height:56px;
   filter:none !important;
   mix-blend-mode:normal;
   opacity:1;
 }
+
+/* Only use this for black marks (wordmark-black, r3-icon-black) */
 .logo-tile--light{
   background:#F5F5F5;
   border-color:rgba(0,0,0,.08);
   box-shadow:0 10px 18px rgba(0,0,0,.12);
-}
-
-/* Light theme: tiles go light by default so black marks read */
-:root[data-theme="light"] .logo-tile{
-  background: rgba(255,255,255,.78);
-  border-color: rgba(2,6,23,.08);
-  box-shadow: 0 12px 24px rgba(2,6,23,.08);
-}
-:root[data-theme="light"] .logo-tile--light{
-  background: rgba(255,255,255,.92);
-  border-color: rgba(2,6,23,.08);
 }
 
 /* ---------- Pricing ---------- */
@@ -497,9 +429,6 @@ h3{ font-size:var(--size-h3); }
 .plan--glow{
   box-shadow: var(--shadow-2), 0 0 0 1px rgba(148,163,184,.14);
 }
-:root[data-theme="light"] .plan--glow{
-  box-shadow: 0 18px 40px rgba(2,6,23,.10), 0 0 0 1px rgba(2,6,23,.06);
-}
 
 /* ---------- Forms ---------- */
 .input{
@@ -528,10 +457,6 @@ textarea.input{
   border-top: 1px solid rgba(148,163,184,.18);
   background: rgba(2,6,23,.55);
 }
-:root[data-theme="light"] .site-footer{
-  background: rgba(255,255,255,.65);
-  border-top-color: rgba(2,6,23,.08);
-}
 .footer-grid{
   display:grid;
   gap:1rem;
@@ -541,7 +466,7 @@ textarea.input{
   .footer-grid{ grid-template-columns:1fr; }
 }
 
-/* ---------- Preview thumbs (no-image fallback) ---------- */
+/* ---------- Preview thumbs ---------- */
 .thumb{
   position:relative;
   overflow:hidden;
@@ -557,10 +482,6 @@ textarea.input{
   border: 1px solid rgba(255,255,255,.06);
   box-shadow: var(--shadow-1);
   background: var(--tile-bg);
-}
-:root[data-theme="light"] .thumb{
-  border-color: rgba(2,6,23,.06);
-  box-shadow: 0 14px 30px rgba(2,6,23,.07);
 }
 .thumb__title{ font-weight:600; }
 .thumb__caption{ font-size:.9rem; color:var(--fg-muted); }
@@ -615,26 +536,3 @@ textarea.input{
   .btn:hover{ transform:none !important; }
   .site-header{ transition:none !important; }
 }
-
-/* =========================================================
-   Logo showcase: force dark tiles in BOTH themes
-   Reason: consistent contrast for the logo set
-   ========================================================= */
-
-   .logo-band .logo-tile{
-    background:#111111;                 /* always dark */
-    border-color:rgba(255,255,255,.08); /* subtle edge */
-    box-shadow:0 12px 26px rgba(0,0,0,.28);
-  }
-  
-  /* keep the “light tile” helper truly light when needed */
-  .logo-band .logo-tile--light{
-    background:#F5F5F5;
-    border-color:rgba(0,0,0,.08);
-    box-shadow:0 10px 18px rgba(0,0,0,.12);
-  }
-  
-  /* keep images constrained */
-  .logo-band .logo-tile img{
-    max-height:56px;
-  }
