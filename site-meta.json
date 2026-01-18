@@ -1,0 +1,37 @@
+{
+  "site": {
+    "baseUrl": "https://example.com",
+    "ogImagePath": "/assets/previews/og-cover.png",
+    "cleanUrls": true,
+    "stripIndex": true,
+
+    "demoSafe": true,
+    "demoCta": { "label": "Included after purchase", "href": "pricing.html" }
+  },
+  "pages": {
+    "index.html": {
+      "title": "Renewt3ch — Futuristic Branding Built for the Next Web",
+      "description": "A clean, minimal identity kit engineered for modern SaaS, AI tools, and developer platforms — packaged for instant launch after purchase."
+    },
+    "about.html": {
+      "title": "About — Renewt3ch",
+      "description": "The story behind Renewt3ch: a futuristic branding kit built for modern SaaS, AI tools, and developer platforms."
+    },
+    "features.html": {
+      "title": "Features — Renewt3ch",
+      "description": "Everything included in the Renewt3ch identity kit: modular logos, tokens, components, and printable brand docs."
+    },
+    "pricing.html": {
+      "title": "Pricing — Renewt3ch Complete Kit",
+      "description": "Single-offer bundle: domain + deploy-anywhere site + brand kit for $500, with optional launch, admin, and hosting add-ons."
+    },
+    "contact.html": {
+      "title": "Contact — Renewt3ch",
+      "description": "Questions or requests? Contact Renewt3ch for brand kit support, licensing, or customization."
+    },
+    "style-guide.html": {
+      "title": "Style Guide — Renewt3ch",
+      "description": "Tokens, components, and usage examples for the Renewt3ch brand and website template."
+    }
+  }
+}

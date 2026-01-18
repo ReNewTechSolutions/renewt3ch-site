@@ -1,0 +1,126 @@
+<!-- =========================================================
+  FILE: pricing.html
+========================================================== -->
+<!doctype html>
+<html lang="en">
+<head>
+  <!-- injected by scripts/inject-head.mjs -->
+  <meta charset="utf-8">
+  <title>Pricing — Renewt3ch</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" href="assets/favicon/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="assets/css/main.css">
+  <script defer src="assets/js/main.js"></script>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container">
+    <nav class="nav" aria-label="Primary">
+      <a class="brand" href="index.html" aria-label="Renewt3ch home">
+        <img src="assets/logos/r3-icon-gradient.svg" alt="Renewt3ch icon">
+        <span>renewt3ch</span>
+      </a>
+
+      <button
+        class="hamb"
+        id="hamb"
+        type="button"
+        aria-label="Open menu"
+        aria-controls="navLinks"
+        aria-expanded="false"
+      >☰</button>
+
+      <div class="nav-links" id="navLinks">
+        <a href="about.html">About</a>
+        <a href="features.html">Features</a>
+        <a href="pricing.html" aria-current="page">Pricing</a>
+        <a href="contact.html">Contact</a>
+        <a href="style-guide.html">Style Guide</a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="section">
+    <div class="container page-head">
+      <span class="badge badge--accent">Auction Bundle</span>
+      <h1>Renewt3ch Complete Kit</h1>
+      <p class="lede">
+        One straightforward offer: domain + deploy-anywhere site + premium brand kit.
+        Delivered as a clean export after purchase.
+      </p>
+    </div>
+
+    <div class="container page-body">
+      <div class="grid grid-2" style="align-items:start">
+        <div class="card plan plan--popular">
+          <div class="plan__top">
+            <div>
+              <h2 class="plan__title">Complete Kit</h2>
+              <p class="muted" style="margin:.25rem 0 0">Everything the buyer needs to launch instantly.</p>
+            </div>
+            <div class="price"><span class="currency">$</span>500</div>
+          </div>
+
+          <ul class="feature-list" style="margin-top:.9rem">
+            <li>Domain included (IONOS) + handoff instructions</li>
+            <li>Fully built website (HTML + CSS + JS)</li>
+            <li>All pages: Home, About, Features, Pricing, Contact</li>
+            <li>Style Guide page (tokens + components)</li>
+            <li>Brand assets: logos (SVG), favicons, OG cover</li>
+            <li>Search-optimized + extremely lightweight</li>
+            <li>Mobile responsive + accessible navigation</li>
+            <li>“Upload &amp; Go” documentation bundle</li>
+          </ul>
+
+          <div class="cta-row" style="margin-top:14px">
+            <a class="btn btn--alt" href="contact.html">Inquire / Purchase</a>
+            <a class="btn btn--ghost" href="features.html">See what’s included</a>
+          </div>
+
+          <p class="muted demo-note" style="margin:.75rem 0 0">
+            Demo-safe: the zip export is delivered after purchase (public demos don’t include it).
+          </p>
+        </div>
+
+        <div class="card">
+          <h2 style="margin:0 0 .4rem">Optional add-ons</h2>
+          <p class="muted" style="margin:0 0 .9rem">
+            Add-ons are separate from the asset sale. Buyer-owned accounts recommended (no lock-in).
+          </p>
+
+          <ul class="feature-list">
+            <li><strong>Launch Assist (one-time)</strong> — deploy + DNS guidance + QA <span class="muted">($150–$350)</span></li>
+            <li><strong>Admin &amp; Updates (monthly)</strong> — small edits + upkeep <span class="muted">($99–$249/mo)</span></li>
+            <li><strong>Hosting + Admin guidance (monthly)</strong> — publishing + DNS help <span class="muted">($49–$149/mo + platform fees)</span></li>
+            <li><strong>Webflow migration (optional)</strong> — rebuild as components in buyer’s workspace <span class="muted">(quoted)</span></li>
+          </ul>
+
+          <div class="cta-row" style="margin-top:14px">
+            <a class="btn btn--grad" href="contact.html">Ask about add-ons</a>
+            <a class="btn btn--ghost" href="style-guide.html">View Style Guide</a>
+          </div>
+
+          <hr class="rule">
+
+          <h3 style="margin:.25rem 0 .25rem">Domain handoff (IONOS)</h3>
+          <p class="muted" style="margin:0">
+            Buyer can point DNS at IONOS (fastest) or transfer out with an Auth/EPP code.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div>© Renewt3ch</div>
+    <div>Clear offer · Premium handoff · Optional support</div>
+  </div>
+</footer>
+
+</body>
+</html>

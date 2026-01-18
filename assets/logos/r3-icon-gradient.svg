@@ -1,0 +1,10 @@
+<svg viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="R³ icon — gradient" shape-rendering="geometricPrecision">
+  <defs>
+    <linearGradient id="r3Grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%"  stop-color="#0A84FF"/>
+      <stop offset="100%" stop-color="#2FF3E0"/>
+    </linearGradient>
+  </defs>
+  <path d="M70 230V70h80c30 0 55 20 55 50 0 22-12 39-32 46l40 64h-38l-36-58H110v58H70zm40-88h40c15 0 27-10 27-22 0-14-12-22-27-22h-40v44z" fill="url(#r3Grad)"/>
+  <path d="M180 95c0-18 18-30 45-30 28 0 45 12 45 30 0 12-7 20-18 24 14 4 22 13 22 27 0 19-20 34-49 34-28 0-49-13-49-32h34c0 7 7 12 15 12 9 0 15-5 15-12 0-7-6-12-15-12h-10v-26h10c8 0 13-4 13-10 0-6-5-10-15-10-9 0-15 4-15 10h-33z" fill="url(#r3Grad)"/>
+</svg>

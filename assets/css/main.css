@@ -1,0 +1,214 @@
+/* FILE: assets/css/main.css (PATCH / add-on)
+   Paste these near your :root tokens + utilities section.
+   If tokens already exist, replace just the --accent / --accent-2 / glow bits. */
+
+/* ---------- Muted premium accents (less neon) ---------- */
+:root{
+  --accent:   #7CF5C1;   /* softer mint */
+  --accent-2: #4FE7B0;   /* muted green */
+  --glass-border: rgba(148,163,184,.14);
+}
+
+/* ---------- Reduce glow everywhere ---------- */
+.feature .dot{
+  box-shadow: none;
+}
+
+/* Buttons: calmer shadow */
+.btn{
+  box-shadow: 0 6px 16px rgba(0,0,0,.22);
+}
+
+/* Pricing glow: remove neon halo */
+.plan--glow{
+  box-shadow: 0 12px 34px rgba(0,0,0,.38), 0 0 0 1px rgba(148,163,184,.14);
+}
+
+/* ---------- Reusable CTA row (no inline styles) ---------- */
+.cta-row{
+  display:flex;
+  gap:.6rem;
+  flex-wrap:wrap;
+  align-items:center;
+}
+
+/* ---------- Premium page structure helpers ---------- */
+.page-head{ max-width: 900px; }
+.page-body{ margin-top: 16px; }
+
+.rule{
+  margin: 16px 0;
+  border: none;
+  height: 1px;
+  background: rgba(148,163,184,.18);
+}
+
+/* ---------- A11y utility ---------- */
+.sr-only{
+  position:absolute;
+  width:1px;
+  height:1px;
+  padding:0;
+  margin:-1px;
+  overflow:hidden;
+  clip:rect(0,0,0,0);
+  white-space:nowrap;
+  border:0;
+}
+
+/* Small demo note style */
+.demo-note{ margin-top: .75rem; }
+
+/* =========================================================
+   FILE: assets/css/main.css  (PATCH)
+   - Hide theme toggle on desktop (mobile menu only)
+   - Light theme logo tiles become light (so black marks read)
+   ========================================================= */
+
+/* Theme toggle: show only in mobile menu UI */
+.nav-links .theme-toggle{
+  margin-top: .6rem;
+  width: 100%;
+  justify-content: space-between;
+}
+
+@media (min-width: 861px){
+  .nav-links .theme-toggle{ display:none; }
+}
+
+/* Light theme: make logo tiles light by default */
+:root[data-theme="light"] .logo-tile{
+  background: rgba(255,255,255,.78);
+  border-color: rgba(2,6,23,.08);
+  box-shadow: 0 12px 24px rgba(2,6,23,.08);
+}
+
+:root[data-theme="light"] .logo-tile--light{
+  background: rgba(255,255,255,.92);
+  border-color: rgba(2,6,23,.08);
+}
+
+/* Optional: keep icons crisp */
+:root[data-theme="light"] .logo-tile img{
+  mix-blend-mode: normal;
+  opacity: 1;
+
+
+/*
+  .nav-links .theme-toggle--icon{
+    margin-top: .6rem;
+    width: 100%;
+    justify-content: center;
+    font-size: 1.05rem;
+    padding: .55rem .75rem;
+  }
+  
+  @media (min-width: 861px){
+    .nav-links .theme-toggle--icon{ display:none; }
+  }
+  
+  :root[data-theme="light"] .logo-tile{
+    background: rgba(255,255,255,.78);
+    border-color: rgba(2,6,23,.08);
+    box-shadow: 0 12px 24px rgba(2,6,23,.08);
+  }
+  
+  :root[data-theme="light"] .logo-tile--light{
+    background: rgba(255,255,255,.92);
+    border-color: rgba(2,6,23,.08);
+  }
+  */
+}
+
+/* =========================================================
+   FILE: assets/css/main.css  (PATCH / add-on)
+   Drop this near your tokens/utilities. Keep it together.
+   Goal: premium, muted, demo-friendly.
+   ========================================================= */
+
+/* ---------- Muted premium accents (less neon) ---------- */
+:root{
+  --accent:   #7CF5C1;             /* soft mint */
+  --accent-2: #4FE7B0;             /* muted green */
+  --glass-border: rgba(148,163,184,.14);
+}
+
+/* ---------- Reduce glow everywhere ---------- */
+.feature .dot{ box-shadow:none; }
+
+/* Buttons: calmer shadow */
+.btn{ box-shadow:0 6px 16px rgba(0,0,0,.22); }
+
+/* Pricing glow: remove neon halo */
+.plan--glow{
+  box-shadow:0 12px 34px rgba(0,0,0,.38), 0 0 0 1px rgba(148,163,184,.14);
+}
+
+/* ---------- Reusable CTA row (no inline styles) ---------- */
+.cta-row{
+  display:flex;
+  gap:.6rem;
+  flex-wrap:wrap;
+  align-items:center;
+}
+
+/* ---------- Premium page structure helpers ---------- */
+.page-head{ max-width:900px; }
+.page-body{ margin-top:16px; }
+
+.rule{
+  margin:16px 0;
+  border:0;
+  height:1px;
+  background:rgba(148,163,184,.18);
+}
+
+/* ---------- A11y utility ---------- */
+.sr-only{
+  position:absolute;
+  width:1px;
+  height:1px;
+  padding:0;
+  margin:-1px;
+  overflow:hidden;
+  clip:rect(0,0,0,0);
+  white-space:nowrap;
+  border:0;
+}
+
+/* Demo note style */
+.demo-note{ margin-top:.75rem; }
+
+/* =========================================================
+   Theme toggle (mobile menu only) + light theme logo tiles
+   ========================================================= */
+
+/* Icon-only theme toggle inside mobile menu */
+.nav-links .theme-toggle--icon{
+  margin-top:.6rem;
+  width:100%;
+  justify-content:center;
+  font-size:1.05rem;
+  padding:.55rem .75rem;
+}
+
+@media (min-width:861px){
+  .nav-links .theme-toggle--icon{ display:none; }
+}
+
+/* Light theme: tiles go light so black marks read */
+:root[data-theme="light"] .logo-tile{
+  background:rgba(255,255,255,.78);
+  border-color:rgba(2,6,23,.08);
+  box-shadow:0 12px 24px rgba(2,6,23,.08);
+}
+
+:root[data-theme="light"] .logo-tile--light{
+  background:rgba(255,255,255,.92);
+  border-color:rgba(2,6,23,.08);
+}
+
+:root[data-theme="light"] .logo-tile img{
+  mix-blend-mode:normal;
+  opacity:1;
+}

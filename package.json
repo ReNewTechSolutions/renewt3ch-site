@@ -1,0 +1,9 @@
+{
+  "name": "renewt3ch-site",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "inject:head": "node scripts/inject-head.mjs",
+    "setup:assets": "node scripts/setup-assets.mjs"
+  }
+}

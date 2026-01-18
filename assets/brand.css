@@ -1,0 +1,288 @@
+/* File: brand-guide/assets/brand.css */
+/* Why: Self-hosted variable fonts (OFL 1.1) + palette tokens consistent with README. */
+
+/* --- Variable Fonts (relative to this CSS file) --- */
+@font-face {
+    font-family: "Inter";
+    src: url("./fonts/inter/Inter-Variable.woff2") format("woff2-variations");
+    font-weight: 100 900;
+    font-style: normal;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: "Poppins";
+    src: url("./fonts/poppins/Poppins-Variable.woff2") format("woff2-variations");
+    font-weight: 100 900;
+    font-style: normal;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: "Space Grotesk";
+    src: url("./fonts/space-grotesk/SpaceGrotesk-Variable.woff2") format("woff2-variations");
+    font-weight: 300 700;
+    font-style: normal;
+    font-display: swap;
+  }
+  
+  /* ---------- Tokens (Dark default) ---------- */
+  :root {
+    /* Families */
+    --font-display: "Poppins", "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans", "Helvetica Neue", Arial, ui-sans-serif, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+    --font-sans-ui: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans", "Helvetica Neue", Arial, ui-sans-serif, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+    --font-alt: "Space Grotesk", "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans", "Helvetica Neue", Arial, ui-sans-serif, sans-serif;
+  
+    /* Weights */
+    --weight-regular: 400;
+    --weight-medium: 500;
+    --weight-semibold: 600;
+    --weight-bold: 700;
+  
+    /* Type scale */
+    --size-hero: clamp(3rem, 6vw + 1rem, 4.5rem);          /* 48–72px */
+    --size-section: clamp(2rem, 3vw + 0.5rem, 3rem);       /* 32–48px */
+    --size-sub: clamp(1.375rem, 1.25vw + 1rem, 1.75rem);   /* 22–28px */
+    --size-ui: clamp(0.875rem, 0.5vw + 0.5rem, 1.125rem);  /* 14–18px */
+    --size-body: clamp(1rem, 0.25vw + 0.875rem, 1.125rem); /* 16–18px */
+    --size-caption: clamp(0.75rem, 0.25vw + 0.625rem, 0.875rem); /*12–14px*/
+  
+    /* Core palette tokens (Renewt3ch Color System) */
+    --color-bg: #0D0D0D;             /* Infinite Black */
+    --color-bg-elevated: #151515;    /* Carbon Gray */
+    --color-fg: #FFFFFF;             /* Pure White */
+    --color-accent: #0C85FF;         /* Infinite Blue */
+    --color-accent-2: #2FF3E0;       /* Aqua Mint */
+  
+    /* Derived */
+    --color-fg-muted: color-mix(in oklab, var(--color-fg), var(--color-bg) 60%);
+    --color-border: #1A1A1A;
+    --color-accent-contrast: #FFFFFF; /* readable on blue/aqua */
+  
+    /* Surfaces */
+    --radius: 12px;
+    --shadow-1: 0 1px 2px rgba(0,0,0,.12), 0 6px 16px rgba(0,0,0,.18);
+  
+    /* Better native widgets for dark UIs */
+    color-scheme: dark light;
+  }
+  
+  /* Light theme override (optional) */
+  :root[data-theme="light"] {
+    --color-bg: #FFFFFF;
+    --color-bg-elevated: #F6F7F9;
+    --color-fg: #0D0D0D;
+    --color-fg-muted: #4B5563;
+    --color-border: #E5E7EB;
+  }
+  
+  /* ---------- Base ---------- */
+  * { box-sizing: border-box; }
+  
+  html, body {
+    background: var(--color-bg);
+    color: var(--color-fg);
+  }
+  
+  body {
+    font-family: var(--font-sans-ui);
+    font-weight: var(--weight-regular);
+    font-size: var(--size-body);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  
+  img { max-width: 100%; height: auto; display: block; }
+  
+  /* ---------- Type mappings ---------- */
+  .hero, h1.hero {
+    font-family: var(--font-display);
+    font-weight: var(--weight-bold);
+    font-size: var(--size-hero);
+    line-height: 1.1;
+  }
+  
+  .section-title, h2.section-title {
+    font-family: var(--font-display);
+    font-weight: var(--weight-semibold);
+    font-size: var(--size-section);
+    line-height: 1.2;
+  }
+  
+  .subheading, h3.subheading {
+    font-family: var(--font-alt);
+    font-weight: var(--weight-medium);
+    font-size: var(--size-sub);
+    line-height: 1.2;
+  }
+  
+  .label, .btn, button, [role="button"] {
+    font-family: var(--font-sans-ui);
+    font-weight: var(--weight-medium);
+    font-size: var(--size-ui);
+  }
+  
+  .caption, small {
+    font-family: var(--font-sans-ui);
+    font-weight: var(--weight-regular);
+    font-size: var(--size-caption);
+    color: var(--color-fg-muted);
+  }
+  
+  /* ---------- Components ---------- */
+  .card {
+    background: var(--color-bg-elevated);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-1);
+  }
+  
+  /* Buttons */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: .5rem;
+    padding: .625rem 1rem;
+    border-radius: calc(var(--radius) - 4px);
+    color: var(--color-accent-contrast);
+    background: var(--color-accent);
+    border: 1px solid color-mix(in oklab, var(--color-accent), black 18%);
+    text-decoration: none;
+    transition: all .15s ease; /* respects reduced motion below */
+  }
+  .btn:is(:hover, :focus-visible) {
+    filter: saturate(1.05) brightness(1.03);
+    transform: translateY(-1px);
+  }
+  .btn:focus-visible { outline: 2px solid #0A84FF; outline-offset: 2px; } /* keyboard focus */
+  .btn:disabled,
+  .btn[aria-disabled="true"] {
+    opacity: .6;
+    cursor: not-allowed;
+  }
+  
+  .btn--alt {
+    background: var(--color-accent-2);
+    border-color: color-mix(in oklab, var(--color-accent-2), black 18%);
+    color: var(--color-accent-contrast);
+  }
+  
+  /* Gradient CTA option */
+  .btn--gradient {
+    background: linear-gradient(135deg, var(--color-accent), var(--color-accent-2));
+    color: var(--color-accent-contrast);
+    border: 0;
+  }
+  .btn--gradient:is(:hover, :focus-visible) {
+    filter: saturate(1.05) brightness(1.04);
+    transform: translateY(-1px);
+  }
+  
+  /* Fallback if color-mix is unsupported */
+  .btn { border: 1px solid #0A73E6; border: 1px solid color-mix(in oklab, var(--color-accent), black 18%); }
+  
+  /* ---------- Links ---------- */
+  a.link {
+    color: inherit;
+    text-decoration: underline;
+    text-decoration-color: color-mix(in oklab, var(--color-fg), transparent 65%);
+    text-underline-offset: 2px;
+  }
+  a.link:hover {
+    text-decoration-color: var(--color-fg);
+  }
+  
+  /* ---------- Forms (base) ---------- */
+  input[type="text"],
+  input[type="email"],
+  input[type="url"],
+  input[type="search"],
+  input[type="number"],
+  input[type="password"],
+  textarea,
+  select {
+    appearance: none;
+    width: 100%;
+    padding: .6rem .75rem;
+    border-radius: 10px;
+    border: 1px solid var(--color-border);
+    background: var(--color-bg-elevated);
+    color: var(--color-fg);
+    font: inherit;
+    line-height: 1.4;
+    outline: none;
+    transition: border-color .15s ease, box-shadow .15s ease, background .15s ease;
+  }
+  input::placeholder,
+  textarea::placeholder { color: var(--color-fg-muted); }
+  
+  input:focus,
+  textarea:focus,
+  select:focus {
+    border-color: color-mix(in oklab, var(--color-accent), black 15%);
+    box-shadow: 0 0 0 3px color-mix(in oklab, var(--color-accent), transparent 75%);
+  }
+  
+  input:disabled,
+  textarea:disabled,
+  select:disabled {
+    opacity: .6;
+    cursor: not-allowed;
+    background: color-mix(in oklab, var(--color-bg-elevated), white 2%);
+  }
+  
+  label { font-size: .9rem; color: var(--color-fg); }
+  .field { display: grid; gap: .4rem; }
+  
+  fieldset { border: 1px solid var(--color-border); border-radius: 10px; padding: .8rem 1rem; }
+  legend { padding: 0 .4rem; color: var(--color-fg-muted); }
+  
+  /* ---------- Prose (content typography) ---------- */
+  .prose {
+    --prose-color: var(--color-fg);
+    --prose-muted: var(--color-fg-muted);
+    color: var(--prose-color);
+    font-family: var(--font-sans-ui);
+  }
+  .prose h1, .prose h2, .prose h3 {
+    font-family: var(--font-display);
+    font-weight: var(--weight-semibold);
+    line-height: 1.2;
+    margin: 1.2em 0 .4em;
+  }
+  .prose h1 { font-size: clamp(1.8rem, 2.5vw, 2.4rem); }
+  .prose h2 { font-size: clamp(1.4rem, 2vw, 1.8rem); }
+  .prose h3 { font-size: clamp(1.15rem, 1.5vw, 1.25rem); }
+  
+  .prose p { margin: .6em 0; }
+  .prose ul, .prose ol { margin: .6em 0 .6em 1.2em; }
+  .prose li + li { margin-top: .25em; }
+  
+  .prose code {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+    font-size: .9em;
+    background: color-mix(in oklab, var(--color-bg-elevated), black 8%);
+    border: 1px solid var(--color-border);
+    border-radius: 6px;
+    padding: .15rem .35rem;
+    color: #E9F2FF;
+  }
+  .prose pre {
+    background: color-mix(in oklab, var(--color-bg-elevated), black 10%);
+    border: 1px solid var(--color-border);
+    border-radius: 10px;
+    padding: .9rem 1rem;
+    overflow: auto;
+  }
+  .prose blockquote {
+    margin: .8em 0;
+    padding-left: 1rem;
+    border-left: 3px solid color-mix(in oklab, var(--color-fg), transparent 70%);
+    color: var(--prose-muted);
+  }
+  
+  /* ---------- Motion preferences ---------- */
+  @media (prefers-reduced-motion: reduce) {
+    .btn { transition: none; }
+    .btn:is(:hover,:focus-visible) { transform: none; }
+  }
