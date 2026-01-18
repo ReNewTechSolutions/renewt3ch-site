@@ -1,158 +1,148 @@
-/* FILE: assets/css/main.css (PATCH / add-on)
-   Paste these near your :root tokens + utilities section.
-   If tokens already exist, replace just the --accent / --accent-2 / glow bits. */
-
-/* ---------- Muted premium accents (less neon) ---------- */
-:root{
-  --accent:   #7CF5C1;   /* softer mint */
-  --accent-2: #4FE7B0;   /* muted green */
-  --glass-border: rgba(148,163,184,.14);
-}
-
-/* ---------- Reduce glow everywhere ---------- */
-.feature .dot{
-  box-shadow: none;
-}
-
-/* Buttons: calmer shadow */
-.btn{
-  box-shadow: 0 6px 16px rgba(0,0,0,.22);
-}
-
-/* Pricing glow: remove neon halo */
-.plan--glow{
-  box-shadow: 0 12px 34px rgba(0,0,0,.38), 0 0 0 1px rgba(148,163,184,.14);
-}
-
-/* ---------- Reusable CTA row (no inline styles) ---------- */
-.cta-row{
-  display:flex;
-  gap:.6rem;
-  flex-wrap:wrap;
-  align-items:center;
-}
-
-/* ---------- Premium page structure helpers ---------- */
-.page-head{ max-width: 900px; }
-.page-body{ margin-top: 16px; }
-
-.rule{
-  margin: 16px 0;
-  border: none;
-  height: 1px;
-  background: rgba(148,163,184,.18);
-}
-
-/* ---------- A11y utility ---------- */
-.sr-only{
-  position:absolute;
-  width:1px;
-  height:1px;
-  padding:0;
-  margin:-1px;
-  overflow:hidden;
-  clip:rect(0,0,0,0);
-  white-space:nowrap;
-  border:0;
-}
-
-/* Small demo note style */
-.demo-note{ margin-top: .75rem; }
-
 /* =========================================================
-   FILE: assets/css/main.css  (PATCH)
-   - Hide theme toggle on desktop (mobile menu only)
-   - Light theme logo tiles become light (so black marks read)
+   FILE: assets/css/main.css
+   renewt3ch · full clean stylesheet (premium + muted)
+   - Dark + Light themes (data-theme="light")
+   - Mobile menu theme toggle button (.theme-toggle--icon)
+   - Responsive, accessible, lightweight
    ========================================================= */
 
-/* Theme toggle: show only in mobile menu UI */
-.nav-links .theme-toggle{
-  margin-top: .6rem;
-  width: 100%;
-  justify-content: space-between;
+/* ---------- Variable fonts (relative paths from /assets/css/) ---------- */
+@font-face{
+  font-family:"Inter";
+  src:url("../fonts/inter/Inter-Variable.woff2") format("woff2-variations");
+  font-weight:100 900;
+  font-style:normal;
+  font-display:swap;
+}
+@font-face{
+  font-family:"Poppins";
+  src:url("../fonts/poppins/Poppins-Variable.woff2") format("woff2-variations");
+  font-weight:100 900;
+  font-style:normal;
+  font-display:swap;
+}
+@font-face{
+  font-family:"Space Grotesk";
+  src:url("../fonts/space-grotesk/SpaceGrotesk-Variable.woff2") format("woff2-variations");
+  font-weight:300 700;
+  font-style:normal;
+  font-display:swap;
 }
 
-@media (min-width: 861px){
-  .nav-links .theme-toggle{ display:none; }
-}
-
-/* Light theme: make logo tiles light by default */
-:root[data-theme="light"] .logo-tile{
-  background: rgba(255,255,255,.78);
-  border-color: rgba(2,6,23,.08);
-  box-shadow: 0 12px 24px rgba(2,6,23,.08);
-}
-
-:root[data-theme="light"] .logo-tile--light{
-  background: rgba(255,255,255,.92);
-  border-color: rgba(2,6,23,.08);
-}
-
-/* Optional: keep icons crisp */
-:root[data-theme="light"] .logo-tile img{
-  mix-blend-mode: normal;
-  opacity: 1;
-
-
-/*
-  .nav-links .theme-toggle--icon{
-    margin-top: .6rem;
-    width: 100%;
-    justify-content: center;
-    font-size: 1.05rem;
-    padding: .55rem .75rem;
-  }
-  
-  @media (min-width: 861px){
-    .nav-links .theme-toggle--icon{ display:none; }
-  }
-  
-  :root[data-theme="light"] .logo-tile{
-    background: rgba(255,255,255,.78);
-    border-color: rgba(2,6,23,.08);
-    box-shadow: 0 12px 24px rgba(2,6,23,.08);
-  }
-  
-  :root[data-theme="light"] .logo-tile--light{
-    background: rgba(255,255,255,.92);
-    border-color: rgba(2,6,23,.08);
-  }
-  */
-}
-
-/* =========================================================
-   FILE: assets/css/main.css  (PATCH / add-on)
-   Drop this near your tokens/utilities. Keep it together.
-   Goal: premium, muted, demo-friendly.
-   ========================================================= */
-
-/* ---------- Muted premium accents (less neon) ---------- */
+/* ---------- Tokens (dark default) ---------- */
 :root{
-  --accent:   #7CF5C1;             /* soft mint */
-  --accent-2: #4FE7B0;             /* muted green */
+  /* Fonts */
+  --font-display:"Poppins","Inter",system-ui,-apple-system,"Segoe UI",Roboto,ui-sans-serif,sans-serif;
+  --font-sans:"Inter",system-ui,-apple-system,"Segoe UI",Roboto,ui-sans-serif,sans-serif;
+  --font-alt:"Space Grotesk",var(--font-sans);
+
+  /* Type scale */
+  --size-hero: clamp(2.6rem, 6vw + 0.5rem, 4.5rem);
+  --size-h2: clamp(1.4rem, 2.5vw, 2rem);
+  --size-h3: 1.2rem;
+  --size-body: 1rem;
+
+  /* Surfaces */
+  --bg:#0D0D0D;
+  --bg-elev:#151515;
+  --slate:#222222;
+  --fg:#FFFFFF;
+  --fg-muted: color-mix(in oklab, var(--fg), var(--bg) 55%);
+  --text-soft:#F3F4F6;
+  --border:#1A1A1A;
+
+  /* Muted premium accents (less neon) */
+  --accent:#7CF5C1;
+  --accent-2:#4FE7B0;
+
+  /* Premium gradient button stops (subtle) */
+  --grad-a:#8EDCFF;
+  --grad-b:#7CF5C1;
+  --grad-c:#A7B3FF;
+
+  /* Background stops (muted) */
+  --bg-grad-1:#0B1220;
+  --bg-grad-2:#070B14;
+  --bg-grad-3:#05070D;
+
+  /* Ambient tints (keep low) */
+  --bg-glow-a: rgba(124,245,193,.08);
+  --bg-glow-b: rgba(142,220,255,.07);
+
+  /* Misc */
+  --radius:14px;
+  --shadow-1:0 10px 30px rgba(0,0,0,.35);
+  --shadow-2:0 12px 34px rgba(0,0,0,.34);
+  --glass: rgba(21,21,21,.55);
   --glass-border: rgba(148,163,184,.14);
+  --tile-bg: var(--slate);
 }
 
-/* ---------- Reduce glow everywhere ---------- */
-.feature .dot{ box-shadow:none; }
+/* ---------- Light theme override ---------- */
+:root[data-theme="light"]{
+  --bg:#FFFFFF;
+  --bg-elev:#F6F7F9;
+  --slate:#EEF1F5;
+  --fg:#0B0F1A;
+  --fg-muted:#475569;
+  --text-soft:#0B0F1A;
+  --border:#E6EAF0;
 
-/* Buttons: calmer shadow */
-.btn{ box-shadow:0 6px 16px rgba(0,0,0,.22); }
+  --bg-grad-1:#F7FAFF;
+  --bg-grad-2:#F3F6FB;
+  --bg-grad-3:#EEF2F7;
 
-/* Pricing glow: remove neon halo */
-.plan--glow{
-  box-shadow:0 12px 34px rgba(0,0,0,.38), 0 0 0 1px rgba(148,163,184,.14);
+  --bg-glow-a: rgba(124,245,193,.10);
+  --bg-glow-b: rgba(142,220,255,.10);
 }
 
-/* ---------- Reusable CTA row (no inline styles) ---------- */
-.cta-row{
-  display:flex;
-  gap:.6rem;
-  flex-wrap:wrap;
-  align-items:center;
+/* ---------- Reset / base ---------- */
+*{ box-sizing:border-box; }
+html,body{ height:100%; }
+html{ scroll-behavior:smooth; }
+body{
+  margin:0;
+  font-family:var(--font-sans);
+  font-size:var(--size-body);
+  line-height:1.65;
+  color:var(--fg);
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+
+  background:
+    radial-gradient(55% 55% at 8% 6%,  var(--bg-glow-b) 0%, transparent 60%),
+    radial-gradient(45% 45% at 92% 10%, var(--bg-glow-a) 0%, transparent 58%),
+    radial-gradient(75% 75% at 10% 95%, rgba(255,255,255,.035) 0%, transparent 55%),
+    linear-gradient(180deg, var(--bg-grad-1) 0%, var(--bg-grad-2) 48%, var(--bg-grad-3) 100%);
 }
 
-/* ---------- Premium page structure helpers ---------- */
+:root[data-theme="light"] body{
+  background:
+    radial-gradient(60% 60% at 10% 8%,  var(--bg-glow-b) 0%, transparent 62%),
+    radial-gradient(52% 52% at 92% 12%, var(--bg-glow-a) 0%, transparent 60%),
+    linear-gradient(180deg, var(--bg-grad-1) 0%, var(--bg-grad-2) 55%, var(--bg-grad-3) 100%);
+}
+
+img{ max-width:100%; height:auto; display:block; }
+a{ color:inherit; }
+p{ margin:.5rem 0 1rem; color:var(--text-soft); }
+.muted{ color:var(--fg-muted); }
+
+/* ---------- Layout ---------- */
+.container{ width:min(1100px, 92%); margin-inline:auto; }
+.grid{ display:grid; gap:1rem; }
+.grid-3{ grid-template-columns:repeat(3,minmax(0,1fr)); }
+.grid-2{ grid-template-columns:repeat(2,minmax(0,1fr)); }
+
+@media (max-width:900px){
+  .grid-3{ grid-template-columns:1fr 1fr; }
+}
+@media (max-width:640px){
+  .grid-3,.grid-2{ grid-template-columns:1fr; }
+}
+
+.section{ padding:64px 0; }
+.section-tight{ padding:40px 0; }
 .page-head{ max-width:900px; }
 .page-body{ margin-top:16px; }
 
@@ -163,7 +153,445 @@
   background:rgba(148,163,184,.18);
 }
 
-/* ---------- A11y utility ---------- */
+.cta-row{
+  display:flex;
+  gap:.6rem;
+  flex-wrap:wrap;
+  align-items:center;
+}
+
+.demo-note{ margin-top:.75rem; }
+
+/* ---------- Typography ---------- */
+h1,h2,h3{
+  font-family:var(--font-display);
+  letter-spacing:.02em;
+  margin:0 0 .5rem;
+  text-shadow:none;
+}
+h1{ font-size:var(--size-hero); line-height:1.08; }
+h2{ font-size:var(--size-h2); }
+h3{ font-size:var(--size-h3); }
+
+/* ---------- Cards ---------- */
+.card{
+  background: var(--slate);
+  border: 1px solid rgba(255,255,255,.06);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-1);
+  padding: 20px;
+}
+:root[data-theme="light"] .card{
+  border-color: rgba(2,6,23,.06);
+  box-shadow: 0 14px 30px rgba(2,6,23,.07);
+}
+
+/* ---------- Buttons ---------- */
+.btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:.5rem;
+  padding:.7rem 1rem;
+  border-radius:12px;
+  border:1px solid color-mix(in oklab, var(--border), transparent 25%);
+  text-decoration:none;
+  font-weight:600;
+  cursor:pointer;
+
+  color:#071018;
+  background: var(--accent);
+  box-shadow:0 6px 16px rgba(0,0,0,.20);
+  transition:transform .15s ease, filter .15s ease;
+}
+.btn:hover{
+  filter:saturate(1.03) brightness(1.02);
+  transform:translateY(-2px);
+}
+.btn:active{ transform:translateY(0); }
+
+:root[data-theme="light"] .btn{
+  box-shadow:0 10px 22px rgba(2,6,23,.08);
+}
+
+.btn--alt{
+  background: var(--accent-2);
+  border-color: color-mix(in oklab, var(--accent-2), black 18%);
+}
+.btn--ghost{
+  color: var(--fg);
+  background: color-mix(in oklab, var(--bg-elev), transparent 10%);
+  border:1px solid rgba(148,163,184,.22);
+}
+:root[data-theme="light"] .btn--ghost{
+  color: var(--fg);
+  background: rgba(255,255,255,.65);
+}
+
+.btn--grad{
+  color:#071018;
+  border:1px solid rgba(255,255,255,.14);
+  background:
+    linear-gradient(
+      135deg,
+      color-mix(in oklab, var(--grad-a), white 10%) 0%,
+      color-mix(in oklab, var(--grad-b), white 8%) 55%,
+      color-mix(in oklab, var(--grad-c), white 12%) 100%
+    );
+}
+
+/* ---------- Header / Nav ---------- */
+.site-header{
+  position:sticky;
+  top:0;
+  z-index:50;
+  padding:12px 0;
+  transition:all .2s ease;
+}
+.nav{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:1rem;
+
+  padding:.5rem .8rem;
+  border-radius:999px;
+  background:transparent;
+  border:1px solid transparent;
+}
+
+.site-header.scrolled .nav{
+  background: rgba(15,23,42,.45);
+  border-color: rgba(148,163,184,.16);
+  backdrop-filter: blur(10px);
+}
+
+:root[data-theme="light"] .site-header.scrolled .nav{
+  background: rgba(255,255,255,.72);
+  border-color: rgba(2,6,23,.08);
+  backdrop-filter: blur(10px);
+}
+:root[data-theme="light"] .site-header.scrolled{
+  box-shadow: 0 10px 28px rgba(2,6,23,.06);
+}
+
+.brand{
+  display:flex;
+  align-items:center;
+  gap:.75rem;
+  text-decoration:none;
+  color:var(--fg);
+}
+.brand img{ width:28px; height:28px; }
+.brand span{
+  font-family:var(--font-display);
+  font-weight:700;
+  letter-spacing:.04em;
+}
+
+.nav-links{
+  display:flex;
+  gap:.75rem;
+  align-items:center;
+}
+.nav-links a{
+  color: var(--fg-muted);
+  text-decoration:none;
+  padding:.4rem .6rem;
+  border-radius:8px;
+}
+.nav-links a:hover{ color:var(--fg); }
+
+.hamb{
+  display:none;
+  background:none;
+  border:1px solid var(--border);
+  color:var(--fg);
+  padding:.45rem .55rem;
+  border-radius:10px;
+  cursor:pointer;
+}
+
+@media (max-width:860px){
+  .nav-links{ display:none; }
+  .hamb{ display:inline-flex; }
+
+  .nav-links.open{
+    display:flex;
+    position:absolute;
+    inset:64px 16px auto 16px;
+    flex-direction:column;
+    align-items:stretch;
+
+    background: rgba(15,23,42,.80);
+    border:1px solid rgba(148,163,184,.20);
+    border-radius:16px;
+    padding:12px;
+    backdrop-filter: blur(10px);
+  }
+
+  :root[data-theme="light"] .nav-links.open{
+    background: rgba(255,255,255,.84);
+    border-color: rgba(2,6,23,.08);
+  }
+
+  .nav-links a{
+    padding:.6rem .75rem;
+  }
+}
+
+/* Mobile menu theme toggle (icon only) */
+.nav-links .theme-toggle--icon{
+  margin-top:.6rem;
+  width:100%;
+  justify-content:center;
+  font-size:1.05rem;
+  padding:.55rem .75rem;
+}
+@media (min-width:861px){
+  .nav-links .theme-toggle--icon{ display:none; }
+}
+
+/* ---------- Hero ---------- */
+.hero{
+  padding:86px 0 48px;
+  display:grid;
+  gap:24px;
+  align-items:center;
+}
+.hero .r3{ width:84px; height:84px; }
+.hero .lede{
+  font-size:1.125rem;
+  color:var(--fg-muted);
+  max-width:60ch;
+}
+
+/* ---------- Features ---------- */
+.feature{
+  display:flex;
+  gap:.85rem;
+  align-items:flex-start;
+}
+.feature .dot{
+  width:10px;
+  height:10px;
+  border-radius:999px;
+  background: var(--accent-2);
+  box-shadow:none;
+}
+
+/* ---------- Logo band + tiles ---------- */
+.logo-band{
+  display:grid;
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  gap:14px;
+  align-items:stretch;
+}
+.logo-tile{
+  background: var(--slate);
+  border: 1px solid rgba(255,255,255,.06);
+  border-radius:14px;
+  padding:18px 22px;
+  min-height:110px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  box-shadow: 0 12px 24px rgba(0,0,0,.25);
+}
+.logo-tile img{
+  max-width:100%;
+  height:auto;
+  max-height:56px; /* critical: prevent massive logos */
+  filter:none !important;
+  mix-blend-mode:normal;
+  opacity:1;
+}
+.logo-tile--light{
+  background:#F5F5F5;
+  border-color:rgba(0,0,0,.08);
+  box-shadow:0 10px 18px rgba(0,0,0,.12);
+}
+
+/* Light theme: tiles go light by default so black marks read */
+:root[data-theme="light"] .logo-tile{
+  background: rgba(255,255,255,.78);
+  border-color: rgba(2,6,23,.08);
+  box-shadow: 0 12px 24px rgba(2,6,23,.08);
+}
+:root[data-theme="light"] .logo-tile--light{
+  background: rgba(255,255,255,.92);
+  border-color: rgba(2,6,23,.08);
+}
+
+/* ---------- Pricing ---------- */
+.pricing-grid{
+  display:grid;
+  gap:1rem;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+}
+@media (max-width:900px){
+  .pricing-grid{ grid-template-columns:1fr; }
+}
+
+.plans .plan{
+  display:flex;
+  flex-direction:column;
+  gap:.75rem;
+  padding:1.1rem;
+}
+
+.price{
+  font-family:var(--font-display);
+  font-size: clamp(1.8rem, 3vw, 2.4rem);
+  line-height:1;
+  font-weight:700;
+  margin:.25rem 0 1rem;
+}
+.price .currency{
+  font-size:.6em;
+  opacity:.8;
+  margin-right:.15rem;
+}
+
+.feature-list{
+  list-style:none;
+  padding-left:0;
+  display:grid;
+  gap:.35rem;
+  margin:.4rem 0 .2rem;
+}
+.feature-list li{
+  position:relative;
+  padding-left:1.25rem;
+}
+.feature-list li::before{
+  content:"✓";
+  position:absolute;
+  left:0;
+  top:.05rem;
+  font-weight:700;
+  color:var(--accent);
+}
+
+.badge{
+  display:inline-flex;
+  align-items:center;
+  gap:.4rem;
+  font-size:.75rem;
+  padding:.22rem .5rem;
+  border-radius:999px;
+  border:1px solid var(--border);
+  background: var(--bg-elev);
+  color: var(--fg-muted);
+}
+.badge--accent{
+  border-color: color-mix(in oklab, var(--accent), white 15%);
+  color:#eafff6;
+  background: linear-gradient(135deg, rgba(15,23,42,.75), rgba(8,47,73,.90));
+}
+
+.plan--popular{
+  outline:2px solid color-mix(in oklab, var(--accent), white 14%);
+  box-shadow: 0 0 0 6px color-mix(in oklab, var(--accent), transparent 90%), var(--shadow-1);
+}
+.plan--glow{
+  box-shadow: var(--shadow-2), 0 0 0 1px rgba(148,163,184,.14);
+}
+:root[data-theme="light"] .plan--glow{
+  box-shadow: 0 18px 40px rgba(2,6,23,.10), 0 0 0 1px rgba(2,6,23,.06);
+}
+
+/* ---------- Forms ---------- */
+.input{
+  appearance:none;
+  width:100%;
+  padding:.75rem .9rem;
+  border-radius:12px;
+  border:1px solid var(--border);
+  background: var(--bg-elev);
+  color: var(--fg);
+  outline:none;
+}
+.input:focus{
+  border-color: color-mix(in oklab, var(--accent), black 15%);
+  box-shadow: 0 0 0 3px color-mix(in oklab, var(--accent), transparent 75%);
+}
+textarea.input{
+  min-height:140px;
+  resize:vertical;
+}
+
+/* ---------- Footer ---------- */
+.site-footer{
+  padding:36px 0;
+  color: var(--fg-muted);
+  border-top: 1px solid rgba(148,163,184,.18);
+  background: rgba(2,6,23,.55);
+}
+:root[data-theme="light"] .site-footer{
+  background: rgba(255,255,255,.65);
+  border-top-color: rgba(2,6,23,.08);
+}
+.footer-grid{
+  display:grid;
+  gap:1rem;
+  grid-template-columns:1fr auto;
+}
+@media (max-width:720px){
+  .footer-grid{ grid-template-columns:1fr; }
+}
+
+/* ---------- Preview thumbs (no-image fallback) ---------- */
+.thumb{
+  position:relative;
+  overflow:hidden;
+  height:180px;
+  display:flex;
+  flex-direction:column;
+  justify-content:flex-end;
+  gap:.25rem;
+  padding:1rem;
+  text-decoration:none;
+  color:inherit;
+  border-radius: var(--radius);
+  border: 1px solid rgba(255,255,255,.06);
+  box-shadow: var(--shadow-1);
+  background: var(--tile-bg);
+}
+:root[data-theme="light"] .thumb{
+  border-color: rgba(2,6,23,.06);
+  box-shadow: 0 14px 30px rgba(2,6,23,.07);
+}
+.thumb__title{ font-weight:600; }
+.thumb__caption{ font-size:.9rem; color:var(--fg-muted); }
+
+.thumb::before{
+  content:"Aa 123";
+  position:absolute;
+  top:-6px;
+  left:12px;
+  font-weight:700;
+  font-size:64px;
+  line-height:1;
+  opacity:.18;
+  pointer-events:none;
+}
+
+.thumb--inter{
+  background: linear-gradient(120deg, rgba(142,220,255,.12), rgba(124,245,193,.10)), var(--tile-bg);
+}
+.thumb--poppins{
+  background: linear-gradient(120deg, rgba(124,245,193,.10), rgba(142,220,255,.12)), var(--tile-bg);
+}
+.thumb--space{
+  background: linear-gradient(120deg, rgba(142,220,255,.10), rgba(167,179,255,.10)), var(--tile-bg);
+}
+
+.thumb--inter::before{ font-family:"Inter", system-ui, sans-serif; }
+.thumb--poppins::before{ font-family:"Poppins", system-ui, sans-serif; }
+.thumb--space::before{ font-family:"Space Grotesk", system-ui, sans-serif; }
+
+/* ---------- A11y ---------- */
 .sr-only{
   position:absolute;
   width:1px;
@@ -176,39 +604,37 @@
   border:0;
 }
 
-/* Demo note style */
-.demo-note{ margin-top:.75rem; }
+/* ---------- Reduced motion ---------- */
+@media (prefers-reduced-motion: reduce){
+  html:focus-within{ scroll-behavior:auto; }
+  *{
+    animation-duration:0.01ms !important;
+    animation-iteration-count:1 !important;
+    transition-duration:0.01ms !important;
+  }
+  .btn:hover{ transform:none !important; }
+  .site-header{ transition:none !important; }
+}
 
 /* =========================================================
-   Theme toggle (mobile menu only) + light theme logo tiles
+   Logo showcase: force dark tiles in BOTH themes
+   Reason: consistent contrast for the logo set
    ========================================================= */
 
-/* Icon-only theme toggle inside mobile menu */
-.nav-links .theme-toggle--icon{
-  margin-top:.6rem;
-  width:100%;
-  justify-content:center;
-  font-size:1.05rem;
-  padding:.55rem .75rem;
-}
-
-@media (min-width:861px){
-  .nav-links .theme-toggle--icon{ display:none; }
-}
-
-/* Light theme: tiles go light so black marks read */
-:root[data-theme="light"] .logo-tile{
-  background:rgba(255,255,255,.78);
-  border-color:rgba(2,6,23,.08);
-  box-shadow:0 12px 24px rgba(2,6,23,.08);
-}
-
-:root[data-theme="light"] .logo-tile--light{
-  background:rgba(255,255,255,.92);
-  border-color:rgba(2,6,23,.08);
-}
-
-:root[data-theme="light"] .logo-tile img{
-  mix-blend-mode:normal;
-  opacity:1;
-}
+   .logo-band .logo-tile{
+    background:#111111;                 /* always dark */
+    border-color:rgba(255,255,255,.08); /* subtle edge */
+    box-shadow:0 12px 26px rgba(0,0,0,.28);
+  }
+  
+  /* keep the “light tile” helper truly light when needed */
+  .logo-band .logo-tile--light{
+    background:#F5F5F5;
+    border-color:rgba(0,0,0,.08);
+    box-shadow:0 10px 18px rgba(0,0,0,.12);
+  }
+  
+  /* keep images constrained */
+  .logo-band .logo-tile img{
+    max-height:56px;
+  }

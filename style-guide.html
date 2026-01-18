@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <title>Style Guide — Renewt3ch</title>
-  <meta name="description" content="Renewt3ch UI + brand style guide: tokens, typography, buttons, cards, forms, and layout components." />
+  <meta name="description" content="Tokens, components, and usage examples for the Renewt3ch brand and website template." />
 
   <meta name="theme-color" content="#0D0D0D" />
 
@@ -14,7 +14,7 @@
   <link rel="icon" href="assets/favicon/favicon.ico" sizes="any" />
   <link rel="icon" type="image/png" sizes="96x96" href="assets/favicon/favicon-96x96.png" />
   <link rel="icon" type="image/png" sizes="192x192" href="assets/favicon/favicon-192x192.png" />
-  <link rel="icon" type="image/png" sizes="512x512" href="assets/favicon/favicon-512x192.png" />
+  <link rel="icon" type="image/png" sizes="512x512" href="assets/favicon/favicon-512x512.png" />
   <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon/apple-touch-icon.png" />
   <link rel="manifest" href="assets/favicon/site.webmanifest" />
 
@@ -22,8 +22,8 @@
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="Renewt3ch" />
   <meta property="og:title" content="Style Guide — Renewt3ch" />
-  <meta property="og:description" content="Renewt3ch UI + brand style guide: tokens, typography, buttons, cards, forms, and layout components." />
-  <meta property="og:url" content="https://example.com/style-guide.html" />
+  <meta property="og:description" content="Tokens, components, and usage examples for the Renewt3ch brand and website template." />
+  <meta property="og:url" content="https://example.com/style-guide" />
   <meta property="og:image" content="https://example.com/assets/previews/og-cover.png" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
@@ -31,42 +31,15 @@
   <!-- Social (Twitter) -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Style Guide — Renewt3ch" />
-  <meta name="twitter:description" content="Renewt3ch UI + brand style guide: tokens, typography, buttons, cards, forms, and layout components." />
+  <meta name="twitter:description" content="Tokens, components, and usage examples for the Renewt3ch brand and website template." />
   <meta name="twitter:image" content="https://example.com/assets/previews/og-cover.png" />
 
   <link rel="stylesheet" href="assets/css/main.css" />
   <script defer src="assets/js/main.js"></script>
-
-  <!-- Style-guide-only helpers (kept tiny; won’t affect other pages) -->
-  <style>
-    .sg-nav{display:flex; gap:.5rem; flex-wrap:wrap}
-    .sg-nav a{color:inherit; text-decoration:none}
-    .sg-nav .btn{padding:.55rem .8rem}
-    .sg-hint{font-family:var(--font-alt); font-size:.85rem; letter-spacing:.04em; color:var(--fg-muted)}
-    .sg-block{display:grid; gap:12px}
-    .sg-swatch{
-      border-radius:14px;
-      border:1px solid rgba(255,255,255,.08);
-      overflow:hidden;
-      box-shadow: var(--shadow-1);
-      background: var(--slate);
-    }
-    .sg-swatch__chip{height:90px}
-    .sg-swatch__meta{padding:12px 14px; display:flex; justify-content:space-between; gap:10px; align-items:center}
-    .sg-code{
-      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-      font-size:.9rem;
-      color: var(--fg-muted);
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      max-width: 52ch;
-    }
-    .sg-hr{height:1px; background:rgba(148,163,184,.18); border:0; margin:18px 0}
-    .sg-kbd{border:1px solid rgba(255,255,255,.14); background:rgba(2,6,23,.35); padding:.08rem .35rem; border-radius:8px; font-size:.9rem}
-    .sg-row{display:flex; gap:12px; flex-wrap:wrap; align-items:center}
-  </style>
 </head>
+
+
+
 
 <body>
 <header class="site-header">
