@@ -1,0 +1,39 @@
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Windows
+Thumbs.db
+Desktop.ini
+
+# Node
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Vercel / Netlify / build artifacts
+.vercel/
+.netlify/
+dist/
+out/
+.cache/
+.tmp/
+
+# Editor
+.vscode/*
+!.vscode/settings.json
+
+# Screenshots / listing assets
+flippa-assets/
+screens/
+assets/screens/
+
+# Zips / exports
+*.zip
+
+# Local env (should not be used, but just in case)
+.env
+.env.*
