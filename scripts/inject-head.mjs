@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * inject-head.mjs
+ * scripts/inject-head.mjs
  *
  * Replaces <head>...</head> in each HTML file using head.template.html + site-meta.json.
  *
@@ -20,26 +20,31 @@ const metaPath = resolve(root, "site-meta.json");
 
 const HEAD_RE = /<head\b[^>]*>[\s\S]*?<\/head>/i;
 
-function render(template, vars) {
-  return template
-    .replaceAll("{{title}}", vars.title)
-    .replaceAll("{{description}}", vars.description)
-    .replaceAll("{{ogUrl}}", vars.ogUrl)
-    .replaceAll("{{ogImage}}", vars.ogImage);
-}
-
 function ensureTrailingNewline(s) {
   return s.endsWith("\n") ? s : `${s}\n`;
 }
 
-function ogUrlFor(baseUrl, fileName, cleanUrls, stripIndex) {
-  if (stripIndex && fileName.toLowerCase() === "index.html") return `${baseUrl}/`;
+function joinUrl(baseUrl, path) {
+  const b = String(baseUrl || "").replace(/\/+$/, "");
+  const p = String(path || "").startsWith("/") ? path : `/${path}`;
+  return `${b}${p}`;
+}
 
-  if (!cleanUrls) return `${baseUrl}/${fileName}`;
+function routePathFor(fileName, cleanUrls, stripIndex) {
+  const lower = String(fileName || "").toLowerCase();
+  if (stripIndex && lower === "index.html") return "/";
+  if (!cleanUrls) return `/${fileName}`;
+  return `/${fileName.replace(/\.html$/i, "")}`;
+}
 
-  // about.html -> /about
-  const noExt = fileName.replace(/\.html$/i, "");
-  return `${baseUrl}/${noExt}`;
+function render(template, vars) {
+  // Replace placeholders used in head.template.html
+  return template
+    .replaceAll("{{title}}", vars.title)
+    .replaceAll("{{description}}", vars.description)
+    .replaceAll("{{ogUrl}}", vars.ogUrl)
+    .replaceAll("{{ogImage}}", vars.ogImage)
+    .replaceAll("{{canonicalUrl}}", vars.canonicalUrl);
 }
 
 async function main() {
@@ -49,12 +54,14 @@ async function main() {
   ]);
 
   const meta = JSON.parse(metaRaw);
+
   const baseUrl =
-  meta?.site?.baseUrl ??
-  meta?.site?.url ??
-  "https://example.com";
-  const ogImagePath = meta?.site?.ogImagePath ?? "/assets/previews/og-cover.png";
-  const ogImage = `${baseUrl}${ogImagePath}`;
+    meta?.site?.baseUrl ??
+    meta?.site?.url ??
+    "https://example.com";
+
+  const ogImagePath =
+    meta?.site?.ogImagePath ?? "/assets/previews/og-cover.png";
 
   const cleanUrls = Boolean(meta?.site?.cleanUrls);
   const stripIndex = meta?.site?.stripIndex !== false; // default true
@@ -66,6 +73,8 @@ async function main() {
     console.error("No pages found in site-meta.json -> pages.");
     process.exit(1);
   }
+
+  const ogImage = joinUrl(baseUrl, ogImagePath);
 
   for (const [fileName, page] of entries) {
     const filePath = resolve(root, fileName);
@@ -83,12 +92,14 @@ async function main() {
       continue;
     }
 
-    const ogUrl = ogUrlFor(baseUrl, fileName, cleanUrls, stripIndex);
+    const routePath = routePathFor(fileName, cleanUrls, stripIndex);
+    const canonicalUrl = joinUrl(baseUrl, routePath);
 
     const head = render(templateRaw, {
-      title: page.title ?? "Renewt3ch",
+      title: page.title ?? meta?.site?.name ?? "Renewt3ch",
       description: page.description ?? "",
-      ogUrl,
+      ogUrl: canonicalUrl,
+      canonicalUrl,
       ogImage,
     });
 
@@ -102,43 +113,3 @@ main().catch((err) => {
   console.error(err);
   process.exit(1);
 });
-
-/**
- * =========================================================
- * FILE: scripts/inject-head.mjs (patch)
- * - Consistent canonical + og:url generation for Vercel
- * - Supports cleanUrls true/false from site-meta.json
- * =========================================================
- */
-
-function toRoutePath(filename, cleanUrls) {
-  if (filename === "index.html") return "/";
-  if (!cleanUrls) return `/${filename}`;
-  return `/${filename.replace(/\.html$/i, "")}`;
-}
-
-function joinUrl(baseUrl, path) {
-  const b = String(baseUrl || "").replace(/\/+$/, "");
-  const p = String(path || "").startsWith("/") ? path : `/${path}`;
-  return `${b}${p}`;
-}
-
-// ...after you load site-meta.json into `meta` (or similar):
-// const meta = JSON.parse(readFileSync("site-meta.json","utf8"));
-
-const { site, pages } = meta;
-
-// inside your per-file loop:
-const cleanUrls = Boolean(site.cleanUrls);
-const routePath = toRoutePath(filename, cleanUrls);
-
-// Use this for <link rel="canonical"> and og:url
-const canonicalUrl = joinUrl(site.baseUrl, routePath);
-
-// Use this for og:image/twitter:image
-const ogImageUrl = joinUrl(site.baseUrl, site.ogImagePath || "/assets/previews/og-cover.png");
-
-// Then in your head template replacement variables:
-// {{CANONICAL_URL}} -> canonicalUrl
-// {{OG_URL}}        -> canonicalUrl
-// {{OG_IMAGE}}      -> ogImageUrl
