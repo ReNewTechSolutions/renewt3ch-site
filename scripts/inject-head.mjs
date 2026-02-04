@@ -49,7 +49,10 @@ async function main() {
   ]);
 
   const meta = JSON.parse(metaRaw);
-  const baseUrl = meta?.site?.baseUrl ?? "https://example.com";
+  const baseUrl =
+  meta?.site?.baseUrl ??
+  meta?.site?.url ??
+  "https://example.com";
   const ogImagePath = meta?.site?.ogImagePath ?? "/assets/previews/og-cover.png";
   const ogImage = `${baseUrl}${ogImagePath}`;
 
