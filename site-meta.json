@@ -2,38 +2,34 @@
   "site": {
     "name": "Renewt3ch",
     "baseUrl": "https://renewt3ch-site-n006colbf-felicia-goad-pillai-s-projects.vercel.app",
-    "ogImagePath": "/assets/previews/og-cover-v2.png"
+    "ogImagePath": "/assets/previews/og-cover-v2.png",
+    "cleanUrls": true,
+    "stripIndex": true
   },
   "pages": {
     "index.html": {
       "title": "Renewt3ch — Futuristic Branding Built for the Next Web",
-      "description": "A clean, minimal identity kit engineered for modern SaaS, AI tools, and developer platforms — packaged for instant launch after purchase.",
-      "path": "/"
+      "description": "A clean, minimal identity kit engineered for modern SaaS, AI tools, and developer platforms — ready to reuse, remix, and resell."
     },
     "about.html": {
       "title": "About — Renewt3ch",
-      "description": "The story behind Renewt3ch: a futuristic branding kit built for modern SaaS, AI tools, and developer platforms.",
-      "path": "/about"
+      "description": "The story behind Renewt3ch: a futuristic branding kit built for modern SaaS, AI tools, and developer platforms."
     },
     "features.html": {
       "title": "Features — Renewt3ch",
-      "description": "Everything included in the Renewt3ch identity kit: modular logos, tokens, components, and printable brand docs.",
-      "path": "/features"
+      "description": "Everything included in the Renewt3ch identity kit: modular logos, tokens, components, and printable brand docs."
     },
     "pricing.html": {
       "title": "Pricing — Renewt3ch",
-      "description": "The $500 turnkey package: domain + brand kit + full static site + optional hosting/admin add-ons.",
-      "path": "/pricing"
+      "description": "The $500 turnkey package: domain + brand kit + full static site + optional hosting/admin add-ons."
     },
     "contact.html": {
       "title": "Contact — Renewt3ch",
-      "description": "Questions or requests? Contact Renewt3ch for licensing, support, or customization.",
-      "path": "/contact"
+      "description": "Questions or requests? Contact Renewt3ch for licensing, support, or customization."
     },
     "style-guide.html": {
       "title": "Style Guide — Renewt3ch",
-      "description": "Tokens, components, and usage examples for the Renewt3ch brand and website template.",
-      "path": "/style-guide"
+      "description": "Tokens, components, and usage examples for the Renewt3ch brand and website template."
     }
   }
 }
