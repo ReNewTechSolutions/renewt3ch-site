@@ -4,6 +4,9 @@
   "type": "module",
   "scripts": {
     "inject:head": "node scripts/inject-head.mjs",
-    "setup:assets": "node scripts/setup-assets.mjs"
+    "setup:assets": "node scripts/setup-assets.mjs",
+    "zip": "node scripts/make-zip.mjs --mode delivery --manifest",
+    "zip:pure": "node scripts/make-zip.mjs --mode demo",
+    "package": "npm run inject:head && npm run zip && npm run zip:pure"
   }
 }
