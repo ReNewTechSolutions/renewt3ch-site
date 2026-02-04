@@ -1,232 +1,388 @@
-<!-- File: brand-guide/brand-guide.html -->
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>renewt3ch · Brand Guide</title>
+  <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Renewt3ch brand guide: logos, colors, typography, UI, and voice." />
+  <title>Renewt3ch · Brand Guide</title>
+  <meta name="description" content="Renewt3ch brand guide: logos, colors, typography, UI components, and voice." />
   <meta name="theme-color" content="#0d0d0d" />
-  <meta name="color-scheme" content="dark light" />
+  <meta name="color-scheme" content="dark" />
 
-  <!-- Favicons (your folder is /assets/favicons) -->
-<link rel="icon" type="image/svg+xml" href="/assets/favicons/favicon.svg">
-<link rel="alternate icon" type="image/x-icon" href="/assets/favicons/favicon.ico">
-<link rel="icon" type="image/png" sizes="96x96"  href="/assets/favicons/favicon-96x96.png">
-<link rel="icon" type="image/png" sizes="192x192" href="/assets/favicons/favicon-192x192.png">
-<link rel="icon" type="image/png" sizes="512x512" href="/assets/favicons/favicon-512x512.png">
-<link rel="apple-touch-icon" sizes="180x180" href="/assets/favicons/apple-touch-icon.png">
-<link rel="manifest" href="/assets/favicons/site.webmanifest">
+  <!-- Favicons (folder: /assets/favicon) -->
+  <link rel="icon" href="/assets/favicon/favicon.svg" type="image/svg+xml" />
+  <link rel="icon" href="/assets/favicon/favicon.ico" sizes="any" />
+  <link rel="icon" type="image/png" sizes="96x96" href="/assets/favicon/favicon-96x96.png" />
+  <link rel="icon" type="image/png" sizes="192x192" href="/assets/favicon/favicon-192x192.png" />
+  <link rel="icon" type="image/png" sizes="512x512" href="/assets/favicon/favicon-512x512.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicon/apple-touch-icon.png" />
+  <link rel="manifest" href="/assets/favicon/site.webmanifest" />
 
-<!-- Brand tokens & fonts (your tokens file lives in /assets) -->
-<link rel="stylesheet" href="/assets/brand.css">
+  <!-- Tokens (brand.css is your “brand kit” tokens, separate from main site CSS) -->
+  <link rel="stylesheet" href="/assets/brand.css" />
 
   <style>
-    :root {
-      --bg: var(--color-bg);
-      --card: var(--color-bg-elevated);
-      --card-soft: color-mix(in oklab, var(--color-bg-elevated), white 2%);
-      --border-subtle: var(--color-border);
-      --text-main: var(--color-fg);
-      --text-muted: var(--color-fg-muted);
-      --accent-primary: var(--color-accent);
-      --accent-secondary: var(--color-accent-2);
-      --mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-      --sans: var(--font-sans-ui, system-ui, -apple-system, "SF Pro Text", "Segoe UI", sans-serif);
+    :root{
+      /* brand.css variables map (fallbacks included) */
+      --bg:            var(--color-bg, #0d0d0d);
+      --card:          var(--color-bg-elevated, #151515);
+      --card-2:        color-mix(in oklab, var(--card), white 3%);
+      --border:        var(--color-border, rgba(148,163,184,.18));
+      --fg:            var(--color-fg, #ffffff);
+      --fg-muted:      var(--color-fg-muted, rgba(255,255,255,.72));
+      --accent:        var(--color-accent, #2ff3e0);
+      --accent-2:      var(--color-accent-2, #0c85ff);
+      --accent-contrast: var(--color-accent-contrast, #071018);
+
+      --radius:        18px;
+      --radius-lg:     24px;
+      --shadow:        0 28px 80px rgba(0,0,0,.72);
+
+      --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      --sans: var(--font-sans-ui, system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif);
+      --display: var(--font-display, var(--sans));
     }
 
-    * { box-sizing: border-box; }
-
-    .skip-link { position: absolute; left: -9999px; top: auto; width: 1px; height: 1px; overflow: hidden; }
-    .skip-link:focus { left: 16px; top: 16px; width: auto; height: auto; padding: 8px 12px; background: #111; color: #fff; border: 1px solid #444; border-radius: 8px; z-index: 10000; }
-
-    body {
-      margin: 0;
-      padding: 3rem 1.5rem 4rem;
-      font-family: var(--font-sans-ui, var(--sans));
-      background: radial-gradient(circle at top left, #111827 0, #020617 40%, #000 100%);
-      color: var(--text-main);
-      line-height: 1.6;
+    *{ box-sizing:border-box; }
+    html{ scroll-behavior:smooth; }
+    body{
+      margin:0;
+      font-family: var(--sans);
+      color: var(--fg);
+      line-height:1.6;
+      background:
+        radial-gradient(55% 55% at 8% 6%,  rgba(47,243,224,.07) 0%, transparent 58%),
+        radial-gradient(45% 45% at 92% 10%, rgba(12,133,255,.06) 0%, transparent 58%),
+        linear-gradient(180deg, #0b1220 0%, #070b14 52%, #05070d 100%);
+      padding: 3rem 1.25rem 4rem;
     }
 
-    .page {
-      max-width: 960px;
+    a{ color:inherit; }
+    img{ max-width:100%; height:auto; display:block; }
+
+    /* a11y */
+    .skip-link{
+      position:absolute; left:-9999px; top:auto; width:1px; height:1px; overflow:hidden;
+    }
+    .skip-link:focus{
+      left:16px; top:16px; width:auto; height:auto;
+      padding:10px 12px; background:#0b0f1a; color:#fff;
+      border:1px solid rgba(148,163,184,.35); border-radius:12px;
+      z-index:9999;
+    }
+
+    /* page frame */
+    .page{
+      max-width: 980px;
       margin: 0 auto;
-      background: linear-gradient(145deg, #020617, #050816);
-      border-radius: 24px;
-      padding: 2.5rem 2.25rem 3rem;
-      border: 1px solid rgba(148, 163, 184, 0.15);
-      box-shadow: 0 32px 80px rgba(0,0,0,.85), 0 0 0 1px rgba(15,23,42,.7);
+      background:
+        radial-gradient(120% 90% at 20% 0%, rgba(255,255,255,.06), transparent 55%),
+        linear-gradient(145deg, #020617, #050816);
+      border: 1px solid rgba(148,163,184,.16);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow), 0 0 0 1px rgba(15,23,42,.55);
+      padding: 2.6rem 2.25rem 3rem;
     }
 
-    h1, h2, h3 { font-weight: 700; letter-spacing: .03em; font-family: var(--font-display); }
-    h1 { font-size: 2.4rem; margin: 0 0 .25rem; }
-
-    .subtitle { color: var(--text-muted); font-size: .95rem; text-transform: uppercase; letter-spacing: .16em; margin-bottom: 2rem; }
-
-    h2 { font-size: 1.35rem; margin: 2rem 0 .75rem; padding-top: 1.25rem; border-top: 1px solid rgba(75,85,99,.5); }
-    h3 { font-size: 1.05rem; margin: 1.25rem 0 .35rem; }
-
-    p { margin: .35rem 0 .4rem; font-size: .95rem; color: #e5e7eb; }
-    ul { padding-left: 1.3rem; margin: .25rem 0 .4rem; font-size: .94rem; color: #d1d5db; }
-    li + li { margin-top: .15rem; }
-
-    .tagline { font-size: 1rem; color: var(--text-muted); margin-top: .6rem; }
-
-    .pill-row { display: flex; flex-wrap: wrap; gap: .5rem; margin: .75rem 0 1.5rem; }
-    .pill { padding: .15rem .7rem; border-radius: 999px; font-size: .78rem; text-transform: uppercase; letter-spacing: .16em; border: 1px solid rgba(148,163,184,.5); color: #e5e7eb; background: radial-gradient(circle at top left, rgba(15,23,42,.9), rgba(15,23,42,.3)); }
-    .pill-accent { border-color: color-mix(in oklab, var(--accent-primary), white 15%); color: #eafff6; background: linear-gradient(135deg, rgba(15,23,42,.8), rgba(8,47,73,.9)); }
-    /* Primary action pill */
-    .pill--button { background: var(--accent-primary); color: var(--color-accent-contrast); border-color: color-mix(in oklab, var(--accent-primary), black 10%); }
-    .pill--button:hover { filter: saturate(1.05) brightness(1.03); transform: translateY(-1px); transition: all .15s ease; }
-
-    .card-grid { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr); gap: 1.5rem; margin-top: .5rem; }
-    .card { background: radial-gradient(circle at top left, #020617, #020617 40%, #020617 100%); border-radius: 18px; border: 1px solid rgba(148,163,184,.18); padding: 1.1rem 1.2rem 1rem; }
-    .card-muted { background: rgba(15,23,42,.92); }
-
-    /* Compact variant for the Core logo files card */
-    .card--compact { padding: .9rem 1rem; }
-    .asset-list { margin: .25rem 0 0; padding-left: 0; list-style: none; }
-    .asset-list li { display: flex; align-items: center; gap: .5rem; margin: .35rem 0; flex-wrap: wrap; }
-    .asset-list code { font-size: .78rem; padding: .12rem .4rem; border-radius: 6px; background: rgba(15,23,42,.9); border: 1px solid rgba(148,163,184,.35); }
-    .asset-note { display: inline-flex; align-items: center; gap: .35rem; font-size: .8rem; padding: .25rem .5rem; border: 1px solid rgba(148,163,184,.35); border-radius: 999px; background: rgba(15,23,42,.9); color: #e5e7eb; margin-top: .35rem; }
-
-    .tiny-label { font-size: .7rem; text-transform: uppercase; letter-spacing: .16em; color: var(--text-muted); margin-bottom: .25rem; }
-
-    code, .code-inline { font-family: var(--mono); font-size: .83rem; background: rgba(15,23,42,.9); padding: .16rem .4rem; border-radius: 6px; border: 1px solid rgba(148,163,184,.4); color: #e0f2fe; }
-
-    .swatch-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: .9rem; margin-top: .75rem; }
-    .swatch { border-radius: 14px; overflow: hidden; border: 1px solid rgba(148,163,184,.4); background: rgba(15,23,42,.95); }
-    .swatch-color { height: 52px; }
-    .swatch-body { padding: .5rem .65rem .55rem; }
-    .swatch-name { font-size: .83rem; text-transform: uppercase; letter-spacing: .14em; color: #e5e7eb; }
-    .swatch-meta { font-size: .8rem; color: var(--text-muted); margin-top: .15rem; }
-    .swatch-meta strong { color: #e5e7eb; font-weight: 500; }
-
-    .two-col { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.1fr); gap: 1.25rem; margin-top: .75rem; }
-    .font-sample { font-size: 1.3rem; margin-bottom: .35rem; }
-    .font-meta { font-size: .82rem; color: var(--text-muted); }
-
-    .do-dont-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 1.1rem; margin-top: .6rem; }
-    .do { border-left: 3px solid #22c55e; }
-    .dont { border-left: 3px solid #f97373; }
-
-    .badge { display: inline-flex; align-items: center; gap: .4rem; font-size: .8rem; padding: .25rem .55rem; border-radius: 999px; border: 1px solid rgba(148,163,184,.45); background: rgba(15,23,42,.9); color: #e5e7eb; margin-top: .3rem; }
-    .badge-dot { width: 7px; height: 7px; border-radius: 999px; background: var(--accent-secondary); box-shadow: 0 0 10px color-mix(in oklab, var(--accent-secondary), white 25%); }
-
-    /* Galleries */
-    .gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1rem; margin-top: .75rem; }
-    figure { margin: 0; padding: .75rem; border: 1px solid rgba(148,163,184,.18); border-radius: 14px; background: var(--card); display: flex; flex-direction: column; align-items: center; gap: .5rem; }
-    figure.light { background: #fff; color: #111; border-color: #e5e7eb; }
-    figure img { max-width: 100%; height: auto; display: block; }
-    figure figcaption { font-size: .8rem; color: var(--text-muted); text-align: center; }
-
-    .back-top { margin-top: .9rem; }
-    .back-top a { font-size: .8rem; color: var(--text-muted); text-decoration: none; border-bottom: 1px dotted rgba(255,255,255,.25); }
-    .back-top a:hover { color: var(--text-main); }
-
-    /* small helper for CTA row in components demo */
-    .cta-row { display: flex; flex-wrap: wrap; gap: .5rem; margin-top: .75rem; }
-
-    @media (max-width: 768px) {
-      body { padding: 1.5rem 1rem 2rem; }
-      .page { padding: 1.7rem 1.3rem 2rem; }
-      .card-grid, .two-col, .do-dont-grid { grid-template-columns: minmax(0, 1fr); }
+    @media (max-width: 768px){
+      body{ padding: 1.6rem 1rem 2.4rem; }
+      .page{ padding: 1.7rem 1.25rem 2.2rem; }
     }
 
-    @media print {
-      body { background: #fff; padding: 0; }
-      .page { box-shadow: none; border-radius: 0; border: none; background: #fff; color: #111827; }
-      h1, h2, h3 { color: #111827; }
-      .card, .card-muted { background: #f9fafb; border-color: #d1d5db; }
-      .tiny-label, .subtitle, p, ul, .swatch-meta, .font-meta { color: #374151; }
-      .pill, .pill-accent, .badge { border-color: #9ca3af; color: #111827; background: #eef2ff; }
-      .back-top { display: none; }
+    /* headings */
+    h1,h2,h3{
+      font-family: var(--display);
+      letter-spacing: .03em;
+      margin: 0 0 .35rem;
+    }
+    h1{ font-size: clamp(2rem, 2.6vw + 1.2rem, 2.75rem); }
+    h2{
+      font-size: 1.35rem;
+      margin-top: 2.2rem;
+      padding-top: 1.35rem;
+      border-top: 1px solid rgba(148,163,184,.18);
+    }
+    h3{ font-size: 1.05rem; margin-top: 1.15rem; }
+
+    p{ margin: .45rem 0 .75rem; color: color-mix(in oklab, var(--fg), #9ca3af 22%); }
+    .muted{ color: var(--fg-muted); }
+    .subtitle{
+      margin-top:.2rem;
+      color: var(--fg-muted);
+      font-size:.9rem;
+      text-transform: uppercase;
+      letter-spacing: .16em;
+    }
+
+    /* pill row */
+    .pill-row{ display:flex; flex-wrap:wrap; gap:.55rem; margin:.9rem 0 1.25rem; }
+    .pill{
+      display:inline-flex; align-items:center;
+      padding:.2rem .75rem;
+      border-radius:999px;
+      border:1px solid rgba(148,163,184,.35);
+      background: rgba(15,23,42,.55);
+      color:#e5e7eb;
+      font-size:.78rem;
+      text-transform: uppercase;
+      letter-spacing: .16em;
+      text-decoration:none;
+    }
+    .pill--accent{
+      border-color: color-mix(in oklab, var(--accent), white 18%);
+      background: linear-gradient(135deg, rgba(15,23,42,.72), rgba(8,47,73,.92));
+      color:#eafff6;
+    }
+    .pill--button{
+      border-color: color-mix(in oklab, var(--accent), black 12%);
+      background: var(--accent);
+      color: var(--accent-contrast);
+      font-weight: 700;
+      transform: translateY(0);
+      transition: transform .15s ease, filter .15s ease;
+    }
+    .pill--button:hover{ filter:saturate(1.05) brightness(1.03); transform: translateY(-1px); }
+
+    /* layout blocks */
+    .grid-2{
+      display:grid;
+      grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr);
+      gap: 1.2rem;
+      margin-top: .8rem;
+    }
+    .grid-2.equal{ grid-template-columns: 1fr 1fr; }
+    @media (max-width: 860px){
+      .grid-2{ grid-template-columns: 1fr; }
+    }
+
+    .card{
+      background: radial-gradient(120% 120% at 0% 0%, rgba(255,255,255,.06), transparent 50%), var(--card);
+      border: 1px solid rgba(148,163,184,.18);
+      border-radius: var(--radius);
+      padding: 1.05rem 1.15rem;
+    }
+    .card.soft{
+      background: radial-gradient(120% 120% at 0% 0%, rgba(255,255,255,.05), transparent 55%), rgba(15,23,42,.72);
+    }
+
+    /* code + labels */
+    .tiny-label{
+      font-size:.7rem;
+      text-transform: uppercase;
+      letter-spacing:.16em;
+      color: var(--fg-muted);
+      margin-bottom: .35rem;
+    }
+    code, .code-inline{
+      font-family: var(--mono);
+      font-size: .84rem;
+      padding: .14rem .42rem;
+      border-radius: 8px;
+      border: 1px solid rgba(148,163,184,.28);
+      background: rgba(2,6,23,.65);
+      color: #e0f2fe;
+    }
+
+    /* asset list */
+    .asset-list{ list-style:none; padding-left:0; margin:.3rem 0 0; }
+    .asset-list li{ display:flex; align-items:center; gap:.5rem; margin:.42rem 0; flex-wrap:wrap; }
+
+    .badge{
+      display:inline-flex; align-items:center; gap:.45rem;
+      font-size:.78rem;
+      padding:.25rem .55rem;
+      border-radius:999px;
+      border:1px solid rgba(148,163,184,.35);
+      background: rgba(15,23,42,.55);
+      color:#e5e7eb;
+    }
+    .badge-dot{
+      width:7px; height:7px; border-radius:999px;
+      background: var(--accent);
+      box-shadow: none;
+    }
+
+    /* swatches */
+    .swatch-grid{
+      display:grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: .9rem;
+      margin-top: .8rem;
+    }
+    .swatch{
+      border-radius: 14px;
+      overflow:hidden;
+      border: 1px solid rgba(148,163,184,.26);
+      background: rgba(15,23,42,.78);
+    }
+    .swatch-color{ height: 56px; }
+    .swatch-body{ padding: .6rem .7rem .7rem; }
+    .swatch-name{
+      font-size:.82rem;
+      text-transform: uppercase;
+      letter-spacing: .14em;
+      color:#e5e7eb;
+    }
+    .swatch-meta{ font-size:.82rem; color: var(--fg-muted); margin-top:.2rem; }
+    .swatch-meta strong{ color:#e5e7eb; font-weight:600; }
+
+    /* image frame */
+    .frame{
+      margin-top: .85rem;
+      border-radius: 16px;
+      border: 1px solid rgba(148,163,184,.18);
+      overflow:hidden;
+      background: rgba(15,23,42,.60);
+    }
+    .frame .frame-head{
+      display:flex; align-items:center; justify-content:space-between;
+      padding: .65rem .75rem;
+      border-bottom: 1px solid rgba(148,163,184,.14);
+    }
+    .frame .frame-body{ padding: .75rem; }
+    .frame img{ border-radius: 14px; }
+
+    /* gallery */
+    .gallery{
+      display:grid;
+      grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+      gap: 1rem;
+      margin-top: .85rem;
+    }
+    figure{
+      margin:0;
+      padding:.9rem;
+      border-radius: 16px;
+      border: 1px solid rgba(148,163,184,.16);
+      background: rgba(21,21,21,.55);
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      gap:.65rem;
+    }
+    figure.dark{ background: rgba(21,21,21,.75); }
+    figure img{
+      max-height: 56px;
+      width:auto;
+    }
+    figcaption{
+      font-size:.8rem;
+      color: var(--fg-muted);
+      text-align:center;
+    }
+
+    /* back to top */
+    .back-top{ margin-top: .9rem; }
+    .back-top a{
+      font-size: .8rem;
+      color: var(--fg-muted);
+      text-decoration:none;
+      border-bottom: 1px dotted rgba(255,255,255,.22);
+    }
+    .back-top a:hover{ color: #fff; }
+
+    /* print */
+    @media print{
+      body{ background:#fff; padding:0; }
+      .page{ box-shadow:none; border-radius:0; border:none; background:#fff; color:#111827; }
+      h1,h2,h3{ color:#111827; }
+      p,.muted,.subtitle,.tiny-label{ color:#374151; }
+      .card{ background:#f9fafb; border-color:#d1d5db; }
+      .pill{ background:#eef2ff; border-color:#9ca3af; color:#111827; }
+      .back-top{ display:none; }
     }
   </style>
 </head>
 
 <body>
-  <div id="top"></div>
   <a class="skip-link" href="#main">Skip to content</a>
 
   <main id="main" class="page">
     <header>
-      <h1>renewt3ch · Brand Guide</h1>
+      <h1>Renewt3ch · Brand Guide</h1>
       <div class="subtitle">Futuristic web & AI studio · Visual & verbal identity</div>
-      <div class="pill-row">
-        <span class="pill pill-accent">Core Brand System</span>
+
+      <div class="pill-row" aria-label="Guide topics">
+        <span class="pill pill--accent">Core Brand System</span>
         <span class="pill">Logo & Icons</span>
         <span class="pill">Color & Type</span>
         <span class="pill">UI & Tone</span>
+        <a class="pill pill--button" href="/index.html">View Site</a>
       </div>
     </header>
 
     <!-- 1. BRAND OVERVIEW -->
     <section>
       <h2>1. Brand Overview</h2>
-      <p><strong>Brand name:</strong> <span class="code-inline">renewt3ch</span><br/>A compact, tech-forward brand identity designed for a web studio / AI-powered services business.</p>
-      <p class="tagline">Positioning: <em>“A futuristic, yet approachable partner for digital products, web experiences, and AI-powered tools.”</em></p>
+      <p><strong>Brand name:</strong> <span class="code-inline">renewt3ch</span><br>
+        A compact, tech-forward identity designed for a modern web studio / AI-first product business.
+      </p>
+      <p class="muted"><em>Positioning:</em> “Futuristic, but approachable — premium design that ships fast.”</p>
 
-      <div class="card-grid">
+      <div class="grid-2">
         <div class="card">
           <div class="tiny-label">Core attributes</div>
           <ul>
-            <li><strong>Futuristic, not cold:</strong> glowy gradients + clean geometry.</li>
-            <li><strong>Technical, but friendly:</strong> readable type and simple layouts.</li>
-            <li><strong>Modular:</strong> logos, icons, and palette work across web, print, and product mockups.</li>
+            <li><strong>Futuristic, not cold:</strong> gradients + clean geometry, minimal clutter.</li>
+            <li><strong>Technical, but friendly:</strong> readable type and strong spacing rhythm.</li>
+            <li><strong>Modular:</strong> assets work across web, product UI, and print handoff.</li>
           </ul>
         </div>
-        <div class="card card-muted card--compact">
+
+        <div class="card soft">
           <div class="tiny-label">Core logo files</div>
           <ul class="asset-list">
             <li><code>Logo-Renewt3ch.svg</code> — gradient logotype</li>
-            <li><code>wordmark-black.svg</code> — black wordmark</li>
             <li><code>wordmark-pure-white.svg</code> — white wordmark</li>
-            <li><code>r3-icon-gradient.svg</code> — square gradient icon</li>
-            <li><code>r3-icon-black.svg</code> — solid black icon</li>
-            <li><code>r3-icon-white.svg</code> — solid white icon</li>
+            <li><code>wordmark-black.svg</code> — black wordmark</li>
+            <li><code>r3-icon-gradient.svg</code> — gradient icon</li>
+            <li><code>r3-icon-white.svg</code> — white icon</li>
+            <li><code>r3-icon-black.svg</code> — black icon</li>
           </ul>
-          <div class="asset-note"><span class="badge-dot" aria-hidden="true"></span>Keep all master assets in <code>/brand</code> or <code>/assets/identity</code>.</div>
+
+          <div style="margin-top:.55rem;">
+            <span class="badge"><span class="badge-dot" aria-hidden="true"></span> Keep masters in <code>/assets/logos</code></span>
+          </div>
         </div>
       </div>
 
-      <p class="back-top"><a href="#top" aria-label="Back to top">↥ Back to top</a></p>
+      <p class="back-top"><a href="#main">↥ Back to top</a></p>
     </section>
 
     <!-- 2. LOGO USAGE -->
     <section>
-      <h2>2. Logo &amp; Wordmark Usage</h2>
-      <div class="two-col">
+      <h2>2. Logo & Wordmark Usage</h2>
+
+      <div class="grid-2 equal">
         <div class="card">
-          <div class="tiny-label">Primary logo</div>
-          <p>Use <code>Logo-Renewt3ch.svg</code> as the default logo on dark or gradient backgrounds. The wordmark is outlined and spaced for crisp rendering at a wide range of sizes.</p>
-          <p>Minimum recommended width for the full logo on screen: <strong>200 px</strong>. For smaller UI elements, switch to the icon.</p>
+          <div class="tiny-label">Primary usage</div>
+          <p>Use <code>Logo-Renewt3ch.svg</code> on dark backgrounds for maximum clarity and premium feel.</p>
+          <p class="muted">Minimum recommended width (screen): <strong>200px</strong>. Use the icon for UI or tight spaces.</p>
         </div>
-        <div class="card card-muted">
-          <div class="tiny-label">Monochrome wordmarks</div>
+
+        <div class="card soft">
+          <div class="tiny-label">Monochrome rules</div>
           <ul>
-            <li><code>wordmark-pure-white.svg</code> — for dark, photo, or gradient backgrounds.</li>
-            <li><code>wordmark-black.svg</code> — for light or near-white backgrounds.</li>
+            <li><code>wordmark-pure-white.svg</code> → dark/gradient backgrounds</li>
+            <li><code>wordmark-black.svg</code> → light backgrounds & print</li>
           </ul>
-          <p>These match the gradient logo’s geometry, including open counters and consistent stroke weights.</p>
+          <p class="muted">Keep generous padding around logos. Avoid compressing/stretching.</p>
         </div>
       </div>
 
-      <p class="back-top"><a href="#top" aria-label="Back to top">↥ Back to top</a></p>
+      <p class="back-top"><a href="#main">↥ Back to top</a></p>
     </section>
 
     <!-- 3. COLOR PALETTE -->
     <section>
       <h2>3. Color Palette</h2>
-      <p>Exact colors as shown in the palette image:</p>
+      <p class="muted">Use these colors for UI accents, highlights, and CTAs. Keep the overall look dark + restrained.</p>
 
-      <div class="swatch-grid">
+      <div class="swatch-grid" aria-label="Color swatches">
         <div class="swatch">
           <div class="swatch-color" style="background:#0C85FF;"></div>
           <div class="swatch-body">
             <div class="swatch-name">Infinite Blue</div>
-            <div class="swatch-meta"><strong>#0C85FF</strong><br/>Usage: Primary actions, links</div>
+            <div class="swatch-meta"><strong>#0C85FF</strong><br>Primary actions, links</div>
           </div>
         </div>
 
@@ -234,7 +390,7 @@
           <div class="swatch-color" style="background:#2FF3E0;"></div>
           <div class="swatch-body">
             <div class="swatch-name">Aqua Mint</div>
-            <div class="swatch-meta"><strong>#2FF3E0</strong><br/>Usage: Highlights, accents</div>
+            <div class="swatch-meta"><strong>#2FF3E0</strong><br>Highlights, accents</div>
           </div>
         </div>
 
@@ -242,15 +398,15 @@
           <div class="swatch-color" style="background:#111111;"></div>
           <div class="swatch-body">
             <div class="swatch-name">Void Black</div>
-            <div class="swatch-meta"><strong>#111111</strong><br/>Usage: Background</div>
+            <div class="swatch-meta"><strong>#111111</strong><br>Base background</div>
           </div>
         </div>
 
         <div class="swatch">
-          <div class="swatch-color" style="background:#FFFFFF;border:1px solid rgba(0,0,0,.1)"></div>
+          <div class="swatch-color" style="background:#FFFFFF; border:1px solid rgba(0,0,0,.1)"></div>
           <div class="swatch-body">
             <div class="swatch-name">Pure White</div>
-            <div class="swatch-meta"><strong>#FFFFFF</strong><br/>Usage: Text on dark, negative space</div>
+            <div class="swatch-meta"><strong>#FFFFFF</strong><br>Text on dark</div>
           </div>
         </div>
 
@@ -258,7 +414,7 @@
           <div class="swatch-color" style="background:#151515;"></div>
           <div class="swatch-body">
             <div class="swatch-name">Graphite Gray</div>
-            <div class="swatch-meta"><strong>#151515</strong><br/>Usage: Cards, panels</div>
+            <div class="swatch-meta"><strong>#151515</strong><br>Cards, panels</div>
           </div>
         </div>
 
@@ -266,182 +422,153 @@
           <div class="swatch-color" style="background:#222222;"></div>
           <div class="swatch-body">
             <div class="swatch-name">Deep Slate</div>
-            <div class="swatch-meta"><strong>#222222</strong><br/>Usage: Dividers, secondary surfaces</div>
+            <div class="swatch-meta"><strong>#222222</strong><br>Secondary surfaces</div>
           </div>
         </div>
       </div>
 
-      <!-- Palette image -->
-      <div class="card" style="margin-top:1rem;">
-        <div class="tiny-label">Palette image</div>
-        <img src="/assets/brand-assets/colors/palette.png" 
-             alt="Renewt3ch color palette preview">
+      <!-- Palette image (safe fallback) -->
+      <div class="frame" style="margin-top:1rem;">
+        <div class="frame-head">
+          <div class="tiny-label" style="margin:0;">Palette image</div>
+          <span class="muted" style="font-size:.82rem;">/assets/brand-assets/colors/palette.png</span>
+        </div>
+        <div class="frame-body">
+          <img
+            src="/assets/brand-assets/colors/palette.png"
+            alt="Renewt3ch color palette preview"
+            loading="lazy"
+            decoding="async"
+            onerror="this.hidden=true; document.getElementById('paletteFallback').hidden=false;"
+          />
+          <div id="paletteFallback" hidden>
+            <p class="muted" style="margin-top:.75rem;">Palette image missing — swatches above are the source of truth.</p>
+          </div>
+        </div>
       </div>
 
-      <p class="back-top"><a href="#top" aria-label="Back to top">↥ Back to top</a></p>
+      <p class="back-top"><a href="#main">↥ Back to top</a></p>
     </section>
 
     <!-- 4. TYPOGRAPHY -->
     <section>
       <h2>4. Typography</h2>
-      <div class="two-col">
+
+      <div class="grid-2 equal">
         <div class="card">
-          <div class="tiny-label">Primary Typeface</div>
-          <div class="font-sample" style="font-weight:700; font-family: var(--font-display);">Poppins — Bold</div>
-          <p>Used for logos, page titles, major section headings, and key UI labels.</p>
-          <p class="font-meta">&bull; H1 / H2 / H3<br/>&bull; Logo lockups (outlined in SVG assets)<br/>&bull; Navigation labels &amp; key callouts</p>
+          <div class="tiny-label">Display</div>
+          <p><strong>Poppins</strong> for headings, titles, and premium “brand voice” moments.</p>
+          <p class="muted"><code>--font-display</code> (site) / <code>--font-display</code> token (brand.css)</p>
         </div>
-        <div class="card card-muted">
-          <div class="tiny-label">Body &amp; UI Typeface</div>
-          <div class="font-sample" style="font-weight:400; font-family: var(--font-sans-ui);">Inter — Regular</div>
-          <p>Body text and UI elements should use the Inter UI stack for clarity and performance.</p>
-          <p class="font-meta"><code>Inter, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif</code></p>
+        <div class="card soft">
+          <div class="tiny-label">Body / UI</div>
+          <p><strong>Inter</strong> for body copy, UI, forms, and documentation clarity.</p>
+          <p class="muted"><code>Inter, system-ui, -apple-system, Segoe UI, Roboto, sans-serif</code></p>
         </div>
       </div>
 
       <div class="card" style="margin-top:1rem;">
-        <div class="tiny-label">Type scale (suggested)</div>
+        <div class="tiny-label">Suggested type scale</div>
         <ul>
-          <li><strong>H1:</strong> 2.2–2.6rem · 700 · tight letter-spacing</li>
-          <li><strong>H2:</strong> 1.4–1.6rem · 700</li>
-          <li><strong>H3:</strong> 1.1–1.25rem · 600</li>
+          <li><strong>H1:</strong> 2.2–2.8rem · 700</li>
+          <li><strong>H2:</strong> 1.35–1.7rem · 700</li>
+          <li><strong>H3:</strong> 1.05–1.25rem · 600</li>
           <li><strong>Body:</strong> 0.95–1rem · 400–500</li>
-          <li><strong>Labels / UI:</strong> 0.75–0.85rem · 500 · uppercase where needed</li>
         </ul>
       </div>
 
-      <p class="back-top"><a href="#top" aria-label="Back to top">↥ Back to top</a></p>
-
-      <!-- Live font previews -->
-      <div class="card" style="margin-top: 1rem;">
+      <div class="card soft" style="margin-top:1rem;">
         <div class="tiny-label">Live font previews</div>
-        <p>See variable weights rendered in your browser.</p>
-        <nav aria-label="Live font previews">
-          <div class="pill-row">
-            <a class="pill pill--button" href="/assets/previews/index.html" target="_blank" rel="noopener">Open Font Previews</a>
-            <a class="pill" href="/assets/previews/preview-inter.html" target="_blank" rel="noopener">Inter</a>
-            <a class="pill" href="/assets/previews/preview-poppins.html" target="_blank" rel="noopener">Poppins</a>
-            <a class="pill" href="/assets/previews/preview-space-grotesk.html" target="_blank" rel="noopener">Space Grotesk</a>
-          </div>
-        </nav>
+        <div class="pill-row" role="navigation" aria-label="Font preview links">
+          <a class="pill pill--button" href="/assets/previews/preview-inter.html" target="_blank" rel="noopener">Inter</a>
+          <a class="pill" href="/assets/previews/preview-poppins.html" target="_blank" rel="noopener">Poppins</a>
+          <a class="pill" href="/assets/previews/preview-space-grotesk.html" target="_blank" rel="noopener">Space Grotesk</a>
+        </div>
       </div>
+
+      <p class="back-top"><a href="#main">↥ Back to top</a></p>
     </section>
 
-    <!-- 5. LOGO PREVIEW GALLERY -->
+    <!-- 5. LOGO PREVIEW -->
     <section>
       <h2>5. Logo Preview</h2>
-      <div class="gallery" aria-label="Logo images">
-        <figure>
+      <p class="muted">All preview tiles are dark so the set looks premium and consistent.</p>
+
+      <div class="gallery" aria-label="Logo gallery">
+        <figure class="dark">
           <img src="/assets/logos/Logo-Renewt3ch.svg" alt="Renewt3ch gradient logotype" />
           <figcaption>Gradient logotype</figcaption>
         </figure>
 
-        <figure>
-          <img src="/assets/logos/wordmark-pure-white.svg" alt="Wordmark · pure white" />
-          <figcaption>Wordmark — white (dark bg)</figcaption>
+        <figure class="dark">
+          <img src="/assets/logos/wordmark-pure-white.svg" alt="Wordmark in white" />
+          <figcaption>Wordmark — white</figcaption>
         </figure>
 
-        <figure class="light">
-          <img src="/assets/logos/wordmark-black.svg" alt="Wordmark · black" />
-          <figcaption>Wordmark — black (light bg)</figcaption>
-        </figure>
-
-        <figure>
-          <img src="/assets/logos/r3-icon-gradient.svg" alt="R3 icon · gradient" />
+        <figure class="dark">
+          <img src="/assets/logos/r3-icon-gradient.svg" alt="R3 gradient icon" />
           <figcaption>R³ icon — gradient</figcaption>
         </figure>
 
-        <figure>
-          <img src="/assets/logos/r3-icon-white.svg" alt="R3 icon · white" />
+        <figure class="dark">
+          <img src="/assets/logos/r3-icon-white.svg" alt="R3 icon in white" />
           <figcaption>R³ icon — white</figcaption>
         </figure>
 
-        <figure class="light">
-          <img src="/assets/logos/r3-icon-black.svg" alt="R3 icon · black" />
-          <figcaption>R³ icon — black</figcaption>
+        <figure class="dark">
+          <img src="/assets/logos/wordmark-black.svg" alt="Wordmark in black (for print/light use)" />
+          <figcaption>Wordmark — black (print/light)</figcaption>
+        </figure>
+
+        <figure class="dark">
+          <img src="/assets/logos/r3-icon-black.svg" alt="R3 icon in black (for print/light use)" />
+          <figcaption>R³ icon — black (print/light)</figcaption>
         </figure>
       </div>
 
-      <p class="back-top"><a href="#top" aria-label="Back to top">↥ Back to top</a></p>
+      <p class="back-top"><a href="#main">↥ Back to top</a></p>
     </section>
 
-    <!-- 6. FONT PREVIEWS (link cards, no images) -->
-<section>
-  <h2>6. Font Previews</h2>
-  <div class="gallery" aria-label="Font preview links">
-    <a class="card" href="/assets/previews/preview-inter.html" target="_blank" rel="noopener" style="text-decoration:none;">
-      <div class="font-sample" style="font-family:Inter; font-weight:600;">Inter preview</div>
-      <div class="font-meta">Inter — weights &amp; UI labels</div>
-    </a>
-
-    <a class="card" href="/assets/previews/preview-poppins.html" target="_blank" rel="noopener" style="text-decoration:none;">
-      <div class="font-sample" style="font-family:Poppins; font-weight:600;">Poppins preview</div>
-      <div class="font-meta">Poppins — headings &amp; wordmark</div>
-    </a>
-
-    <a class="card" href="/assets/previews/preview-space-grotesk.html" target="_blank" rel="noopener" style="text-decoration:none;">
-      <div class="font-sample" style="font-family:'Space Grotesk'; font-weight:600;">Space Grotesk preview</div>
-      <div class="font-meta">Space Grotesk — subheads</div>
-    </a>
-  </div>
-
-  <p class="back-top"><a href="#top" aria-label="Back to top">↥ Back to top</a></p>
-</section>
-
-      <p class="back-top"><a href="#top" aria-label="Back to top">↥ Back to top</a></p>
-    </section>
-
-    <!-- 7. LAYOUT & CTA DEMO -->
+    <!-- 6. UI + VOICE -->
     <section>
-      <h2>7. Layout &amp; UI Components</h2>
-      <div class="two-col">
+      <h2>6. UI + Voice</h2>
+
+      <div class="grid-2 equal">
         <div class="card">
-          <div class="tiny-label">Layout principles</div>
+          <div class="tiny-label">UI principles</div>
           <ul>
-            <li>Generous padding and breathable sections.</li>
-            <li>Subtle rounded corners and soft shadows, not harsh borders.</li>
-            <li>Primary CTAs use the brand accents (see buttons).</li>
+            <li>Dark-first surfaces with restrained highlights.</li>
+            <li>2 CTAs per page max (primary + ghost).</li>
+            <li>Soft borders and controlled shadows for premium feel.</li>
           </ul>
         </div>
-        <div class="card card-muted">
-          <div class="tiny-label">CTA buttons (demo)</div>
-          <p>Buttons below use the tokenized styles from <code>assets/brand.css</code>.</p>
-          <div class="cta-row">
-            <a href="#" class="btn" role="button" aria-label="Primary action">Get started</a>
-            <a href="#" class="btn btn--alt" role="button" aria-label="Secondary action">Try the demo</a>
-          </div>
-          <p class="font-meta">Tokens: <code>--color-accent</code>, <code>--color-accent-2</code>, <code>--color-accent-contrast</code>.</p>
+        <div class="card soft">
+          <div class="tiny-label">Brand voice</div>
+          <ul>
+            <li><strong>Confident, not loud:</strong> no hype walls.</li>
+            <li><strong>Human + clear:</strong> short benefit-led copy.</li>
+            <li><strong>Modern:</strong> “shipping”, “system”, “tokens”, “handoff”.</li>
+          </ul>
         </div>
-      </div>
-
-      <p class="back-top"><a href="#top" aria-label="Back to top">↥ Back to top</a></p>
-    </section>
-
-    <!-- 8. VOICE & TONE -->
-    <section>
-      <h2>8. Voice &amp; Tone</h2>
-      <div class="card">
-        <div class="tiny-label">Brand voice</div>
-        <ul>
-          <li><strong>Confident, not arrogant:</strong> explain the tech, don’t overhype it.</li>
-          <li><strong>Clear &amp; human:</strong> short sentences, concrete benefits, no jargon walls.</li>
-          <li><strong>Curious &amp; experimental:</strong> highlight prototypes, experiments, and labs.</li>
-        </ul>
       </div>
 
       <div class="card" style="margin-top:1rem;">
         <div class="tiny-label">Sample microcopy</div>
         <ul>
-          <li>“Spin up a launch-ready site in days, not months.”</li>
-          <li>“AI-powered where it matters. Human-led where it counts.”</li>
-          <li>“Switch on a cleaner, faster web experience for your users.”</li>
+          <li>“Launch a premium site in days, not months.”</li>
+          <li>“A brand system that scales from landing page to product UI.”</li>
+          <li>“Clean. Lightweight. Ready for deployment.”</li>
         </ul>
       </div>
 
-      <p class="back-top"><a href="#top" aria-label="Back to top">↥ Back to top</a></p>
+      <p class="back-top"><a href="#main">↥ Back to top</a></p>
     </section>
-  </main>
 
-  <!-- No JS needed -->
+    <footer style="margin-top:2.2rem; padding-top:1.2rem; border-top:1px solid rgba(148,163,184,.16);">
+      <p class="muted" style="margin:0;">
+        © Renewt3ch · Brand Guide · Built for resale + client handoff
+      </p>
+    </footer>
+  </main>
 </body>
 </html>
