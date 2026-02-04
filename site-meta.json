@@ -1,10 +1,10 @@
 {
   "site": {
     "name": "Renewt3ch",
-    "baseUrl": "https://YOUR-PROJECT.vercel.app",
+    "baseUrl": "https://renewt3ch-site-n006colbf-felicia-goad-pillai-s-projects.vercel.app",
+    "ogImagePath": "/assets/previews/og-cover-v2.png",
     "cleanUrls": true,
-    "ogImagePath": "/assets/previews/og-cover.png",
-    "themeColor": "#0D0D0D"
+    "stripIndex": true
   },
   "pages": {
     "index.html": {
