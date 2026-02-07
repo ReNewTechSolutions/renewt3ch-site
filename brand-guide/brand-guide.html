@@ -259,11 +259,21 @@
       align-items:center;
       gap:.65rem;
     }
+
     figure.dark{ background: rgba(21,21,21,.75); }
+
     figure img{
       max-height: 56px;
       width:auto;
     }
+     
+    figure.light{ background:#ffffff;
+      color:#111;
+      border-color:#e5e7eb;
+    }
+    
+    figure.light figcaption{ color:#374151; }
+
     figcaption{
       font-size:.8rem;
       color: var(--fg-muted);
@@ -515,14 +525,14 @@
           <figcaption>R³ icon — white</figcaption>
         </figure>
 
-        <figure class="dark">
-          <img src="/assets/logos/wordmark-black.svg" alt="Wordmark in black (for print/light use)" />
-          <figcaption>Wordmark — black (print/light)</figcaption>
+        <figure class="light">
+          <img src="/assets/logos/wordmark-black.svg" alt="Wordmark · black" />
+          <figcaption>Wordmark — black (light bg)</figcaption>
         </figure>
 
-        <figure class="dark">
-          <img src="/assets/logos/r3-icon-black.svg" alt="R3 icon in black (for print/light use)" />
-          <figcaption>R³ icon — black (print/light)</figcaption>
+        <figure class="light">
+          <img src="/assets/logos/r3-icon-black.svg" alt="R3 icon · black" />
+          <figcaption>R³ icon — black (light bg)</figcaption>
         </figure>
       </div>
 
