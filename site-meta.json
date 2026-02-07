@@ -1,8 +1,13 @@
 {
-  "siteName": "Renewt3ch",
-  "baseUrl": "https://www.renewt3ch.com",
-  "description": "Futuristic branding + static website kit. Fast, lightweight, deploy-anywhere.",
-  "ogImagePath": "/assets/previews/og-cover-v2.png",
+  "site": {
+    "name": "Renewt3ch",
+    "baseUrl": "https://www.renewt3ch.com",
+    "ogImagePath": "/assets/previews/og-cover-v2.png",
+
+    "cleanUrls": false,
+    "stripIndex": true
+  },
+
   "brand": {
     "blue": "#0C85FF",
     "aqua": "#2FF3E0",
@@ -11,34 +16,35 @@
     "slate": "#222222",
     "fg": "#FFFFFF"
   },
-  "pages": [
-    {
-      "file": "index.html",
-      "path": "/"
+
+  "pages": {
+    "index.html": {
+      "title": "Renewt3ch — Futuristic Branding Built for the Next Web",
+      "description": "Futuristic branding + static website kit. Fast, lightweight, deploy-anywhere."
     },
-    {
-      "file": "about.html",
-      "path": "/about.html"
+    "about.html": {
+      "title": "About — Renewt3ch",
+      "description": "What Renewt3ch is and what you’re getting in the kit."
     },
-    {
-      "file": "features.html",
-      "path": "/features.html"
+    "features.html": {
+      "title": "Features — Renewt3ch",
+      "description": "Everything included: logos, tokens, UI components, docs, and deploy scripts."
     },
-    {
-      "file": "pricing.html",
-      "path": "/pricing.html"
+    "pricing.html": {
+      "title": "Pricing — Renewt3ch",
+      "description": "Package pricing and what’s included."
     },
-    {
-      "file": "contact.html",
-      "path": "/contact.html"
+    "contact.html": {
+      "title": "Contact — Renewt3ch",
+      "description": "Contact, support, licensing, and handoff."
     },
-    {
-      "file": "style-guide.html",
-      "path": "/style-guide.html"
+    "style-guide.html": {
+      "title": "Style Guide — Renewt3ch",
+      "description": "Tokens, components, and usage examples for the Renewt3ch template."
     },
-    {
-      "file": "brand-guide/brand-guide.html",
-      "path": "/brand-guide/brand-guide.html"
+    "brand-guide/brand-guide.html": {
+      "title": "Brand Guide — Renewt3ch",
+      "description": "Logos, colors, typography, and usage rules."
     }
-  ]
+  }
 }

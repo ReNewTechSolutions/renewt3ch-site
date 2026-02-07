@@ -3,12 +3,18 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Renewt3ch · Brand Guide</title>
-  <meta name="description" content="Renewt3ch brand guide: logos, colors, typography, UI components, and voice." />
-  <meta name="theme-color" content="#0d0d0d" />
-  <meta name="color-scheme" content="dark" />
 
-  <!-- Favicons (folder: /assets/favicon) -->
+  <title>Brand Guide — Renewt3ch</title>
+  <meta name="description" content="Logos, colors, typography, and usage rules." />
+  <meta name="theme-color" content="#0D0D0D" />
+
+  <link rel="preload" href="/assets/css/main.css" as="style" />
+  <link rel="stylesheet" href="/assets/css/main.css" />
+
+  <!-- Canonical -->
+  <link rel="canonical" href="https://www.renewt3ch.com/brand-guide/brand-guide.html" />
+
+  <!-- Favicons -->
   <link rel="icon" href="/assets/favicon/favicon.svg" type="image/svg+xml" />
   <link rel="icon" href="/assets/favicon/favicon.ico" sizes="any" />
   <link rel="icon" type="image/png" sizes="96x96" href="/assets/favicon/favicon-96x96.png" />
@@ -17,290 +23,24 @@
   <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicon/apple-touch-icon.png" />
   <link rel="manifest" href="/assets/favicon/site.webmanifest" />
 
-  <!-- Tokens (brand.css is your “brand kit” tokens, separate from main site CSS) -->
-  <link rel="stylesheet" href="/assets/brand.css" />
+  <!-- Social (Open Graph) -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Renewt3ch" />
+  <meta property="og:title" content="Brand Guide — Renewt3ch" />
+  <meta property="og:description" content="Logos, colors, typography, and usage rules." />
+  <meta property="og:url" content="https://www.renewt3ch.com/brand-guide/brand-guide.html" />
+  <meta property="og:image" content="https://www.renewt3ch.com/assets/previews/og-cover-v2.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
 
-  <style>
-    :root{
-      /* brand.css variables map (fallbacks included) */
-      --bg:            var(--color-bg, #0d0d0d);
-      --card:          var(--color-bg-elevated, #151515);
-      --card-2:        color-mix(in oklab, var(--card), white 3%);
-      --border:        var(--color-border, rgba(148,163,184,.18));
-      --fg:            var(--color-fg, #ffffff);
-      --fg-muted:      var(--color-fg-muted, rgba(255,255,255,.72));
-      --accent:        var(--color-accent, #2ff3e0);
-      --accent-2:      var(--color-accent-2, #0c85ff);
-      --accent-contrast: var(--color-accent-contrast, #071018);
+  <!-- Social (Twitter) -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Brand Guide — Renewt3ch" />
+  <meta name="twitter:description" content="Logos, colors, typography, and usage rules." />
+  <meta name="twitter:image" content="https://www.renewt3ch.com/assets/previews/og-cover-v2.png" />
 
-      --radius:        18px;
-      --radius-lg:     24px;
-      --shadow:        0 28px 80px rgba(0,0,0,.72);
-
-      --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-      --sans: var(--font-sans-ui, system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif);
-      --display: var(--font-display, var(--sans));
-    }
-
-    *{ box-sizing:border-box; }
-    html{ scroll-behavior:smooth; }
-    body{
-      margin:0;
-      font-family: var(--sans);
-      color: var(--fg);
-      line-height:1.6;
-      background:
-        radial-gradient(55% 55% at 8% 6%,  rgba(47,243,224,.07) 0%, transparent 58%),
-        radial-gradient(45% 45% at 92% 10%, rgba(12,133,255,.06) 0%, transparent 58%),
-        linear-gradient(180deg, #0b1220 0%, #070b14 52%, #05070d 100%);
-      padding: 3rem 1.25rem 4rem;
-    }
-
-    a{ color:inherit; }
-    img{ max-width:100%; height:auto; display:block; }
-
-    /* a11y */
-    .skip-link{
-      position:absolute; left:-9999px; top:auto; width:1px; height:1px; overflow:hidden;
-    }
-    .skip-link:focus{
-      left:16px; top:16px; width:auto; height:auto;
-      padding:10px 12px; background:#0b0f1a; color:#fff;
-      border:1px solid rgba(148,163,184,.35); border-radius:12px;
-      z-index:9999;
-    }
-
-    /* page frame */
-    .page{
-      max-width: 980px;
-      margin: 0 auto;
-      background:
-        radial-gradient(120% 90% at 20% 0%, rgba(255,255,255,.06), transparent 55%),
-        linear-gradient(145deg, #020617, #050816);
-      border: 1px solid rgba(148,163,184,.16);
-      border-radius: var(--radius-lg);
-      box-shadow: var(--shadow), 0 0 0 1px rgba(15,23,42,.55);
-      padding: 2.6rem 2.25rem 3rem;
-    }
-
-    @media (max-width: 768px){
-      body{ padding: 1.6rem 1rem 2.4rem; }
-      .page{ padding: 1.7rem 1.25rem 2.2rem; }
-    }
-
-    /* headings */
-    h1,h2,h3{
-      font-family: var(--display);
-      letter-spacing: .03em;
-      margin: 0 0 .35rem;
-    }
-    h1{ font-size: clamp(2rem, 2.6vw + 1.2rem, 2.75rem); }
-    h2{
-      font-size: 1.35rem;
-      margin-top: 2.2rem;
-      padding-top: 1.35rem;
-      border-top: 1px solid rgba(148,163,184,.18);
-    }
-    h3{ font-size: 1.05rem; margin-top: 1.15rem; }
-
-    p{ margin: .45rem 0 .75rem; color: color-mix(in oklab, var(--fg), #9ca3af 22%); }
-    .muted{ color: var(--fg-muted); }
-    .subtitle{
-      margin-top:.2rem;
-      color: var(--fg-muted);
-      font-size:.9rem;
-      text-transform: uppercase;
-      letter-spacing: .16em;
-    }
-
-    /* pill row */
-    .pill-row{ display:flex; flex-wrap:wrap; gap:.55rem; margin:.9rem 0 1.25rem; }
-    .pill{
-      display:inline-flex; align-items:center;
-      padding:.2rem .75rem;
-      border-radius:999px;
-      border:1px solid rgba(148,163,184,.35);
-      background: rgba(15,23,42,.55);
-      color:#e5e7eb;
-      font-size:.78rem;
-      text-transform: uppercase;
-      letter-spacing: .16em;
-      text-decoration:none;
-    }
-    .pill--accent{
-      border-color: color-mix(in oklab, var(--accent), white 18%);
-      background: linear-gradient(135deg, rgba(15,23,42,.72), rgba(8,47,73,.92));
-      color:#eafff6;
-    }
-    .pill--button{
-      border-color: color-mix(in oklab, var(--accent), black 12%);
-      background: var(--accent);
-      color: var(--accent-contrast);
-      font-weight: 700;
-      transform: translateY(0);
-      transition: transform .15s ease, filter .15s ease;
-    }
-    .pill--button:hover{ filter:saturate(1.05) brightness(1.03); transform: translateY(-1px); }
-
-    /* layout blocks */
-    .grid-2{
-      display:grid;
-      grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr);
-      gap: 1.2rem;
-      margin-top: .8rem;
-    }
-    .grid-2.equal{ grid-template-columns: 1fr 1fr; }
-    @media (max-width: 860px){
-      .grid-2{ grid-template-columns: 1fr; }
-    }
-
-    .card{
-      background: radial-gradient(120% 120% at 0% 0%, rgba(255,255,255,.06), transparent 50%), var(--card);
-      border: 1px solid rgba(148,163,184,.18);
-      border-radius: var(--radius);
-      padding: 1.05rem 1.15rem;
-    }
-    .card.soft{
-      background: radial-gradient(120% 120% at 0% 0%, rgba(255,255,255,.05), transparent 55%), rgba(15,23,42,.72);
-    }
-
-    /* code + labels */
-    .tiny-label{
-      font-size:.7rem;
-      text-transform: uppercase;
-      letter-spacing:.16em;
-      color: var(--fg-muted);
-      margin-bottom: .35rem;
-    }
-    code, .code-inline{
-      font-family: var(--mono);
-      font-size: .84rem;
-      padding: .14rem .42rem;
-      border-radius: 8px;
-      border: 1px solid rgba(148,163,184,.28);
-      background: rgba(2,6,23,.65);
-      color: #e0f2fe;
-    }
-
-    /* asset list */
-    .asset-list{ list-style:none; padding-left:0; margin:.3rem 0 0; }
-    .asset-list li{ display:flex; align-items:center; gap:.5rem; margin:.42rem 0; flex-wrap:wrap; }
-
-    .badge{
-      display:inline-flex; align-items:center; gap:.45rem;
-      font-size:.78rem;
-      padding:.25rem .55rem;
-      border-radius:999px;
-      border:1px solid rgba(148,163,184,.35);
-      background: rgba(15,23,42,.55);
-      color:#e5e7eb;
-    }
-    .badge-dot{
-      width:7px; height:7px; border-radius:999px;
-      background: var(--accent);
-      box-shadow: none;
-    }
-
-    /* swatches */
-    .swatch-grid{
-      display:grid;
-      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-      gap: .9rem;
-      margin-top: .8rem;
-    }
-    .swatch{
-      border-radius: 14px;
-      overflow:hidden;
-      border: 1px solid rgba(148,163,184,.26);
-      background: rgba(15,23,42,.78);
-    }
-    .swatch-color{ height: 56px; }
-    .swatch-body{ padding: .6rem .7rem .7rem; }
-    .swatch-name{
-      font-size:.82rem;
-      text-transform: uppercase;
-      letter-spacing: .14em;
-      color:#e5e7eb;
-    }
-    .swatch-meta{ font-size:.82rem; color: var(--fg-muted); margin-top:.2rem; }
-    .swatch-meta strong{ color:#e5e7eb; font-weight:600; }
-
-    /* image frame */
-    .frame{
-      margin-top: .85rem;
-      border-radius: 16px;
-      border: 1px solid rgba(148,163,184,.18);
-      overflow:hidden;
-      background: rgba(15,23,42,.60);
-    }
-    .frame .frame-head{
-      display:flex; align-items:center; justify-content:space-between;
-      padding: .65rem .75rem;
-      border-bottom: 1px solid rgba(148,163,184,.14);
-    }
-    .frame .frame-body{ padding: .75rem; }
-    .frame img{ border-radius: 14px; }
-
-    /* gallery */
-    .gallery{
-      display:grid;
-      grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
-      gap: 1rem;
-      margin-top: .85rem;
-    }
-    figure{
-      margin:0;
-      padding:.9rem;
-      border-radius: 16px;
-      border: 1px solid rgba(148,163,184,.16);
-      background: rgba(21,21,21,.55);
-      display:flex;
-      flex-direction:column;
-      align-items:center;
-      gap:.65rem;
-    }
-
-    figure.dark{ background: rgba(21,21,21,.75); }
-
-    figure img{
-      max-height: 56px;
-      width:auto;
-    }
-     
-    figure.light{ background:#ffffff;
-      color:#111;
-      border-color:#e5e7eb;
-    }
-    
-    figure.light figcaption{ color:#374151; }
-
-    figcaption{
-      font-size:.8rem;
-      color: var(--fg-muted);
-      text-align:center;
-    }
-
-    /* back to top */
-    .back-top{ margin-top: .9rem; }
-    .back-top a{
-      font-size: .8rem;
-      color: var(--fg-muted);
-      text-decoration:none;
-      border-bottom: 1px dotted rgba(255,255,255,.22);
-    }
-    .back-top a:hover{ color: #fff; }
-
-    /* print */
-    @media print{
-      body{ background:#fff; padding:0; }
-      .page{ box-shadow:none; border-radius:0; border:none; background:#fff; color:#111827; }
-      h1,h2,h3{ color:#111827; }
-      p,.muted,.subtitle,.tiny-label{ color:#374151; }
-      .card{ background:#f9fafb; border-color:#d1d5db; }
-      .pill{ background:#eef2ff; border-color:#9ca3af; color:#111827; }
-      .back-top{ display:none; }
-    }
-  </style>
+  <link rel="stylesheet" href="/assets/css/main.css" />
+  <script defer src="/assets/js/main.js"></script>
 </head>
 
 <body>
