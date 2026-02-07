@@ -1,11 +1,10 @@
 {
   "site": {
-    "name": "Renewt3ch",
-    "url": "https://renewt3ch-site.vercel.app",
-    "baseUrl": "https://renewt3ch-site.vercel.app",
-    "ogImagePath": "/assets/previews/og-cover-v2.png",
+    "baseUrl": "https://www.renewt3ch.com",
+    "url": "https://www.renewt3ch.com",
     "cleanUrls": true,
-    "stripIndex": true
+    "stripIndex": true,
+    "ogImagePath": "/assets/previews/og-cover-v2.png"
   },
   "pages": {
     "index.html": {
