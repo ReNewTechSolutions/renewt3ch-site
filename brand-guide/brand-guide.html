@@ -1,5 +1,3 @@
-<!doctype html>
-<html lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -8,20 +6,23 @@
   <meta name="description" content="Logos, colors, typography, and usage rules." />
   <meta name="theme-color" content="#0D0D0D" />
 
-  <link rel="preload" href="/assets/css/main.css" as="style" />
-  <link rel="stylesheet" href="/assets/css/main.css" />
+  <!-- Styles: brand tokens/fonts first, then main site CSS -->
+  <link rel="preload" href="../assets/brand.css" as="style" />
+  <link rel="stylesheet" href="../assets/brand.css" />
+  <link rel="preload" href="../assets/css/main.css" as="style" />
+  <link rel="stylesheet" href="../assets/css/main.css" />
 
   <!-- Canonical -->
   <link rel="canonical" href="https://www.renewt3ch.com/brand-guide/brand-guide.html" />
 
   <!-- Favicons -->
-  <link rel="icon" href="/assets/favicon/favicon.svg" type="image/svg+xml" />
-  <link rel="icon" href="/assets/favicon/favicon.ico" sizes="any" />
-  <link rel="icon" type="image/png" sizes="96x96" href="/assets/favicon/favicon-96x96.png" />
-  <link rel="icon" type="image/png" sizes="192x192" href="/assets/favicon/favicon-192x192.png" />
-  <link rel="icon" type="image/png" sizes="512x512" href="/assets/favicon/favicon-512x512.png" />
-  <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicon/apple-touch-icon.png" />
-  <link rel="manifest" href="/assets/favicon/site.webmanifest" />
+  <link rel="icon" href="../assets/favicon/favicon.svg" type="image/svg+xml" />
+  <link rel="icon" href="../assets/favicon/favicon.ico" sizes="any" />
+  <link rel="icon" type="image/png" sizes="96x96" href="../assets/favicon/favicon-96x96.png" />
+  <link rel="icon" type="image/png" sizes="192x192" href="../assets/favicon/favicon-192x192.png" />
+  <link rel="icon" type="image/png" sizes="512x512" href="../assets/favicon/favicon-512x512.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="../assets/favicon/apple-touch-icon.png" />
+  <link rel="manifest" href="../assets/favicon/site.webmanifest" />
 
   <!-- Social (Open Graph) -->
   <meta property="og:type" content="website" />
@@ -39,8 +40,8 @@
   <meta name="twitter:description" content="Logos, colors, typography, and usage rules." />
   <meta name="twitter:image" content="https://www.renewt3ch.com/assets/previews/og-cover-v2.png" />
 
-  <link rel="stylesheet" href="/assets/css/main.css" />
-  <script defer src="/assets/js/main.js"></script>
+  <!-- JS -->
+  <script defer src="../assets/js/main.js"></script>
 </head>
 
 <body>
@@ -56,7 +57,7 @@
         <span class="pill">Logo & Icons</span>
         <span class="pill">Color & Type</span>
         <span class="pill">UI & Tone</span>
-        <a class="pill pill--button" href="/index.html">View Site</a>
+        <a class="pill pill--button" href="../index.html">View Site</a>
       </div>
     </header>
 
@@ -185,7 +186,7 @@
         </div>
         <div class="frame-body">
           <img
-            src="/assets/brand-assets/colors/palette.png"
+            src="../assets/brand-assets/colors/palette.png"
             alt="Renewt3ch color palette preview"
             loading="lazy"
             decoding="async"
@@ -230,9 +231,9 @@
       <div class="card soft" style="margin-top:1rem;">
         <div class="tiny-label">Live font previews</div>
         <div class="pill-row" role="navigation" aria-label="Font preview links">
-          <a class="pill pill--button" href="/assets/previews/preview-inter.html" target="_blank" rel="noopener">Inter</a>
-          <a class="pill" href="/assets/previews/preview-poppins.html" target="_blank" rel="noopener">Poppins</a>
-          <a class="pill" href="/assets/previews/preview-space-grotesk.html" target="_blank" rel="noopener">Space Grotesk</a>
+          <a class="pill pill--button" href="../assets/previews/preview-inter.html" target="_blank" rel="noopener">Inter</a>
+          <a class="pill" href="../assets/previews/preview-poppins.html" target="_blank" rel="noopener">Poppins</a>
+          <a class="pill" href="../assets/previews/preview-space-grotesk.html" target="_blank" rel="noopener">Space Grotesk</a>
         </div>
       </div>
 
@@ -246,32 +247,32 @@
 
       <div class="gallery" aria-label="Logo gallery">
         <figure class="dark">
-          <img src="/assets/logos/Logo-Renewt3ch.svg" alt="Renewt3ch gradient logotype" />
+          <img src="../assets/logos/Logo-Renewt3ch.svg" alt="Renewt3ch gradient logotype" />
           <figcaption>Gradient logotype</figcaption>
         </figure>
 
         <figure class="dark">
-          <img src="/assets/logos/wordmark-pure-white.svg" alt="Wordmark in white" />
+          <img src="../assets/logos/wordmark-pure-white.svg" alt="Wordmark in white" />
           <figcaption>Wordmark — white</figcaption>
         </figure>
 
         <figure class="dark">
-          <img src="/assets/logos/r3-icon-gradient.svg" alt="R3 gradient icon" />
+          <img src="../assets/logos/r3-icon-gradient.svg" alt="R3 gradient icon" />
           <figcaption>R³ icon — gradient</figcaption>
         </figure>
 
         <figure class="dark">
-          <img src="/assets/logos/r3-icon-white.svg" alt="R3 icon in white" />
+          <img src="../assets/logos/r3-icon-white.svg" alt="R3 icon in white" />
           <figcaption>R³ icon — white</figcaption>
         </figure>
 
         <figure class="light">
-          <img src="/assets/logos/wordmark-black.svg" alt="Wordmark · black" />
+          <img src="../assets/logos/wordmark-black.svg" alt="Wordmark · black" />
           <figcaption>Wordmark — black (light bg)</figcaption>
         </figure>
 
         <figure class="light">
-          <img src="/assets/logos/r3-icon-black.svg" alt="R3 icon · black" />
+          <img src="../assets/logos/r3-icon-black.svg" alt="R3 icon · black" />
           <figcaption>R³ icon — black (light bg)</figcaption>
         </figure>
       </div>
