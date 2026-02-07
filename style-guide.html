@@ -6,7 +6,7 @@
 
   <title>Style Guide — Renewt3ch</title>
   <meta name="description" content="Tokens, components, and usage examples for the Renewt3ch brand and website template." />
-  <meta name="theme-color" content="#0D0D0D" />
+  <meta name="theme-color" content="#111111" />
 
   <!-- Canonical -->
   <link rel="canonical" href="https://renewt3ch-site.vercel.app/style-guide" />
@@ -78,13 +78,13 @@
       <span class="sg-kicker">Tokens • Components • Layout</span>
     </div>
 
-    <h1 style="margin-top:10px;">Renewt3ch UI + Brand System</h1>
+    <h1 class="sg-title">Renewt3ch UI + Brand System</h1>
     <p class="sg-lede">
       Reference for the Renewt3ch template: core tokens, typography, UI components, and layout patterns.
       Designed to map cleanly into Webflow classes if you rebuild later.
     </p>
 
-    <div class="sg-toc" aria-label="On this page">
+    <nav class="sg-toc" aria-label="On this page">
       <a class="btn btn--ghost" href="#tokens">Tokens</a>
       <a class="btn btn--ghost" href="#typography">Typography</a>
       <a class="btn btn--ghost" href="#buttons">Buttons</a>
@@ -92,7 +92,7 @@
       <a class="btn btn--ghost" href="#forms">Forms</a>
       <a class="btn btn--ghost" href="#layouts">Layouts</a>
       <a class="btn btn--ghost" href="#logos">Logo previews</a>
-    </div>
+    </nav>
 
     <hr class="rule" />
 
@@ -104,10 +104,11 @@
       </p>
 
       <div class="sg-subtle">
-        <div class="muted">
-          Primary accents are muted for a premium feel:
-          <span class="sg-kbd">--accent</span> and <span class="sg-kbd">--accent-2</span>.
-        </div>
+        <p class="muted" style="margin:0;">
+          Canonical palette (must match Brand Guide): <span class="sg-kbd">#0C85FF</span> (blue),
+          <span class="sg-kbd">#2FF3E0</span> (aqua), <span class="sg-kbd">#111111</span>,
+          <span class="sg-kbd">#151515</span>, <span class="sg-kbd">#222222</span>, <span class="sg-kbd">#FFFFFF</span>.
+        </p>
       </div>
 
       <div class="sg-swatches" role="list" aria-label="Color swatches">
@@ -115,7 +116,7 @@
           <div class="sg-swatch__chip" style="background: var(--bg);"></div>
           <div class="sg-swatch__meta">
             <span class="sg-swatch__name">--bg</span>
-            <span class="sg-swatch__hex">#0D0D0D</span>
+            <span class="sg-swatch__hex">#111111</span>
           </div>
         </div>
 
@@ -135,19 +136,21 @@
           </div>
         </div>
 
+        <!-- Brand blue -->
         <div class="sg-swatch" role="listitem">
-          <div class="sg-swatch__chip" style="background: var(--accent);"></div>
+          <div class="sg-swatch__chip" style="background: var(--blue);"></div>
           <div class="sg-swatch__meta">
-            <span class="sg-swatch__name">--accent</span>
-            <span class="sg-swatch__hex">#7CF5C1</span>
+            <span class="sg-swatch__name">--blue</span>
+            <span class="sg-swatch__hex">#0C85FF</span>
           </div>
         </div>
 
+        <!-- Brand aqua -->
         <div class="sg-swatch" role="listitem">
-          <div class="sg-swatch__chip" style="background: var(--accent-2);"></div>
+          <div class="sg-swatch__chip" style="background: var(--aqua);"></div>
           <div class="sg-swatch__meta">
-            <span class="sg-swatch__name">--accent-2</span>
-            <span class="sg-swatch__hex">#4FE7B0</span>
+            <span class="sg-swatch__name">--aqua</span>
+            <span class="sg-swatch__hex">#2FF3E0</span>
           </div>
         </div>
 
@@ -173,15 +176,15 @@
       <div class="grid grid-2 sg-spacer">
         <div class="card">
           <div class="sg-kicker">Heading scale</div>
-          <h1 style="margin-top:.6rem;">H1 Example Title</h1>
-          <h2 style="margin-top:1rem;">H2 Section Title</h2>
-          <h3 style="margin-top:1rem;">H3 Component Title</h3>
-          <p class="muted" style="margin-top:1rem;">Muted copy uses <span class="sg-kbd">.muted</span>.</p>
+          <h1 class="sg-h1-demo">H1 Example Title</h1>
+          <h2 class="sg-h2-demo">H2 Section Title</h2>
+          <h3 class="sg-h3-demo">H3 Component Title</h3>
+          <p class="muted sg-spacer">Muted copy uses <span class="sg-kbd">.muted</span>.</p>
         </div>
 
         <div class="card">
           <div class="sg-kicker">Body copy</div>
-          <p style="margin-top:.6rem;">
+          <p class="sg-spacer">
             This is regular body text. Keep paragraphs within ~60–75 characters per line for readability.
           </p>
           <p class="muted">
@@ -206,7 +209,7 @@
         <div class="sg-row" aria-label="Button styles">
           <a class="btn" href="#">Primary</a>
           <a class="btn btn--alt" href="#">Alt</a>
-          <a class="btn btn--grad" href="#">Gradient</a>
+          <a class="btn btn--grad" href="#">Glow</a>
           <a class="btn btn--ghost" href="#">Ghost</a>
         </div>
         <p class="muted sg-spacer">
@@ -233,7 +236,7 @@
 
         <div class="card">
           <span class="badge">Standard</span>
-          <h3 style="margin-top:.6rem;">Content card</h3>
+          <h3 class="sg-card-title">Content card</h3>
           <p class="muted">Use for blurbs, docs, or small blocks of info.</p>
           <div class="cta-row sg-spacer">
             <a class="btn btn--ghost" href="#">Secondary</a>
@@ -243,7 +246,7 @@
 
         <div class="card plan plan--popular plan--glow">
           <span class="badge badge--accent">Popular</span>
-          <h3 style="margin-top:.6rem;">Pricing card</h3>
+          <h3 class="sg-card-title">Pricing card</h3>
           <div class="price"><span class="currency">$</span>49</div>
           <ul class="feature-list">
             <li>All logos (SVG)</li>
@@ -267,18 +270,19 @@
           <label class="muted" for="sgName">Name</label>
           <input class="input" id="sgName" name="name" type="text" placeholder="Your name" />
 
-          <label class="muted" for="sgEmail" style="margin-top:10px;">Email</label>
+          <label class="muted" for="sgEmail" class="sg-mt-10">Email</label>
           <input class="input" id="sgEmail" name="email" type="email" placeholder="you@company.com" />
 
-          <label class="muted" for="sgMessage" style="margin-top:10px;">Message</label>
+          <label class="muted" for="sgMessage" class="sg-mt-10">Message</label>
           <textarea class="input" id="sgMessage" name="message" placeholder="How can we help?"></textarea>
 
           <div class="cta-row sg-spacer">
             <button class="btn" type="submit">Send</button>
             <a class="btn btn--ghost" href="#">Cancel</a>
           </div>
+
           <p class="muted" style="margin-top:10px;">
-            Note: Demo form has no backend. Replace the action with Webflow/Formspree/etc.
+            Note: Demo form has no backend. Replace the action with Webflow / Formspree / Netlify forms.
           </p>
         </form>
 
@@ -316,23 +320,29 @@
 
       <div class="grid grid-2 sg-spacer">
         <div class="card">
-         <!-- Grid 2 demo -->
-<div class="grid grid-2 sg-demo-grid">
-  <div class="sg-demo-box">A</div>
-  <div class="sg-demo-box">B</div>
-</div>
+          <h3>Grid 2</h3>
+          <p class="muted">Use for content + visual, forms + copy, or side-by-side sections.</p>
+          <div class="grid grid-2 sg-demo-grid">
+            <div class="sg-demo-box">A</div>
+            <div class="sg-demo-box">B</div>
+          </div>
+        </div>
 
-<!-- Grid 3 demo -->
-<div class="grid grid-3 sg-demo-grid">
-  <div class="sg-demo-box">1</div>
-  <div class="sg-demo-box">2</div>
-  <div class="sg-demo-box">3</div>
-</div>
+        <div class="card">
+          <h3>Grid 3</h3>
+          <p class="muted">Use for features, pricing, and icon tiles. Collapses responsively.</p>
+          <div class="grid grid-3 sg-demo-grid">
+            <div class="sg-demo-box">1</div>
+            <div class="sg-demo-box">2</div>
+            <div class="sg-demo-box">3</div>
+          </div>
+        </div>
+      </div>
 
       <div class="card sg-spacer">
         <h3>Keyboard notes</h3>
         <p class="muted">
-          Mobile menu: <span class="sg-kbd">ESC</span> closes, <span class="sg-kbd">Tab</span> cycles focus. Click outside closes.
+          Mobile menu: <span class="sg-kbd">ESC</span> closes, <span class="sg-kbd">Tab</span> cycles focus while open. Click outside closes.
         </p>
       </div>
 
@@ -345,26 +355,30 @@
       <p class="muted">Use dark tiles for the default set. Use light tiles only for black marks.</p>
 
       <div class="sg-logos" aria-label="Logo previews">
-        <div class="sg-logo">
-          <img src="/assets/logos/Logo-Renewt3ch.svg" alt="Renewt3ch gradient lockup" />
+        <!-- dark tiles -->
+        <div class="logo-tile">
+          <img src="/assets/logos/Logo-Renewt3ch.svg" alt="Renewt3ch gradient lockup" loading="lazy" decoding="async" />
         </div>
-        <div class="sg-logo">
-          <img src="/assets/logos/wordmark-pure-white.svg" alt="Wordmark white" />
+        <div class="logo-tile">
+          <img src="/assets/logos/wordmark-pure-white.svg" alt="Wordmark — white" loading="lazy" decoding="async" />
+        </div>
+        <div class="logo-tile">
+          <img src="/assets/logos/r3-icon-gradient.svg" alt="R³ icon — gradient" loading="lazy" decoding="async" />
+        </div>
+        <div class="logo-tile">
+          <img src="/assets/logos/r3-icon-white.svg" alt="R³ icon — white" loading="lazy" decoding="async" />
+        </div>
+
+        <!-- light tiles (critical: leading slash + light background) -->
+        <div class="logo-tile logo-tile--light">
+          <img src="/assets/logos/wordmark-black.svg" alt="Wordmark — black" loading="lazy" decoding="async" />
         </div>
         <div class="logo-tile logo-tile--light">
-          <img src="assets/logos/wordmark-black.svg" alt="Wordmark — black" />
-        </div>
-        <div class="sg-logo">
-          <img src="/assets/logos/r3-icon-gradient.svg" alt="R³ icon gradient" />
-        </div>
-        <div class="sg-logo">
-          <img src="/assets/logos/r3-icon-white.svg" alt="R³ icon white" />
-        </div>
-        <div class="logo-tile logo-tile--light">
-          <img src="assets/logos/r3-icon-black.svg" alt="R³ icon — black" />
+          <img src="/assets/logos/r3-icon-black.svg" alt="R³ icon — black" loading="lazy" decoding="async" />
         </div>
       </div>
     </section>
+
   </div>
 </main>
 
