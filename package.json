@@ -5,8 +5,13 @@
   "scripts": {
     "inject:head": "node scripts/inject-head.mjs",
     "setup:assets": "node scripts/setup-assets.mjs",
+
+    "customize": "node scripts/customize.mjs",
+    "seo": "node scripts/generate-seo.mjs",
+
     "zip": "node scripts/make-zip.mjs --mode delivery --manifest",
     "zip:pure": "node scripts/make-zip.mjs --mode demo",
-    "package": "npm run inject:head && npm run zip && npm run zip:pure"
+
+    "package": "npm run customize && npm run inject:head && npm run seo && npm run zip && npm run zip:pure"
   }
 }

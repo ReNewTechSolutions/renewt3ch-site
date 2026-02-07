@@ -1,35 +1,44 @@
 {
-  "site": {
-    "baseUrl": "https://www.renewt3ch.com",
-    "url": "https://www.renewt3ch.com",
-    "cleanUrls": true,
-    "stripIndex": true,
-    "ogImagePath": "/assets/previews/og-cover-v2.png"
+  "siteName": "Renewt3ch",
+  "baseUrl": "https://www.renewt3ch.com",
+  "description": "Futuristic branding + static website kit. Fast, lightweight, deploy-anywhere.",
+  "ogImagePath": "/assets/previews/og-cover-v2.png",
+  "brand": {
+    "blue": "#0C85FF",
+    "aqua": "#2FF3E0",
+    "bg": "#111111",
+    "bgElev": "#151515",
+    "slate": "#222222",
+    "fg": "#FFFFFF"
   },
-  "pages": {
-    "index.html": {
-      "title": "Renewt3ch — Futuristic Branding Built for the Next Web",
-      "description": "A clean, minimal identity kit engineered for modern SaaS, AI tools, and developer platforms — ready to reuse, remix, and resell."
+  "pages": [
+    {
+      "file": "index.html",
+      "path": "/"
     },
-    "about.html": {
-      "title": "About — Renewt3ch",
-      "description": "The story behind Renewt3ch: a futuristic branding kit built for modern SaaS, AI tools, and developer platforms."
+    {
+      "file": "about.html",
+      "path": "/about.html"
     },
-    "features.html": {
-      "title": "Features — Renewt3ch",
-      "description": "Everything included in the Renewt3ch identity kit: modular logos, tokens, components, and printable brand docs."
+    {
+      "file": "features.html",
+      "path": "/features.html"
     },
-    "pricing.html": {
-      "title": "Pricing — Renewt3ch",
-      "description": "The $500 turnkey package: domain + brand kit + full static site + optional hosting/admin add-ons."
+    {
+      "file": "pricing.html",
+      "path": "/pricing.html"
     },
-    "contact.html": {
-      "title": "Contact — Renewt3ch",
-      "description": "Questions or requests? Contact Renewt3ch for licensing, support, or customization."
+    {
+      "file": "contact.html",
+      "path": "/contact.html"
     },
-    "style-guide.html": {
-      "title": "Style Guide — Renewt3ch",
-      "description": "Tokens, components, and usage examples for the Renewt3ch brand and website template."
+    {
+      "file": "style-guide.html",
+      "path": "/style-guide.html"
+    },
+    {
+      "file": "brand-guide/brand-guide.html",
+      "path": "/brand-guide/brand-guide.html"
     }
-  }
+  ]
 }

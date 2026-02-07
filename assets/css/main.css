@@ -70,7 +70,7 @@
   --size-body: 1rem;
 
   /* Core palette (match brand palette image) */
-  --black:#0D0D0D;
+  --black:#111111;
   --graphite:#151515;
   --slate:#222222;
   --white:#FFFFFF;
@@ -88,7 +88,7 @@
   --bg: var(--black);
   --bg-elev: var(--graphite);
   --tile: color-mix(in oklab, var(--slate), black 6%);
-  --fg: var(--white);
+  --fg: #FFFFFF;
   --fg-muted: color-mix(in oklab, var(--fg), var(--bg) 55%);
   --text-soft:#F3F4F6;
 
