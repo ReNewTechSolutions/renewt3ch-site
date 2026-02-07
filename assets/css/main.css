@@ -58,7 +58,7 @@
   --accent:#7CF5C1;        /* mint */
   --accent-2:#4FE7B0;      /* green */
 
-  /* Blue is back (used for primary + glow) */
+  /* Blue (used for primary + glow) */
   --blue:#8EDCFF;          /* soft sky */
   --blue-soft: rgba(142,220,255,.14);
   --blue-glow: rgba(142,220,255,.22);
@@ -360,40 +360,38 @@ h3{ font-size:var(--size-h3); }
   align-items:stretch;
 }
 
-/* default: dark tile (premium) */
 .logo-tile{
-  background: linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02));
-  border: 1px solid rgba(255,255,255,.08);
+  background: var(--slate);
+  border: 1px solid rgba(255,255,255,.06);
   border-radius:14px;
   padding:18px 22px;
   min-height:110px;
   display:flex;
   align-items:center;
   justify-content:center;
-  box-shadow: 0 14px 34px rgba(0,0,0,.40);
+  box-shadow: 0 12px 24px rgba(0,0,0,.25);
 }
 
-/* critical: prevent massive logos */
-.logo-tile img{
-  width:auto;
+.logo-tile img,
+.logo-tile svg{
   max-width:100%;
   height:auto;
-  max-height:56px;
-  opacity:1;
-  filter:none;
-  mix-blend-mode:normal;
+  max-height:56px;              /* prevents “massive” logos */
+  opacity: 1 !important;        /* critical if exported w/ opacity */
+  filter: none !important;
+  mix-blend-mode: normal !important;
 }
 
-/* Use this tile for BLACK logo assets so they sit on white */
-.logo-tile--white{
-  background: #FFFFFF;
-  border-color: rgba(2,6,23,.12);
-  box-shadow: 0 12px 26px rgba(0,0,0,.22);
+/* Use this class for ANY tile that needs a light background (black marks) */
+.logo-tile--light{
+  background: #ffffff !important;
+  border-color: rgba(2,6,23,.10) !important;
+  box-shadow: 0 12px 20px rgba(0,0,0,.14) !important;
 }
 
-/* Optional: slightly smaller icon-only tiles if needed */
-.logo-tile--icon img{
-  max-height:64px;
+/* Optional: slightly smaller padding for dense marks */
+.logo-tile--tight{
+  padding: 14px 18px;
 }
 
 /* ---------- Pricing helpers ---------- */
@@ -476,7 +474,7 @@ textarea.input{
   resize:vertical;
 }
 
-/* ---------- Style-guide helpers (if you use them) ---------- */
+/* ---------- Style-guide helpers ---------- */
 .sg-nav{ display:flex; gap:.5rem; flex-wrap:wrap; margin-top:14px; }
 .sg-hint{ font-family:var(--font-alt); text-transform:uppercase; letter-spacing:.12em; font-size:.78rem; color:rgba(255,255,255,.62); }
 .sg-kbd, .sg-code{
