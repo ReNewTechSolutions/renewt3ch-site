@@ -1,22 +1,27 @@
-# Screenshots (What to capture + naming)
+# Screenshots
 
-Store screenshots in: `flippa-assets/screenshots/`
-Format: PNG or JPG (PNG preferred for UI)
-Width: 1400–2000px (or full browser screenshot)
-Naming: `01-home-hero.png`, `02-home-logos.png`, etc.
+Store screenshots in: `docs/screenshots/`  
+Format: JPG or PNG (JPG is fine)  
+Recommended: full-width browser captures (1400–2000px wide), crisp text, no personal info visible.
 
-## Required (for Flippa listing)
-1. `01-home-hero.png` — hero section (headline + CTA visible)
-2. `02-home-logos.png` — logo showcase grid (shows contrast + polish)
-3. `03-features.png` — features section (cards + bullets)
-4. `04-pricing.png` — pricing table/cards
-5. `05-style-guide-tokens.png` — style guide token swatches (colors/typography)
-6. `06-style-guide-components.png` — buttons/cards/forms
-7. `07-brand-guide.png` — brand guide page (logo + palette section)
-8. `08-mobile-menu.png` — mobile nav open (responsive proof)
+## Current set (used for Flippa + handoff proof)
 
-## Optional 
-9. `09-contact.png` — contact form section
-10. `10-og-preview.png` — open graph image preview (1200x630)
-11. `11-pages-overview.png` — quick scroll collage / multiple sections
-12. `12-lighthouse.png` — Lighthouse score screenshot (if strong)
+1. `01-home.jpeg` — Home page hero + primary CTA
+2. `02-features.jpeg` — Features page (cards + layout)
+3. `03-pricing.jpeg` — Pricing page (pricing cards visible)
+4. `04-brand-guide.jpeg` — Brand Guide page (logo + palette sections)
+5. `05-style-guide.jpeg` — Style Guide overview (tokens/components)
+6. `06-og-preview.jpeg` — OG image preview (og-cover-v2)
+7. `07-lighthouse.jpeg` — Lighthouse/PageSpeed score proof
+8. `08-logo-preview.jpeg` — Logo tile preview (shows white + gradient marks)
+9. `09-logo-palette.jpeg` — Canonical color palette (brand colors)
+10. `10-logo-folder-preview-svgs.jpeg` — Folder view proving included SVG assets
+11. `11-site-folder-preview.jpeg` — Project root / structure overview
+12. `12-site-docs-preview.jpeg` — Docs folder overview
+13. `13-dist-zip-preview.jpeg` — `dist/` showing generated zips + manifest
+14. `14-mobile-preview.jpeg` — Mobile layout / responsive proof (nav or hero)
+
+## Notes (quick rules)
+- Keep the first 6–8 images as your “listing gallery” (strongest visuals first).
+- The folder/zip/docs screenshots are best as credibility/supporting proof.
+- If Flippa limits image count, prioritize: 01, 02, 03, 04, 05, 06, 07, 14.
