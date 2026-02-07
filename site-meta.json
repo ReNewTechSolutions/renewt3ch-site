@@ -3,11 +3,9 @@
     "name": "Renewt3ch",
     "baseUrl": "https://www.renewt3ch.com",
     "ogImagePath": "/assets/previews/og-cover-v2.png",
-
     "cleanUrls": false,
     "stripIndex": true
   },
-
   "brand": {
     "blue": "#0C85FF",
     "aqua": "#2FF3E0",
@@ -16,7 +14,6 @@
     "slate": "#222222",
     "fg": "#FFFFFF"
   },
-
   "pages": {
     "index.html": {
       "title": "Renewt3ch — Futuristic Branding Built for the Next Web",
