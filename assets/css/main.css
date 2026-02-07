@@ -1,10 +1,11 @@
 /* =========================================================
    FILE: assets/css/main.css
    renewt3ch · full clean stylesheet (premium + muted)
-   - Dark only (no light theme)
-   - Hollow-glow button (replaces gradient)
-   - Prevents oversized logos
-   - Logo showcase: dark tiles by default + white tiles for black marks
+   - Dark-only (no light theme toggle)
+   - Restores background gradient + depth
+   - Reintroduces BLUE token
+   - Replaces gradient button with hollow glow button
+   - Fixes logo tiles (black logos visible on white tiles)
    ========================================================= */
 
 /* ---------- Variable fonts (relative paths from /assets/css/) ---------- */
@@ -30,51 +31,6 @@
   font-display:swap;
 }
 
-/* ---------- Base / Page ---------- */
-:root{
-  color-scheme: dark;
-}
-
-html, body { height: 100%; }
-
-body{
-  margin:0;
-  color:var(--fg);
-  background:
-    radial-gradient(55% 55% at 10% 8%, var(--bg-glow-a) 0%, transparent 60%),
-    radial-gradient(45% 45% at 92% 12%, var(--bg-glow-b) 0%, transparent 58%),
-    radial-gradient(75% 75% at 10% 95%, rgba(255,255,255,.035) 0%, transparent 55%),
-    linear-gradient(180deg, var(--bg-grad-1) 0%, var(--bg-grad-2) 48%, var(--bg-grad-3) 100%);
-}
-
-:root{
-  /* Base palette (matches your brand guide) */
-  --black:    #0D0D0D;
-  --graphite: #151515;
-  --slate:    #222222;
-
-  /* Brand accents (blue + aqua) */
-  --blue: #0C85FF;
-  --blue-soft: rgba(12,133,255,.22);
-  --blue-glow: rgba(12,133,255,.35);
-
-  --aqua: #2FF3E0;
-  --aqua-soft: rgba(47,243,224,.18);
-  --aqua-glow: rgba(47,243,224,.28);
-
-  /* Your existing tokens can keep using these */
-  --bg: var(--black);
-  --bg-elev: var(--graphite);
-
-  /* Background stops */
-  --bg-grad-1:#0a0f18;
-  --bg-grad-2:#070b12;
-  --bg-grad-3:#05070d;
-
-  --bg-glow-a: rgba(12,133,255,.10);
-  --bg-glow-b: rgba(47,243,224,.09);
-}
-
 /* ---------- Tokens (dark default) ---------- */
 :root{
   /* Fonts */
@@ -88,72 +44,95 @@ body{
   --size-h3: 1.2rem;
   --size-body: 1rem;
 
-  /* Core palette (CANONICAL) */
-  --blue:#0C85FF;         /* Infinite Blue */
-  --aqua:#2FF3E0;         /* Aqua Mint */
-  --black:#111111;        /* Void Black */
-  --white:#FFFFFF;        /* Pure White */
-  --graphite:#151515;     /* Graphite Gray */
-  --slate:#222222;        /* Deep Slate */
+  /* Core palette (match brand palette image) */
+  --black:#0D0D0D;
+  --graphite:#151515;
+  --slate:#222222;
+  --white:#FFFFFF;
 
-  /* Site surfaces */
+  /* Brand accents */
+  --blue:#0C85FF;
+  --aqua:#2FF3E0;
+
+  /* Blue glow helpers */
+  --blue-soft: rgba(12,133,255,.14);
+  --blue-glow: rgba(12,133,255,.24);
+  --aqua-soft: rgba(47,243,224,.14);
+
+  /* Surfaces */
   --bg: var(--black);
   --bg-elev: var(--graphite);
-  --border: rgba(255,255,255,.10);
+  --tile: color-mix(in oklab, var(--slate), black 6%);
   --fg: var(--white);
-  --fg-muted: rgba(255,255,255,.72);
-  --text-soft: rgba(255,255,255,.88);
+  --fg-muted: color-mix(in oklab, var(--fg), var(--bg) 55%);
+  --text-soft:#F3F4F6;
 
-  /* Accents */
-  --accent: var(--aqua);
-  --accent-2: var(--blue);
+  /* Borders / glass */
+  --border: rgba(255,255,255,.08);
+  --glass: rgba(21,21,21,.55);
+  --glass-border: rgba(148,163,184,.14);
 
-  /* Glows (for hollow glow buttons, dots, highlights) */
-  --blue-soft: rgba(12,133,255,.22);
-  --blue-glow: rgba(12,133,255,.40);
-  --aqua-soft: rgba(47,243,224,.18);
-
-  /* Background tints (subtle) */
+  /* Background stops */
   --bg-grad-1:#0a0f18;
   --bg-grad-2:#070b12;
   --bg-grad-3:#05070d;
-
   --bg-glow-a: rgba(12,133,255,.10);
   --bg-glow-b: rgba(47,243,224,.09);
 
-  /* Misc */
+  /* Radius / shadow */
   --radius:14px;
   --shadow-1:0 10px 30px rgba(0,0,0,.35);
   --shadow-2:0 12px 34px rgba(0,0,0,.34);
-  --glass: rgba(21,21,21,.55);
-  --glass-border: rgba(255,255,255,.14);
-  --tile-bg: var(--slate);
 }
 
-/* ---------- A11y ---------- */
-.sr-only{
+/* ---------- Reset / base ---------- */
+*{ box-sizing:border-box; }
+html,body{ height:100%; }
+html{ scroll-behavior:smooth; }
+body{
+  margin:0;
+  font-family:var(--font-sans);
+  font-size:var(--size-body);
+  line-height:1.65;
+  color:var(--fg);
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+
+  /* ✅ Restored premium dark background */
+  background:
+    radial-gradient(55% 55% at 8% 6%,  var(--bg-glow-a) 0%, transparent 60%),
+    radial-gradient(45% 45% at 92% 10%, var(--bg-glow-b) 0%, transparent 58%),
+    radial-gradient(75% 75% at 10% 95%, rgba(255,255,255,.035) 0%, transparent 55%),
+    linear-gradient(180deg, var(--bg-grad-1) 0%, var(--bg-grad-2) 48%, var(--bg-grad-3) 100%);
+}
+
+img{ max-width:100%; height:auto; display:block; }
+a{ color:inherit; }
+p{ margin:.5rem 0 1rem; color:var(--text-soft); }
+.muted{ color:var(--fg-muted); }
+
+.skip-link{
   position:absolute;
+  left:-9999px;
+  top:auto;
   width:1px;
   height:1px;
-  padding:0;
-  margin:-1px;
   overflow:hidden;
-  clip:rect(0,0,0,0);
-  white-space:nowrap;
-  border:0;
 }
-
-:focus-visible{
-  outline: 2px solid var(--focus);
-  outline-offset: 3px;
-  border-radius: 10px;
+.skip-link:focus{
+  left:16px;
+  top:16px;
+  width:auto;
+  height:auto;
+  padding:10px 12px;
+  border-radius:10px;
+  background:rgba(0,0,0,.85);
+  border:1px solid rgba(255,255,255,.18);
+  z-index:9999;
 }
 
 /* ---------- Layout ---------- */
 .container{ width:min(1100px, 92%); margin-inline:auto; }
-.section{ padding:64px 0; }
-.section-tight{ padding:40px 0; }
-
 .grid{ display:grid; gap:1rem; }
 .grid-3{ grid-template-columns:repeat(3,minmax(0,1fr)); }
 .grid-2{ grid-template-columns:repeat(2,minmax(0,1fr)); }
@@ -165,6 +144,9 @@ body{
   .grid-3,.grid-2{ grid-template-columns:1fr; }
 }
 
+.section{ padding:64px 0; }
+.section-tight{ padding:40px 0; }
+
 .page-head{ max-width:900px; }
 .page-body{ margin-top:16px; }
 
@@ -172,7 +154,7 @@ body{
   margin:16px 0;
   border:0;
   height:1px;
-  background:rgba(148,163,184,.16);
+  background:rgba(148,163,184,.18);
 }
 
 .cta-row{
@@ -196,13 +178,31 @@ h3{ font-size:var(--size-h3); }
 /* ---------- Cards ---------- */
 .card{
   background: linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));
-  border: 1px solid rgba(255,255,255,.06);
+  border: 1px solid rgba(255,255,255,.07);
   border-radius: var(--radius);
   box-shadow: var(--shadow-1);
   padding: 20px;
 }
 
-/* ---------- Buttons ---------- */
+/* ---------- Badges ---------- */
+.badge{
+  display:inline-flex;
+  align-items:center;
+  gap:.4rem;
+  font-size:.75rem;
+  padding:.22rem .5rem;
+  border-radius:999px;
+  border:1px solid rgba(255,255,255,.10);
+  background: rgba(0,0,0,.18);
+  color: rgba(255,255,255,.72);
+}
+.badge--accent{
+  border-color: color-mix(in oklab, var(--aqua), white 12%);
+  color:#eaffff;
+  background: linear-gradient(135deg, rgba(15,23,42,.70), rgba(8,47,73,.88));
+}
+
+/* ---------- Buttons (NO gradient button) ---------- */
 .btn{
   display:inline-flex;
   align-items:center;
@@ -212,27 +212,26 @@ h3{ font-size:var(--size-h3); }
   border-radius:12px;
   border:1px solid rgba(255,255,255,.10);
   text-decoration:none;
-  font-weight:700;
+  font-weight:600;
   cursor:pointer;
 
   background: var(--blue);
-  color:#06101b;
-  box-shadow:0 10px 22px rgba(0,0,0,.28);
+  color: #071018;
+  box-shadow:0 6px 16px rgba(0,0,0,.20);
   transition:transform .15s ease, filter .15s ease, box-shadow .15s ease;
 }
 .btn:hover{
-  filter:saturate(1.03) brightness(1.03);
+  filter:saturate(1.03) brightness(1.02);
   transform:translateY(-2px);
 }
 .btn:active{ transform:translateY(0); }
 
 .btn--alt{
   background: var(--aqua);
-  border-color: rgba(255,255,255,.12);
-  color:#051012;
+  border-color: color-mix(in oklab, var(--aqua), black 20%);
+  color:#071018;
 }
 
-/* Ghost stays subtle */
 .btn--ghost{
   color: var(--fg);
   background: rgba(255,255,255,.04);
@@ -240,21 +239,23 @@ h3{ font-size:var(--size-h3); }
   box-shadow:none;
 }
 
-/* Hollow glow (replaces animated gradient button) */
+/* ✅ Hollow glow button (replaces old gradient button)
+   Keep class name .btn--grad so you don't need to change HTML. */
 .btn--grad{
-  background: rgba(0,0,0,.18);
   color: var(--fg);
-  border:1px solid rgba(12,133,255,.40);
+  background: rgba(255,255,255,.02);
+  border: 1px solid color-mix(in oklab, var(--blue), white 22%);
   box-shadow:
-    0 12px 28px rgba(0,0,0,.34),
+    0 10px 22px rgba(0,0,0,.28),
     0 0 0 1px rgba(255,255,255,.04),
     0 0 26px var(--blue-soft);
 }
 .btn--grad:hover{
+  filter: brightness(1.03);
   box-shadow:
-    0 16px 34px rgba(0,0,0,.42),
+    0 14px 30px rgba(0,0,0,.34),
     0 0 0 1px rgba(255,255,255,.06),
-    0 0 38px var(--blue-glow);
+    0 0 36px var(--blue-glow);
   transform: translateY(-2px);
 }
 .btn--grad:active{ transform: translateY(0); }
@@ -265,8 +266,8 @@ h3{ font-size:var(--size-h3); }
   top:0;
   z-index:50;
   padding:12px 0;
+  transition:all .2s ease;
 }
-
 .nav{
   display:flex;
   align-items:center;
@@ -277,7 +278,6 @@ h3{ font-size:var(--size-h3); }
   background:transparent;
   border:1px solid transparent;
 }
-
 .site-header.scrolled .nav{
   background: rgba(15,23,42,.45);
   border-color: rgba(148,163,184,.16);
@@ -288,6 +288,7 @@ h3{ font-size:var(--size-h3); }
   display:flex;
   align-items:center;
   gap:.75rem;
+  text-decoration:none;
   color:var(--fg);
 }
 .brand img{ width:28px; height:28px; }
@@ -295,7 +296,6 @@ h3{ font-size:var(--size-h3); }
   font-family:var(--font-display);
   font-weight:700;
   letter-spacing:.04em;
-  text-transform:lowercase;
 }
 
 .nav-links{
@@ -304,19 +304,17 @@ h3{ font-size:var(--size-h3); }
   align-items:center;
 }
 .nav-links a{
-  color: rgba(255,255,255,.72);
+  color: var(--fg-muted);
+  text-decoration:none;
   padding:.4rem .6rem;
-  border-radius:10px;
+  border-radius:8px;
 }
-.nav-links a:hover{
-  color: var(--fg);
-  background: rgba(255,255,255,.04);
-}
+.nav-links a:hover{ color:var(--fg); }
 
 .hamb{
   display:none;
   background:none;
-  border:1px solid rgba(148,163,184,.22);
+  border:1px solid rgba(255,255,255,.12);
   color:var(--fg);
   padding:.45rem .55rem;
   border-radius:10px;
@@ -324,44 +322,40 @@ h3{ font-size:var(--size-h3); }
 }
 
 @media (max-width:860px){
-  .nav{ position:relative; }
   .nav-links{ display:none; }
   .hamb{ display:inline-flex; }
 
   .nav-links.open{
     display:flex;
     position:absolute;
-    inset:64px 12px auto 12px;
+    inset:64px 16px auto 16px;
     flex-direction:column;
     align-items:stretch;
-    gap:.25rem;
-
     background: rgba(15,23,42,.84);
     border:1px solid rgba(148,163,184,.20);
     border-radius:16px;
-    padding:10px;
+    padding:12px;
     backdrop-filter: blur(10px);
-    box-shadow: var(--shadow-1);
   }
 
-  .nav-links a{ padding:.65rem .75rem; }
+  .nav-links a{ padding:.6rem .75rem; }
 }
 
 /* ---------- Hero ---------- */
 .hero{
   padding:86px 0 48px;
   display:grid;
-  gap:22px;
+  gap:24px;
   align-items:center;
 }
 .hero .r3{ width:84px; height:84px; }
 .hero .lede{
   font-size:1.125rem;
-  color:rgba(255,255,255,.72);
+  color:var(--fg-muted);
   max-width:60ch;
 }
 
-/* ---------- Feature cards ---------- */
+/* ---------- Features ---------- */
 .feature{
   display:flex;
   gap:.85rem;
@@ -371,9 +365,8 @@ h3{ font-size:var(--size-h3); }
   width:10px;
   height:10px;
   border-radius:999px;
-  background: var(--accent-2);
-  box-shadow:none; /* reduce glow */
-  margin-top:.45rem;
+  background: var(--aqua);
+  box-shadow:none;
 }
 
 /* ---------- Logo band + tiles ---------- */
@@ -384,9 +377,10 @@ h3{ font-size:var(--size-h3); }
   align-items:stretch;
 }
 
+/* Base tile */
 .logo-tile{
-  background: var(--slate);
-  border: 1px solid rgba(255,255,255,.06);
+  background: var(--tile);
+  border: 1px solid rgba(255,255,255,.08);
   border-radius:14px;
   padding:18px 22px;
   min-height:110px;
@@ -396,32 +390,46 @@ h3{ font-size:var(--size-h3); }
   box-shadow: 0 12px 24px rgba(0,0,0,.25);
 }
 
-.logo-tile img,
-.logo-tile svg{
+/* Prevent massive logos */
+.logo-tile img{
   max-width:100%;
   height:auto;
-  max-height:56px;              /* prevents “massive” logos */
-  opacity: 1 !important;        /* critical if exported w/ opacity */
-  filter: none !important;
-  mix-blend-mode: normal !important;
+  max-height:56px;
+  filter:none !important;
+  mix-blend-mode:normal;
+  opacity:1;
 }
 
-/* Use this class for ANY tile that needs a light background (black marks) */
+/* ✅ Light tile for BLACK marks (force solid white) */
 .logo-tile--light{
-  background: #ffffff !important;
+  background:#ffffff !important;
   border-color: rgba(2,6,23,.10) !important;
-  box-shadow: 0 12px 20px rgba(0,0,0,.14) !important;
+  box-shadow: 0 12px 24px rgba(0,0,0,.18) !important;
+}
+.logo-tile--light img{
+  opacity:1 !important;
 }
 
-/* Optional: slightly smaller padding for dense marks */
-.logo-tile--tight{
-  padding: 14px 18px;
+/* ---------- Pricing ---------- */
+.pricing-grid{
+  display:grid;
+  gap:1rem;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+}
+@media (max-width:900px){
+  .pricing-grid{ grid-template-columns:1fr; }
 }
 
-/* ---------- Pricing helpers ---------- */
+.plans .plan{
+  display:flex;
+  flex-direction:column;
+  gap:.75rem;
+  padding:1.1rem;
+}
+
 .price{
   font-family:var(--font-display);
-  font-size: clamp(1.8rem, 3vw, 2.35rem);
+  font-size: clamp(1.8rem, 3vw, 2.4rem);
   line-height:1;
   font-weight:700;
   margin:.25rem 0 1rem;
@@ -449,30 +457,12 @@ h3{ font-size:var(--size-h3); }
   left:0;
   top:.05rem;
   font-weight:700;
-  color:var(--accent);
+  color: var(--aqua);
 }
 
-.badge{
-  display:inline-flex;
-  align-items:center;
-  gap:.4rem;
-  font-size:.75rem;
-  padding:.22rem .5rem;
-  border-radius:999px;
-  border:1px solid rgba(148,163,184,.22);
-  background: rgba(255,255,255,.03);
-  color: rgba(255,255,255,.74);
-}
-.badge--accent{
-  border-color: color-mix(in oklab, var(--accent), white 15%);
-  color:#eafff6;
-  background: linear-gradient(135deg, rgba(15,23,42,.70), rgba(8,47,73,.88));
-}
-
-/* popular/glow cards (subtle) */
 .plan--popular{
-  outline:2px solid color-mix(in oklab, var(--accent), white 14%);
-  box-shadow: 0 0 0 6px color-mix(in oklab, var(--accent), transparent 90%), var(--shadow-1);
+  outline:2px solid color-mix(in oklab, var(--aqua), white 14%);
+  box-shadow: 0 0 0 6px color-mix(in oklab, var(--aqua), transparent 90%), var(--shadow-1);
 }
 .plan--glow{
   box-shadow: var(--shadow-2), 0 0 0 1px rgba(148,163,184,.14);
@@ -484,52 +474,142 @@ h3{ font-size:var(--size-h3); }
   width:100%;
   padding:.75rem .9rem;
   border-radius:12px;
-  border:1px solid rgba(148,163,184,.18);
+  border:1px solid rgba(255,255,255,.10);
   background: rgba(255,255,255,.03);
   color: var(--fg);
   outline:none;
 }
 .input:focus{
-  border-color: rgba(142,220,255,.40);
-  box-shadow: 0 0 0 3px rgba(142,220,255,.16);
+  border-color: color-mix(in oklab, var(--blue), white 10%);
+  box-shadow: 0 0 0 3px color-mix(in oklab, var(--blue), transparent 75%);
 }
 textarea.input{
   min-height:140px;
   resize:vertical;
 }
 
-/* ---------- Style-guide helpers ---------- */
-.sg-nav{ display:flex; gap:.5rem; flex-wrap:wrap; margin-top:14px; }
-.sg-hint{ font-family:var(--font-alt); text-transform:uppercase; letter-spacing:.12em; font-size:.78rem; color:rgba(255,255,255,.62); }
-.sg-kbd, .sg-code{
-  font-family: var(--mono);
-  font-size: .85rem;
-  padding: .12rem .42rem;
-  border-radius: 8px;
-  border: 1px solid rgba(148,163,184,.22);
-  background: rgba(255,255,255,.03);
+/* ---------- Style Guide helpers (no inline styles needed) ---------- */
+.sg-wrap{
+  width:min(1100px, 92%);
+  margin-inline:auto;
 }
+.sg-row{
+  display:flex;
+  gap:.65rem;
+  flex-wrap:wrap;
+  align-items:center;
+}
+.sg-kicker{
+  color: rgba(255,255,255,.62);
+  font-family: var(--font-alt);
+  text-transform:uppercase;
+  letter-spacing:.14em;
+  font-size:.78rem;
+}
+.sg-lede{
+  max-width:72ch;
+  color: rgba(255,255,255,.72);
+}
+.sg-toc{
+  display:flex;
+  flex-wrap:wrap;
+  gap:.6rem;
+  margin-top:14px;
+}
+.sg-block{ margin-top:26px; }
 .sg-hr{
-  margin: 22px 0;
+  margin:22px 0 6px;
   border:0;
   height:1px;
-  background: rgba(148,163,184,.14);
+  background:rgba(148,163,184,.14);
 }
-.sg-block{ padding: 10px 0; }
-
-/* swatches (style-guide) */
-.sg-swatch{
-  border:1px solid rgba(148,163,184,.16);
+.sg-kbd{
+  display:inline-block;
+  padding:.12rem .38rem;
+  border-radius:8px;
+  border:1px solid rgba(255,255,255,.12);
+  background: rgba(0,0,0,.18);
+  font-size:.9em;
+}
+.sg-subtle{
+  margin-top:10px;
+  border:1px solid rgba(255,255,255,.10);
   border-radius:14px;
-  overflow:hidden;
-  background: rgba(255,255,255,.02);
-  box-shadow: 0 12px 26px rgba(0,0,0,.26);
+  padding:12px 14px;
+  background: rgba(255,255,255,.03);
 }
-.sg-swatch__chip{ height:54px; }
-.sg-swatch__meta{ padding:10px 12px; }
-.sg-row{ display:flex; gap:.6rem; flex-wrap:wrap; align-items:center; }
 
-/* thumbs */
+/* Swatches */
+.sg-swatches{
+  margin-top:14px;
+  display:grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap:12px;
+}
+.sg-swatch{
+  display:flex;
+  gap:12px;
+  align-items:center;
+  border-radius:14px;
+  border:1px solid rgba(255,255,255,.10);
+  background: rgba(255,255,255,.03);
+  padding:12px;
+}
+.sg-swatch__chip{
+  width:46px;
+  height:46px;
+  border-radius:12px;
+  border:1px solid rgba(255,255,255,.12);
+}
+.sg-swatch__meta{ display:flex; flex-direction:column; gap:2px; }
+.sg-swatch__name{ font-weight:650; }
+.sg-swatch__hex{ color: rgba(255,255,255,.62); font-size:.9rem; }
+
+/* Logos grid in style guide */
+.sg-logos{
+  display:grid;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  gap:14px;
+  margin-top:14px;
+}
+
+/* Make sg-logo behave like logo-tile (so HTML can use either) */
+.sg-logo{
+  background: var(--tile);
+  border: 1px solid rgba(255,255,255,.08);
+  border-radius:14px;
+  padding:18px 22px;
+  min-height:110px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  box-shadow: 0 12px 24px rgba(0,0,0,.25);
+}
+.sg-logo img{
+  max-width:100%;
+  height:auto;
+  max-height:56px;
+}
+
+/* Critical: if someone uses sg-logo + logo-tile--light, make it white */
+.sg-logo.logo-tile--light{
+  background:#ffffff !important;
+  border-color: rgba(2,6,23,.10) !important;
+  box-shadow: 0 12px 24px rgba(0,0,0,.18) !important;
+}
+
+/* Simple demo boxes for layouts section */
+.sg-demo-grid{ margin-top:12px; }
+.sg-demo-box{
+  border-radius:12px;
+  border:1px solid rgba(255,255,255,.10);
+  background: rgba(0,0,0,.18);
+  padding:14px;
+  text-align:center;
+  color: rgba(255,255,255,.75);
+}
+
+/* ---------- Preview thumbs ---------- */
 .thumb{
   position:relative;
   overflow:hidden;
@@ -539,13 +619,15 @@ textarea.input{
   justify-content:flex-end;
   gap:.25rem;
   padding:1rem;
+  text-decoration:none;
+  color:inherit;
   border-radius: var(--radius);
-  border: 1px solid rgba(255,255,255,.06);
+  border: 1px solid rgba(255,255,255,.08);
   box-shadow: var(--shadow-1);
   background: var(--tile);
 }
 .thumb__title{ font-weight:600; }
-.thumb__caption{ font-size:.9rem; color:rgba(255,255,255,.70); }
+.thumb__caption{ font-size:.9rem; color:var(--fg-muted); }
 
 .thumb::before{
   content:"Aa 123";
@@ -555,18 +637,18 @@ textarea.input{
   font-weight:700;
   font-size:64px;
   line-height:1;
-  opacity:.16;
+  opacity:.18;
   pointer-events:none;
 }
 
 .thumb--inter{
-  background: linear-gradient(120deg, rgba(142,220,255,.10), rgba(124,245,193,.08)), var(--tile);
+  background: linear-gradient(120deg, rgba(12,133,255,.10), rgba(47,243,224,.08)), var(--tile);
 }
 .thumb--poppins{
-  background: linear-gradient(120deg, rgba(124,245,193,.08), rgba(142,220,255,.10)), var(--tile);
+  background: linear-gradient(120deg, rgba(47,243,224,.08), rgba(12,133,255,.10)), var(--tile);
 }
 .thumb--space{
-  background: linear-gradient(120deg, rgba(142,220,255,.08), rgba(167,179,255,.08)), var(--tile);
+  background: linear-gradient(120deg, rgba(12,133,255,.08), rgba(255,255,255,.06)), var(--tile);
 }
 
 .thumb--inter::before{ font-family:"Inter", system-ui, sans-serif; }
@@ -589,6 +671,19 @@ textarea.input{
   .footer-grid{ grid-template-columns:1fr; }
 }
 
+/* ---------- A11y utility ---------- */
+.sr-only{
+  position:absolute;
+  width:1px;
+  height:1px;
+  padding:0;
+  margin:-1px;
+  overflow:hidden;
+  clip:rect(0,0,0,0);
+  white-space:nowrap;
+  border:0;
+}
+
 /* ---------- Reduced motion ---------- */
 @media (prefers-reduced-motion: reduce){
   html:focus-within{ scroll-behavior:auto; }
@@ -598,22 +693,20 @@ textarea.input{
     transition-duration:0.01ms !important;
   }
   .btn:hover{ transform:none !important; }
+  .site-header{ transition:none !important; }
 }
 
 /* =========================================================
-   Style guide: force light tiles for black marks
-   (stays at END of main.css)
+   PATCH: Style Guide logo tiles (force white tiles for black marks)
+   Put at END of main.css
    ========================================================= */
-
    .logo-tile.logo-tile--light{
-    background: #ffffff !important;
-    border-color: rgba(0,0,0,.10) !important;
-    box-shadow: 0 12px 24px rgba(0,0,0,.14) !important;
+    background:#fff !important;
+    border-color: rgba(2,6,23,.10) !important;
+    box-shadow: 0 12px 24px rgba(0,0,0,.18) !important;
   }
-  
-  /* Make sure the SVGs/PNGs render normally on light tiles */
   .logo-tile.logo-tile--light img{
-    filter: none !important;
-    mix-blend-mode: normal !important;
-    opacity: 1 !important;
+    opacity:1 !important;
+    filter:none !important;
+    mix-blend-mode:normal !important;
   }
