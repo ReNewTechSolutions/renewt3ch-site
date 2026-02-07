@@ -735,3 +735,206 @@ textarea.input{
     filter:none !important;
     mix-blend-mode:normal !important;
   }
+
+  /* =========================================================
+   PATCH: Brand Guide layout + logo sizing
+   Scope to brand guide only to avoid impacting the site.
+   ========================================================= */
+
+.page{
+  width:min(1100px, 92%);
+  margin-inline:auto;
+  padding:48px 0 72px;
+}
+
+.page header{
+  margin-bottom:24px;
+}
+
+.subtitle{
+  margin-top:.35rem;
+  color: var(--fg-muted);
+}
+
+.pill-row{
+  display:flex;
+  flex-wrap:wrap;
+  gap:.55rem;
+  margin-top:14px;
+}
+
+.pill{
+  display:inline-flex;
+  align-items:center;
+  gap:.35rem;
+  padding:.35rem .6rem;
+  border-radius:999px;
+  border:1px solid rgba(255,255,255,.12);
+  background: rgba(255,255,255,.03);
+  color: rgba(255,255,255,.78);
+  text-decoration:none;
+  font-size:.85rem;
+}
+
+.pill--accent{
+  border-color: color-mix(in oklab, var(--aqua), white 12%);
+  background: rgba(47,243,224,.08);
+  color:#eaffff;
+}
+
+.pill--button{
+  border-color: color-mix(in oklab, var(--blue), white 18%);
+  background: rgba(12,133,255,.10);
+}
+
+/* 2-column grid used by brand guide */
+.page .grid-2{
+  display:grid;
+  grid-template-columns:repeat(2, minmax(0, 1fr));
+  gap:16px;
+  align-items:stretch;
+}
+
+.page .grid-2.equal > *{
+  height:100%;
+}
+
+@media (max-width: 840px){
+  .page .grid-2{ grid-template-columns:1fr; }
+}
+
+/* Brand guide utility classes */
+.page .tiny-label{
+  font-family: var(--font-alt);
+  text-transform: uppercase;
+  letter-spacing: .14em;
+  font-size: .72rem;
+  color: rgba(255,255,255,.62);
+  margin-bottom:.5rem;
+}
+
+.page .code-inline{
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+  font-size:.92em;
+  padding:.1rem .35rem;
+  border-radius:8px;
+  border:1px solid rgba(255,255,255,.12);
+  background: rgba(0,0,0,.18);
+}
+
+/* Swatches used in brand guide */
+.page .swatch-grid{
+  display:grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap:14px;
+  margin-top:14px;
+}
+
+.page .swatch{
+  display:flex;
+  gap:12px;
+  border-radius:14px;
+  border:1px solid rgba(255,255,255,.10);
+  background: rgba(255,255,255,.03);
+  padding:12px;
+}
+
+.page .swatch-color{
+  width:54px;
+  height:54px;
+  border-radius:12px;
+  border:1px solid rgba(255,255,255,.12);
+  flex:0 0 auto;
+}
+
+.page .swatch-name{ font-weight:650; }
+.page .swatch-meta{ color: rgba(255,255,255,.68); font-size:.92rem; }
+
+/* Frame block */
+.page .frame{
+  border-radius:14px;
+  border:1px solid rgba(255,255,255,.10);
+  background: rgba(255,255,255,.03);
+  overflow:hidden;
+}
+
+.page .frame-head{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:12px;
+  padding:12px 14px;
+  border-bottom:1px solid rgba(255,255,255,.08);
+}
+
+.page .frame-body{ padding:14px; }
+
+/* ✅ Logo gallery sizing + alignment */
+.page .gallery{
+  display:grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap:14px;
+  margin-top:14px;
+}
+
+.page .gallery figure{
+  margin:0;
+  border-radius:14px;
+  border:1px solid rgba(255,255,255,.10);
+  padding:16px;
+  min-height:140px;
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+  justify-content:center;
+  align-items:center;
+  background: rgba(255,255,255,.03);
+  box-shadow: 0 12px 24px rgba(0,0,0,.22);
+}
+
+.page .gallery figure.dark{
+  background: var(--tile);
+  border-color: rgba(255,255,255,.08);
+}
+
+.page .gallery figure.light{
+  background:#fff !important;
+  border-color: rgba(2,6,23,.10) !important;
+}
+
+.page .gallery img{
+  width:auto;
+  max-width: 100%;
+  max-height: 56px; /* ✅ prevents huge logos */
+  height:auto;
+}
+
+.page .gallery figure.light img{
+  filter:none !important;
+  mix-blend-mode:normal !important;
+}
+
+.page .gallery figcaption{
+  font-size:.85rem;
+  color: rgba(255,255,255,.65);
+  text-align:center;
+}
+
+.page .gallery figure.light figcaption{
+  color: rgba(2,6,23,.70);
+}
+
+.page .back-top{
+  margin-top:18px;
+}
+
+.page .back-top a{
+  color: rgba(255,255,255,.72);
+  text-decoration:none;
+}
+
+.page .back-top a:hover{
+  color: var(--fg);
+  text-decoration:underline;
+  text-underline-offset: 2px;
+}
