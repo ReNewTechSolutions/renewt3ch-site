@@ -38,14 +38,41 @@
 html, body { height: 100%; }
 
 body{
-  margin: 0;
-  font-family: var(--font-sans-ui, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif);
-  color: var(--fg);
+  margin:0;
+  color:var(--fg);
   background:
-    radial-gradient(900px 520px at 20% 10%, var(--bg-glow-a), transparent 60%),
-    radial-gradient(900px 520px at 80% 25%, var(--bg-glow-b), transparent 65%),
-    radial-gradient(circle at top left, var(--bg-grad-1) 0%, var(--bg-grad-2) 40%, var(--bg-grad-3) 100%);
-  background-color: var(--bg);
+    radial-gradient(55% 55% at 10% 8%, var(--bg-glow-a) 0%, transparent 60%),
+    radial-gradient(45% 45% at 92% 12%, var(--bg-glow-b) 0%, transparent 58%),
+    radial-gradient(75% 75% at 10% 95%, rgba(255,255,255,.035) 0%, transparent 55%),
+    linear-gradient(180deg, var(--bg-grad-1) 0%, var(--bg-grad-2) 48%, var(--bg-grad-3) 100%);
+}
+
+:root{
+  /* Base palette (matches your brand guide) */
+  --black:    #0D0D0D;
+  --graphite: #151515;
+  --slate:    #222222;
+
+  /* Brand accents (blue + aqua) */
+  --blue: #0C85FF;
+  --blue-soft: rgba(12,133,255,.22);
+  --blue-glow: rgba(12,133,255,.35);
+
+  --aqua: #2FF3E0;
+  --aqua-soft: rgba(47,243,224,.18);
+  --aqua-glow: rgba(47,243,224,.28);
+
+  /* Your existing tokens can keep using these */
+  --bg: var(--black);
+  --bg-elev: var(--graphite);
+
+  /* Background stops */
+  --bg-grad-1:#0a0f18;
+  --bg-grad-2:#070b12;
+  --bg-grad-3:#05070d;
+
+  --bg-glow-a: rgba(12,133,255,.10);
+  --bg-glow-b: rgba(47,243,224,.09);
 }
 
 /* ---------- Tokens (dark default) ---------- */
@@ -572,3 +599,21 @@ textarea.input{
   }
   .btn:hover{ transform:none !important; }
 }
+
+/* =========================================================
+   Style guide: force light tiles for black marks
+   (stays at END of main.css)
+   ========================================================= */
+
+   .logo-tile.logo-tile--light{
+    background: #ffffff !important;
+    border-color: rgba(0,0,0,.10) !important;
+    box-shadow: 0 12px 24px rgba(0,0,0,.14) !important;
+  }
+  
+  /* Make sure the SVGs/PNGs render normally on light tiles */
+  .logo-tile.logo-tile--light img{
+    filter: none !important;
+    mix-blend-mode: normal !important;
+    opacity: 1 !important;
+  }
