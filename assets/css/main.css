@@ -30,6 +30,24 @@
   font-display:swap;
 }
 
+/* ---------- Base / Page ---------- */
+:root{
+  color-scheme: dark;
+}
+
+html, body { height: 100%; }
+
+body{
+  margin: 0;
+  font-family: var(--font-sans-ui, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif);
+  color: var(--fg);
+  background:
+    radial-gradient(900px 520px at 20% 10%, var(--bg-glow-a), transparent 60%),
+    radial-gradient(900px 520px at 80% 25%, var(--bg-glow-b), transparent 65%),
+    radial-gradient(circle at top left, var(--bg-grad-1) 0%, var(--bg-grad-2) 40%, var(--bg-grad-3) 100%);
+  background-color: var(--bg);
+}
+
 /* ---------- Tokens (dark default) ---------- */
 :root{
   /* Fonts */
