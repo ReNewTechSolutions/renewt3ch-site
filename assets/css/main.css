@@ -10,44 +10,47 @@
 
 /* ---------- Variable fonts (relative paths from /assets/css/) ---------- */
 /* ---------- Fonts (self-hosted) ---------- */
+/* ---------- Fonts (self-hosted, WOFF2) ---------- */
 @font-face{
   font-family:"Inter";
-  src:url("../fonts/inter/Inter-VariableFont_opsz,wght.ttf") format("truetype");
+  src:url("../fonts/inter/Inter-VariableFont_opsz,wght.woff2") format("woff2");
   font-weight:100 900;
   font-style:normal;
   font-display:swap;
 }
 @font-face{
   font-family:"Inter";
-  src:url("../fonts/inter/Inter-Italic-VariableFont_opsz,wght.ttf") format("truetype");
+  src:url("../fonts/inter/Inter-Italic-VariableFont_opsz,wght.woff2") format("woff2");
   font-weight:100 900;
   font-style:italic;
   font-display:swap;
 }
+
 @font-face{
   font-family:"Poppins";
-  src:url("../fonts/poppins/Poppins-Regular.ttf") format("truetype");
+  src:url("../fonts/poppins/Poppins-Regular.woff2") format("woff2");
   font-weight:400;
   font-style:normal;
   font-display:swap;
 }
 @font-face{
   font-family:"Poppins";
-  src:url("../fonts/poppins/Poppins-Italic.ttf") format("truetype");
+  src:url("../fonts/poppins/Poppins-Italic.woff2") format("woff2");
   font-weight:400;
   font-style:italic;
   font-display:swap;
 }
 @font-face{
   font-family:"Poppins";
-  src:url("../fonts/poppins/Poppins-Bold.ttf") format("truetype");
+  src:url("../fonts/poppins/Poppins-Bold.woff2") format("woff2");
   font-weight:700;
   font-style:normal;
   font-display:swap;
 }
+
 @font-face{
   font-family:"Space Grotesk";
-  src:url("../fonts/space-grotesk/SpaceGrotesk-VariableFont_wght.ttf") format("truetype");
+  src:url("../fonts/space-grotesk/SpaceGrotesk-VariableFont_wght.woff2") format("woff2");
   font-weight:300 700;
   font-style:normal;
   font-display:swap;
